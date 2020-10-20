@@ -132,6 +132,18 @@
             </li>
           
         
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
         
           <li class="nav-item" id="search-btn">
             <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
@@ -224,7 +236,7 @@
 <li>整数有32位，其中第一位（最左位）位符号位。</li>
 <li>负数的符号位为“1”，与相对应的正数之间的关系为“取反加一”。</li>
 </ul>
-<pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">intToBinary</span><span class="hljs-params">(String numStr)</span> </span>&#123;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">intToBinary</span><span class="hljs-params">(String numStr)</span> </span>&#123;
   <span class="hljs-comment">//<span class="hljs-doctag">TODO:</span></span>
   <span class="hljs-keyword">int</span> num = Integer.parseInt(numStr);
   <span class="hljs-keyword">int</span> sign = <span class="hljs-number">0</span>;
@@ -255,13 +267,12 @@
     &#125;
   &#125;
   <span class="hljs-keyword">return</span> String.valueOf(binaryStr);
-&#125;</code></pre>
-
+&#125;</code></pre></div>
 <p>​       以上的操作比较简单，主要是把整数字符串转换为整数，再进行“除二取余”的操作。特别的，对于负数再进行一次“取反加一”的操作。这里没有直接用取反操作符，而是使用了<strong>“从末尾的0起到第一个1不变，下一位到起始处取反”</strong>的操作。</p>
 <h4 id="1-2-二进制形式转化为整数int"><a href="#1-2-二进制形式转化为整数int" class="headerlink" title="1.2 二进制形式转化为整数int"></a>1.2 二进制形式转化为整数int</h4><ul>
 <li>与上面的操作相对应。</li>
 </ul>
-<pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">binaryToInt</span><span class="hljs-params">(String binStr)</span> </span>&#123;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">binaryToInt</span><span class="hljs-params">(String binStr)</span> </span>&#123;
   <span class="hljs-comment">//<span class="hljs-doctag">TODO:</span></span>
   <span class="hljs-keyword">char</span>[] bits = binStr.toCharArray();
   <span class="hljs-keyword">char</span> sign = bits[<span class="hljs-number">0</span>];
@@ -287,17 +298,18 @@
   &#125;
   <span class="hljs-keyword">if</span>(sign == <span class="hljs-string">&#x27;1&#x27;</span>) ans = -ans;
   <span class="hljs-keyword">return</span> String.valueOf(ans);
-&#125;</code></pre>
-
-<p>​       对1.1中的操作进行逆操纵，先对负数取反加一。然后根据<br>$$<br>S = \sum_{i=0}^{n}2^i×s<br>$$<br>求得int的绝对值，在最后根据符号位补上符号。</p>
+&#125;</code></pre></div>
+<p>​       对1.1中的操作进行逆操纵，先对负数取反加一。然后根据</p>
+<script type="math/tex; mode=display">
+S = \sum_{i=0}^{n}2^i×s</script><p>求得int的绝对值，在最后根据符号位补上符号。</p>
 <h4 id="1-3-浮点数转二进制【最麻烦的部分】"><a href="#1-3-浮点数转二进制【最麻烦的部分】" class="headerlink" title="1.3 浮点数转二进制【最麻烦的部分】"></a>1.3 浮点数转二进制【最麻烦的部分】</h4><ul>
 <li>浮点数的二进制表示有三个部分——符号（sign）、阶码（exponent）、尾数（fraction）</li>
 <li>浮点数有规格化和非规格化之分；</li>
 <li>在编写的过程中最好参考表格：</li>
-<li><img src="%E6%B5%AE%E7%82%B9%E6%95%B0%E8%A7%A3%E9%87%8A.png" srcset="/img/loading.gif"></li>
+<li><img src="/img/浮点数解释.png" srcset="/img/loading.gif" alt=""></li>
 <li>相信有更好的写法！</li>
 </ul>
-<pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">floatToBinary</span><span class="hljs-params">(String floatStr)</span> </span>&#123;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">floatToBinary</span><span class="hljs-params">(String floatStr)</span> </span>&#123;
   <span class="hljs-comment">//<span class="hljs-doctag">TODO:</span></span>
   String sign = <span class="hljs-string">&quot;0&quot;</span>;
   String expStr;
@@ -374,8 +386,7 @@
     ans = <span class="hljs-string">&quot;-Inf&quot;</span>;
   &#125;
   <span class="hljs-keyword">return</span> ans;
-&#125;</code></pre>
-
+&#125;</code></pre></div>
 <p>在这段代码中可以看到许多的特判（负数、无穷、溢出等等）。并且用到了许多浮点数比较（这是不好的习惯，但是不得已而为之）。</p>
 <p>主要思路是：</p>
 <p>1⃣️ 首先将负数的符号位设置好，并取它的绝对值。</p>
@@ -386,7 +397,7 @@
 <h4 id="1-4-二进制转化为浮点数"><a href="#1-4-二进制转化为浮点数" class="headerlink" title="1.4 二进制转化为浮点数"></a>1.4 二进制转化为浮点数</h4><ul>
 <li>这个题有点问题，明明是float，在oj判断的时候精度用的是double【吐槽】。但思路整体上是一样。</li>
 </ul>
-<pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">binaryToFloat</span><span class="hljs-params">(String binStr)</span> </span>&#123;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">binaryToFloat</span><span class="hljs-params">(String binStr)</span> </span>&#123;
   <span class="hljs-comment">//<span class="hljs-doctag">TODO:</span></span>
   String sign = binStr.substring(<span class="hljs-number">0</span>, <span class="hljs-number">1</span>);
   String exponent = binStr.substring(<span class="hljs-number">1</span>, <span class="hljs-number">9</span>);
@@ -425,8 +436,7 @@
   &#125;
   <span class="hljs-keyword">return</span> ans;
 &#125;
-</code></pre>
-
+</code></pre></div>
 <p>主要思路：</p>
 <p>1⃣️ 特判0；</p>
 <p>2⃣️ 在这里封装了两个函数：将字符串转化为无符号整数，和字符串转化为浮点数。用到的就是之前的“除二取余”和“乘二取整”。</p>
@@ -436,7 +446,7 @@
 <li>0～9对应0000～1001，正号用1100，负号用1101。</li>
 <li>共有32位，即8个四位组合，如果不够需要补齐。</li>
 </ul>
-<pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">decimalToNBCD</span><span class="hljs-params">(String decimal)</span> </span>&#123;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">decimalToNBCD</span><span class="hljs-params">(String decimal)</span> </span>&#123;
   <span class="hljs-comment">//<span class="hljs-doctag">TODO:</span></span>
   <span class="hljs-keyword">char</span>[] numLst = decimal.toCharArray();
   StringBuilder ansBuilder = <span class="hljs-keyword">new</span> StringBuilder();
@@ -477,10 +487,9 @@
     ansBuilder.append(BCD);
   &#125;
   <span class="hljs-keyword">return</span> ansBuilder.toString();
-&#125;</code></pre>
-
+&#125;</code></pre></div>
 <p>主要思路：单纯根据每个数字和符号取对应的BCD表示，需要注意的是补上0000满足位数的要求。总体来说相对简单。</p>
-<h4 id="1-6-NBCD转化为十进制数"><a href="#1-6-NBCD转化为十进制数" class="headerlink" title="1.6 NBCD转化为十进制数"></a>1.6 NBCD转化为十进制数</h4><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">NBCDToDecimal</span><span class="hljs-params">(String NBCDStr)</span> </span>&#123;
+<h4 id="1-6-NBCD转化为十进制数"><a href="#1-6-NBCD转化为十进制数" class="headerlink" title="1.6 NBCD转化为十进制数"></a>1.6 NBCD转化为十进制数</h4><div class="hljs"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">NBCDToDecimal</span><span class="hljs-params">(String NBCDStr)</span> </span>&#123;
   <span class="hljs-comment">//<span class="hljs-doctag">TODO:</span></span>
   StringBuilder strBuilder = <span class="hljs-keyword">new</span> StringBuilder();
   String BCD = <span class="hljs-string">&quot;&quot;</span>;
@@ -521,8 +530,7 @@
     strBuilder.delete(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>);
   &#125;
   <span class="hljs-keyword">return</span> strBuilder.toString();
-&#125;</code></pre>
-
+&#125;</code></pre></div>
 <p>主要思路：每四个进行对应，将其转化为十进制的字符串。需要注意的是！因为32位的NBCD码要求，一些数字字符串中会有无用的0产生。需要将它们去除掉，在这里我使用的是——【对正数：第一位为0就去掉；对负数：当第一位为‘-’，第二位为0就去掉第二位的0。进行循环。】</p>
 <p>总体来说，这次的作业有不少细节需要注意，会有一些小的细节的坑需要规避。比如浮点数转化为二进制字符串，如果不对太大的数字进行无穷的转换，就很可能在代码中产生死循环。以及负数的考虑：负数乘2再减1在数轴上会越来越偏离原点，导致死循环！还有规格化数到非规格化数到跳跃也是值得注意的重难点。</p>
 <h2 id="算法设计与分析"><a href="#算法设计与分析" class="headerlink" title="算法设计与分析"></a>算法设计与分析</h2><h3 id="1-Hashing"><a href="#1-Hashing" class="headerlink" title="1. Hashing"></a>1. Hashing</h3><ul>
@@ -533,8 +541,11 @@
 </li>
 <li><p>总共开销：Θ(1+ <em>n</em>/<em>m</em>)</p>
 </li>
-<li><p><strong>分析</strong>：对于一次成功的搜索，x<sub>i</sub>的可能性为1/n。对于给定的x<sub>i</sub>，被检测到的元素为<em>t+1</em>次（<em>t</em>是被插入同一个区域的元素数）。对于任意j，x<sub>j</sub>被插入同一个地方的可能性是<em>1/m</em>，因此花销为：<br>$$<br>1+\frac{1}{n}\sum_{i=1}^n(1+\sum_{j=i+1}^{n}\frac{1}{m})<br>$$<br>1/m的和是“在要搜索的元素之前的链表中的元素数量”。计算结果大致是：<br>$$<br>\Theta(1+\alpha)<br>$$</p>
-</li>
+<li><p><strong>分析</strong>：对于一次成功的搜索，x<sub>i</sub>的可能性为1/n。对于给定的x<sub>i</sub>，被检测到的元素为<em>t+1</em>次（<em>t</em>是被插入同一个区域的元素数）。对于任意j，x<sub>j</sub>被插入同一个地方的可能性是<em>1/m</em>，因此花销为：</p>
+<script type="math/tex; mode=display">
+1+\frac{1}{n}\sum_{i=1}^n(1+\sum_{j=i+1}^{n}\frac{1}{m})</script><p>1/m的和是“在要搜索的元素之前的链表中的元素数量”。计算结果大致是：</p>
+<script type="math/tex; mode=display">
+\Theta(1+\alpha)</script></li>
 </ul>
 <h5 id="1-2-Open-Address"><a href="#1-2-Open-Address" class="headerlink" title="1.2 Open Address"></a>1.2 Open Address</h5><ul>
 <li>不使用链表，所有的元素都存在哈希表中。</li>
@@ -545,8 +556,9 @@
 </li>
 <li><p>花销：size</p>
 </li>
-<li><p>执行n次操作，总共花销：<br>$$<br>\sum_{i=1}^nc_i{\leq}n+\sum_{j=0}^{log{n}}2^j&lt;3n<br>$$</p>
-</li>
+<li><p>执行n次操作，总共花销：</p>
+<script type="math/tex; mode=display">
+\sum_{i=1}^nc_i{\leq}n+\sum_{j=0}^{log{n}}2^j<3n</script></li>
 <li><p>每一个doubling的操作可以均摊到前面的每一次插入，足够多的准备。（均摊分析）</p>
 </li>
 </ul>
@@ -784,6 +796,45 @@
 
 
 
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.staticfile.org/mathjax/3.0.5/es5/tex-svg.js" ></script>
+
+  
 
 
 

@@ -132,6 +132,18 @@
             </li>
           
         
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
         
           <li class="nav-item" id="search-btn">
             <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
@@ -230,11 +242,11 @@
 <li><p>覆盖方法（override）</p>
 <ul>
 <li>Manager类的getSalary方法不能够直接地访问超类的私有域。只有Employee类的方法才能够访问私有部分。</li>
-<li>super不是一个对象的引用，他只是一个指示编译器调用超类方法的指示器。<pre><code class="hljs Java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">double</span> <span class="hljs-title">getSalary</span><span class="hljs-params">()</span></span>&#123;
+<li>super不是一个对象的引用，他只是一个指示编译器调用超类方法的指示器。<div class="hljs"><pre><code class="hljs Java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">double</span> <span class="hljs-title">getSalary</span><span class="hljs-params">()</span></span>&#123;
     <span class="hljs-comment">//double baseSalary = getSalary();这句也不可以，因为getSalary会循环调用；</span>
     <span class="hljs-keyword">double</span> baseSalary = <span class="hljs-keyword">super</span>.gerSalary();
     <span class="hljs-keyword">return</span> baseSalary + bonus;
-&#125;</code></pre>
+&#125;</code></pre></div>
 </li>
 </ul>
 </li>
@@ -242,10 +254,10 @@
 <ul>
 <li>语句super(n, s, year, month, day)是“调用超类Employee中含有n、s、year、month、day参数的构造器”的简写形式。</li>
 <li>Manager类不能访问Employee的私有域，所以必须利用Employee类的构造器对这部分私有域进行初始化。通过super实现对超类构造器的调用。<strong>使用super调用构造器的语句必须是子类构造器的第一条语句。</strong></li>
-<li>没有使用super就会自动调用默认（即无参数）构造器。<pre><code class="hljs Java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Manager</span><span class="hljs-params">(String name, <span class="hljs-keyword">double</span> salary, <span class="hljs-keyword">int</span> year, <span class="hljs-keyword">int</span> month, <span class="hljs-keyword">int</span> day)</span></span>&#123;
+<li>没有使用super就会自动调用默认（即无参数）构造器。<div class="hljs"><pre><code class="hljs Java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Manager</span><span class="hljs-params">(String name, <span class="hljs-keyword">double</span> salary, <span class="hljs-keyword">int</span> year, <span class="hljs-keyword">int</span> month, <span class="hljs-keyword">int</span> day)</span></span>&#123;
     <span class="hljs-keyword">super</span>(name, salary, year, month, day);
     bonus = <span class="hljs-number">0</span>;
-&#125;</code></pre>
+&#125;</code></pre></div>
 </li>
 </ul>
 </li>
@@ -262,11 +274,10 @@
 </ul>
 </li>
 </ol>
-<pre><code class="hljs Java">Manager[] manager = <span class="hljs-keyword">new</span> Manager[<span class="hljs-number">10</span>];
+<div class="hljs"><pre><code class="hljs Java">Manager[] manager = <span class="hljs-keyword">new</span> Manager[<span class="hljs-number">10</span>];
 Employee[] staff = managers;
-<span class="hljs-comment">//managers和staff引用的是同一个数组。</span></code></pre>
-
-<ol start="6">
+<span class="hljs-comment">//managers和staff引用的是同一个数组。</span></code></pre></div>
+<ol>
 <li><p><strong><em>理解方法调用</em></strong>，下面假设要调用x.f(args),隐式参数声明为一个类C的对象。</p>
 <ul>
 <li>编译器查看对象的声明类型和方法名。如果存在多个名字为f但参数类型不一样的方法，编译器会意义列举所有C类中名为f的方法和其超类中访问属性为public且名为f的方法（超类的私有方法不可访问）。</li>
@@ -309,7 +320,7 @@ Employee[] staff = managers;
 </ul>
 </li>
 </ol>
-<pre><code class="hljs Java">Manager boss = <span class="hljs-keyword">new</span> Manager(...);
+<div class="hljs"><pre><code class="hljs Java">Manager boss = <span class="hljs-keyword">new</span> Manager(...);
 staff[<span class="hljs-number">0</span>] = boss;
 staff[<span class="hljs-number">1</span>] = <span class="hljs-keyword">new</span> Employee(...);
 staff[<span class="hljs-number">2</span>] = <span class="hljs-keyword">new</span> Employee(...);
@@ -319,8 +330,8 @@ Manager boss = (Manager) staff[<span class="hljs-number">1</span>]; <span class=
 
 <span class="hljs-keyword">if</span> (staff[<span class="hljs-number">1</span>] <span class="hljs-keyword">instanceof</span> Manager)&#123;
     boss = (Manager) staff[<span class="hljs-number">1</span>];
-&#125; <span class="hljs-comment">//check the instance before</span></code></pre>
-<ol start="8">
+&#125; <span class="hljs-comment">//check the instance before</span></code></pre></div>
+<ol>
 <li>抽象类，从某种角度按，<em>祖先类</em>更加通用，人们只将它作为派生其他类的基类，而不作为想使用的特定的实例类。<ul>
 <li>为了提高程序的清晰度，包含一个或多个抽象方法的类本身必须被声明为抽象的。</li>
 <li>许多程序员认为，在抽象类中不能包含具体方法。建议尽量通用的域和方法（不管是否是抽象的）放在超类（不管是不是抽象类）中。</li>
@@ -335,15 +346,15 @@ Manager boss = (Manager) staff[<span class="hljs-number">1</span>]; <span class=
 </ul>
 </li>
 </ol>
-<pre><code class="hljs Java">Person p = <span class="hljs-keyword">new</span> Student(<span class="hljs-string">&quot;Vince Vu&quot;</span>, <span class="hljs-string">&quot;Economics&quot;</span>);</code></pre>
-
-<ol start="9">
+<div class="hljs"><pre><code class="hljs Java">Person p = <span class="hljs-keyword">new</span> Student(<span class="hljs-string">&quot;Vince Vu&quot;</span>, <span class="hljs-string">&quot;Economics&quot;</span>);</code></pre></div>
+<ol>
 <li>受访问保护<ul>
 <li>子类也不能访问超类的私有域。</li>
 <li>例如，如果超类Employee中的hireDay声明为protected，而不是私有的，Manager中的方法就可以直接访问它。不过，Manager类中的方法只能够访问Manager对象中的hireDay域，而不能访问其他Employee对象中的这个域。</li>
 </ul>
 </li>
 </ol>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -354,7 +365,8 @@ Manager boss = (Manager) staff[<span class="hljs-number">1</span>]; <span class=
 <th>其他类</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>private</td>
 <td>√</td>
 <td>×</td>
@@ -382,11 +394,13 @@ Manager boss = (Manager) staff[<span class="hljs-number">1</span>]; <span class=
 <td>√</td>
 <td>√</td>
 </tr>
-</tbody></table>
-<ol start="10">
+</tbody>
+</table>
+</div>
+<ol>
 <li><p>Object类，它是Java中所有类的始祖，在Java中每个类都是由它扩展而来的。在Java中，只有基本类型不是对象。</p>
 <ul>
-<li>equals方法，用来检测一个对象是否等于另外一个对象。判断两个对象是否具有相同的引用（内容）。<pre><code class="hljs Java"><span class="hljs-comment">//重写equals</span>
+<li>equals方法，用来检测一个对象是否等于另外一个对象。判断两个对象是否具有相同的引用（内容）。<div class="hljs"><pre><code class="hljs Java"><span class="hljs-comment">//重写equals</span>
 <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Manager</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Employee</span></span>&#123;
     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">equals</span><span class="hljs-params">(Object otherObject)</span></span>&#123;
         <span class="hljs-keyword">if</span>(!<span class="hljs-keyword">super</span>.equals(otherObject)) <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
@@ -394,7 +408,7 @@ Manager boss = (Manager) staff[<span class="hljs-number">1</span>]; <span class=
         Manager other = (Manager) otherObject;
         <span class="hljs-keyword">return</span> bonus == other.bonus;
     &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
 </li>
 </ul>
 </li>
@@ -412,16 +426,14 @@ Manager boss = (Manager) staff[<span class="hljs-number">1</span>]; <span class=
 <li>将原始ArrayList赋值给一个类型化的ArrayList会得到一个警告。而一个类型化的数组传递给一个普通方法不会出现警告，并且不需要任何的类型转换。</li>
 </ul>
 </li>
-<li><p>对象包装器与自动装箱（wrapper）</p>
-<ul>
+<li>对象包装器与自动装箱（wrapper）<ul>
 <li>自动装箱：list.add(3) 将自动转换成 list.add(Integer.ValueOf(3))，同样的将Integer对象赋值给一个int值的时候，会自动拆箱。</li>
 <li>对象之间的比较要使用equals方法。</li>
 </ul>
 </li>
-<li><p>枚举类</p>
-</li>
+<li>枚举类</li>
 </ol>
-<pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">enum</span> <span class="hljs-title">Size</span></span>&#123;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">enum</span> <span class="hljs-title">Size</span></span>&#123;
     SMALL(<span class="hljs-string">&quot;S&quot;</span>), MEDIUM(<span class="hljs-string">&quot;M&quot;</span>),LARGE(<span class="hljs-string">&quot;L&quot;</span>),EXTRA_LARGE(<span class="hljs-string">&quot;XL&quot;</span>);
     
     <span class="hljs-keyword">private</span> String abbreviation;
@@ -433,11 +445,9 @@ Manager boss = (Manager) staff[<span class="hljs-number">1</span>]; <span class=
     <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getAbbreviation</span><span class="hljs-params">()</span></span>&#123;
         <span class="hljs-keyword">return</span> abbreviation;
     &#125;
-&#125;</code></pre>
-
-<ol start="14">
-<li><p>Class类</p>
-<ul>
+&#125;</code></pre></div>
+<ol>
+<li>Class类<ul>
 <li>getName方法，返回类的名more字。</li>
 <li>一个Class对象实际上表示的是一个类型，而这个类型未必一定是一种类。例如，int不是类，但int.class是一个Class类型的对象。</li>
 <li>Class类实际上是一个泛型类。例如，Employee.class的类型是Class<Employee>。</li>
@@ -695,6 +705,45 @@ Manager boss = (Manager) staff[<span class="hljs-number">1</span>]; <span class=
 
 
 
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.staticfile.org/mathjax/3.0.5/es5/tex-svg.js" ></script>
+
+  
 
 
 

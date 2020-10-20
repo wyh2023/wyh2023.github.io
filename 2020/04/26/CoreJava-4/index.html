@@ -132,6 +132,18 @@
             </li>
           
         
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
         
           <li class="nav-item" id="search-btn">
             <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
@@ -266,11 +278,11 @@
 </li>
 <li><p>Emplyee类</p>
 <ul>
-<li>最简单的类定义形式为：<pre><code class="hljs Java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ClassName</span></span>&#123;
+<li>最简单的类定义形式为：<div class="hljs"><pre><code class="hljs Java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ClassName</span></span>&#123;
     field;
     constructor;
     method;
-&#125;</code></pre>
+&#125;</code></pre></div>
 </li>
 </ul>
 </li>
@@ -327,8 +339,8 @@
 <li>将类的创建单独放到一个类里进行，这个类就叫做工厂。</li>
 <li>不利用构造器有两个原因：<ol>
 <li>无法命名构造器。构造器的名字必须和类名相同。但是货币的实例需要不同的名字；</li>
-<li>当使用构造器时，无法改变所构造的对象类型。<pre><code class="hljs Java">NumberFormat currencyFormatter = NumberFormat.gerCurrencyInstance();
-NumberFormat percentFormatter = NumberFormat.getpercentInstance();</code></pre>
+<li>当使用构造器时，无法改变所构造的对象类型。<div class="hljs"><pre><code class="hljs Java">NumberFormat currencyFormatter = NumberFormat.gerCurrencyInstance();
+NumberFormat percentFormatter = NumberFormat.getpercentInstance();</code></pre></div>
 </li>
 </ol>
 </li>
@@ -345,7 +357,7 @@ NumberFormat percentFormatter = NumberFormat.getpercentInstance();</code></pre>
 <li><strong>Java对对象采用的不是引用调用，实际上，对象引用是按值传递的。</strong></li>
 <li>一个方法不能修改一个基本数据类型的参数（按值传递参数）；</li>
 <li>一个方法可以改变一个对象的参数的状态；</li>
-<li>**一个方法不能让对象参数引用一个新的对象 **</li>
+<li><strong>一个方法不能让对象参数引用一个新的对象 </strong></li>
 </ul>
 </li>
 <li><p>重载：有些类可以有多个构造器。如果多个方法有相同的名字、不同的参数，便产生了重载；编译器通过用各个方法给出的参数类型与特定方法调用所使用的值的类型进行匹配来挑选出相应的方法（重载解析）。</p>
@@ -360,19 +372,19 @@ NumberFormat percentFormatter = NumberFormat.getpercentInstance();</code></pre>
 <li><p>显示域初始化，通过重载类的构造器方法，可以采用多种形式设置类的实例域的初始状态。</p>
 </li>
 <li><p>参数变量用同样的名字将实例域屏蔽起来。可以用this.salary的方式访问实例域。回想一下，this指示隐式参数，也就是所构造的对象。</p>
-<pre><code class="hljs Java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Employee</span><span class="hljs-params">(String name, <span class="hljs-keyword">double</span> salary)</span></span>&#123;
+<div class="hljs"><pre><code class="hljs Java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Employee</span><span class="hljs-params">(String name, <span class="hljs-keyword">double</span> salary)</span></span>&#123;
     <span class="hljs-keyword">this</span>.name = name;
     <span class="hljs-keyword">this</span>.salary = salary;
-&#125;</code></pre>
+&#125;</code></pre></div>
 </li>
 <li><p>调用另一个构造器。如果构造器的第一个语句形如this(…)，这个构造器将调用同一个类的另一个构造器。公共的构造器代码部分只编写一次即可。</p>
-<pre><code class="hljs Java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Employee</span><span class="hljs-params">(<span class="hljs-keyword">double</span> s)</span></span>&#123;
+<div class="hljs"><pre><code class="hljs Java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Employee</span><span class="hljs-params">(<span class="hljs-keyword">double</span> s)</span></span>&#123;
     <span class="hljs-keyword">this</span>(<span class="hljs-string">&quot;Emplyee #&quot;</span> + nextID, s);
     nextID++;
- &#125;</code></pre>
+ &#125;</code></pre></div>
 </li>
 <li><p>初始化块。在一个类的声明中，可以包含多个代码块。只要构造类的对象，这些块就会被执行。</p>
-<pre><code class="hljs Java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Employee</span></span>&#123;
+<div class="hljs"><pre><code class="hljs Java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Employee</span></span>&#123;
     <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> nextID;
     
     <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> id;
@@ -389,7 +401,7 @@ NumberFormat percentFormatter = NumberFormat.getpercentInstance();</code></pre>
         <span class="hljs-keyword">this</span>.name = n;
         <span class="hljs-keyword">this</span>.salary = s;
     &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
 <p>在上述示例中，无论使用哪个构造器构造对象，id域都在对象初始化模块中被初始化。<strong>运行初始化模块，然后才运行构造器的主体部分。</strong></p>
 </li>
 <li><p>调用构造器的具体处理步骤：</p>
@@ -688,6 +700,45 @@ NumberFormat percentFormatter = NumberFormat.getpercentInstance();</code></pre>
 
 
 
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.staticfile.org/mathjax/3.0.5/es5/tex-svg.js" ></script>
+
+  
 
 
 

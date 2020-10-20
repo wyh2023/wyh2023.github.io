@@ -132,6 +132,18 @@
             </li>
           
         
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
         
           <li class="nav-item" id="search-btn">
             <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
@@ -244,60 +256,59 @@
 <li>int[] codePoints = str.codePoints().toArray();将字符串转成一个数组。</li>
 <li>String str = new String(codePoints, 0, codePoints.length);将码点数组转化成一个字符串。</li>
 </ul>
-<ol start="10">
+<ol>
 <li><p>构建字符串</p>
-<pre><code class="hljs Java">StringBuilder builder = <span class="hljs-keyword">new</span> StringBuilder();
+<div class="hljs"><pre><code class="hljs Java">StringBuilder builder = <span class="hljs-keyword">new</span> StringBuilder();
 builder.append(ch);<span class="hljs-comment">// appends a single character</span>
 builder.append(str);<span class="hljs-comment">// appends a string</span>
-String completedString = builder.toString();</code></pre>
+String completedString = builder.toString();</code></pre></div>
 </li>
 <li><p>控制台输入</p>
-<pre><code class="hljs Java">Scanner in = <span class="hljs-keyword">new</span> Scanner(System.in);
+<div class="hljs"><pre><code class="hljs Java">Scanner in = <span class="hljs-keyword">new</span> Scanner(System.in);
 String name = in.nextLine();
-<span class="hljs-keyword">int</span> age = in.nextInt();</code></pre>
+<span class="hljs-keyword">int</span> age = in.nextInt();</code></pre></div>
 </li>
 <li><p>文件出入与输出</p>
-<pre><code class="hljs Java"><span class="hljs-comment">//input</span>
+<div class="hljs"><pre><code class="hljs Java"><span class="hljs-comment">//input</span>
 Scanner in = <span class="hljs-keyword">new</span> Scanner(Paths.get(<span class="hljs-string">&quot;myfile.txt&quot;</span>), <span class="hljs-string">&quot;UTF-8&quot;</span>);
 <span class="hljs-comment">//output</span>
-PrintWriter out = <span class="hljs-keyword">new</span> PrintWriter(<span class="hljs-string">&quot;myfile.txt&quot;</span>), <span class="hljs-string">&quot;UTF-8&quot;</span>);</code></pre>
+PrintWriter out = <span class="hljs-keyword">new</span> PrintWriter(<span class="hljs-string">&quot;myfile.txt&quot;</span>), <span class="hljs-string">&quot;UTF-8&quot;</span>);</code></pre></div>
 </li>
 <li><p>Java SE 7 开始，switch中的case标签还可以是字符串字面量。</p>
 </li>
 <li><p>break或continue后接label, 可以在中断之后直接跳到label的位置继续执行。</p>
 </li>
 <li><p>大数值BigInteger实现大整数；BigDecimal实现大浮点数。</p>
-<pre><code class="hljs Java">BigInteger a = BigInteger.valueOf(<span class="hljs-number">100</span>);<span class="hljs-comment">//将普通数值转换为大数值；</span>
+<div class="hljs"><pre><code class="hljs Java">BigInteger a = BigInteger.valueOf(<span class="hljs-number">100</span>);<span class="hljs-comment">//将普通数值转换为大数值；</span>
 BigInteger c = a.add(b); <span class="hljs-comment">// c = a + b;</span>
-BigInteger d = c.multiply(b.add(BigInteger.valueOf(<span class="hljs-number">2</span>))); <span class="hljs-comment">// d = c * (b + 2)</span></code></pre>
+BigInteger d = c.multiply(b.add(BigInteger.valueOf(<span class="hljs-number">2</span>))); <span class="hljs-comment">// d = c * (b + 2)</span></code></pre></div>
 </li>
 <li><p>数组</p>
-<pre><code class="hljs Java"><span class="hljs-keyword">int</span>[] a= <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[<span class="hljs-number">100</span>];</code></pre></li>
+<div class="hljs"><pre><code class="hljs Java"><span class="hljs-keyword">int</span>[] a= <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[<span class="hljs-number">100</span>];</code></pre></div></li>
 </ol>
 <ul>
-<li>创建一个数组时，所有元素都初始化为0。boolean数组的元素会初始化为false。对象数组会初始化为null。<pre><code class="hljs Java"><span class="hljs-comment">//下面所有字符串都是null</span>
+<li>创建一个数组时，所有元素都初始化为0。boolean数组的元素会初始化为false。对象数组会初始化为null。<div class="hljs"><pre><code class="hljs Java"><span class="hljs-comment">//下面所有字符串都是null</span>
 String[] names = <span class="hljs-keyword">new</span> String[<span class="hljs-number">10</span>];
 <span class="hljs-comment">//下面所有字符串都是空串</span>
-<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; i++) names[i] = <span class="hljs-string">&quot;&quot;</span>;</code></pre></li>
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; i++) names[i] = <span class="hljs-string">&quot;&quot;</span>;</code></pre></div></li>
 <li>一旦创建了数组就不能改变它的大小。</li>
 </ul>
-<ol start="17">
+<ol>
 <li>for each 循环</li>
 </ol>
 <ul>
-<li>for (variable : collection) statement<pre><code class="hljs Java">System.out.println(Arrays.toString(a));<span class="hljs-comment">//打印数组；</span></code></pre>
+<li>for (variable : collection) statement<div class="hljs"><pre><code class="hljs Java">System.out.println(Arrays.toString(a));<span class="hljs-comment">//打印数组；</span></code></pre></div>
 </li>
 </ul>
-<ol start="18">
-<li><p>数组拷贝</p>
-<pre><code class="hljs Java"><span class="hljs-keyword">int</span>[] copiedLuckyNumbers = Arrays.copyOf(luckyNumbers, luckynumbers.length);</code></pre></li>
+<ol>
+<li>数组拷贝<div class="hljs"><pre><code class="hljs Java"><span class="hljs-keyword">int</span>[] copiedLuckyNumbers = Arrays.copyOf(luckyNumbers, luckynumbers.length);</code></pre></div></li>
 <li><p>Array.sort(a); 进行排序</p>
 </li>
 <li><p>不规则数组</p>
-<pre><code class="hljs Java"><span class="hljs-keyword">int</span>[][] odds = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[MAX+<span class="hljs-number">1</span>][];
+<div class="hljs"><pre><code class="hljs Java"><span class="hljs-keyword">int</span>[][] odds = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[MAX+<span class="hljs-number">1</span>][];
 <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> n = <span class="hljs-number">0</span>; n &lt;= MAX; n+<span class="hljs-number">1</span>)
     odds[n] = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[n+<span class="hljs-number">1</span>];
-<span class="hljs-comment">//以上生成的是一个三角形数组</span></code></pre></li>
+<span class="hljs-comment">//以上生成的是一个三角形数组</span></code></pre></div></li>
 </ol>
 
             </div>
@@ -524,6 +535,45 @@ String[] names = <span class="hljs-keyword">new</span> String[<span class="hljs-
 
 
 
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.staticfile.org/mathjax/3.0.5/es5/tex-svg.js" ></script>
+
+  
 
 
 

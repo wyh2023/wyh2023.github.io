@@ -132,6 +132,18 @@
             </li>
           
         
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
         
           <li class="nav-item" id="search-btn">
             <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
@@ -239,8 +251,7 @@
 </li>
 <li><p>确定和逻辑关系相关的语义；</p>
 </li>
-<li><p>选择逻辑或者相关语义一致的选项；</p>
-</li>
+<li>选择逻辑或者相关语义一致的选项；</li>
 </ol>
 <ul>
 <li>常考逻辑：因果、比较、否定、最高级<ul>
@@ -261,7 +272,7 @@
 <li>比较：主题、对象；</li>
 <li>否定、最高级</li>
 </ul>
-<p><strong>原则最简化 ** &amp;&amp;  **先逻辑，后语意</strong></p>
+<p><strong>原则最简化 </strong> &amp;&amp;  <strong>先逻辑，后语意</strong></p>
 <h3 id="题型三：Factual-Information-Questions"><a href="#题型三：Factual-Information-Questions" class="headerlink" title="题型三：Factual Information Questions"></a>题型三：Factual Information Questions</h3><p>explicitly stated <strong>明确提及</strong>            mentioned only in part of the passage.</p>
 <p>Often the relevant information is in one or two sentences. <strong>在文章某一部分一到两句话明确提及的事实信息。</strong></p>
 <h4 id="做题方法-2"><a href="#做题方法-2" class="headerlink" title="做题方法"></a>做题方法</h4><ul>
@@ -630,6 +641,45 @@
 
 
 
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.staticfile.org/mathjax/3.0.5/es5/tex-svg.js" ></script>
+
+  
 
 
 

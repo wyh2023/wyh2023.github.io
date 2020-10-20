@@ -132,6 +132,18 @@
             </li>
           
         
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
         
           <li class="nav-item" id="search-btn">
             <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
@@ -221,12 +233,15 @@
             
             <div class="markdown-body" id="post-body">
               <h2 id="算法分析与设计"><a href="#算法分析与设计" class="headerlink" title="算法分析与设计"></a>算法分析与设计</h2><h3 id="1-并查集"><a href="#1-并查集" class="headerlink" title="1. 并查集"></a>1. 并查集</h3><h4 id="1-0-等价关系"><a href="#1-0-等价关系" class="headerlink" title="1.0 等价关系"></a>1.0 等价关系</h4><ul>
-<li><p>自反性<br>$$<br>a \equiv a<br>$$</p>
-</li>
-<li><p>对称性<br>$$<br>a \equiv b \rArr b \equiv a<br>$$</p>
-</li>
-<li><p>传递性<br>$$<br>a \equiv b, b \equiv c \rArr a \equiv c<br>$$</p>
-</li>
+<li><p>自反性</p>
+<script type="math/tex; mode=display">
+a \equiv a</script></li>
+<li><p>对称性</p>
+<script type="math/tex; mode=display">
+a \equiv b \rArr b \equiv a</script></li>
+<li><p>传递性</p>
+<script type="math/tex; mode=display">
+a \equiv b, b \equiv c \rArr a \equiv c</script></li>
 <li><p>等价关系形成了一个划分——互不相交。</p>
 </li>
 </ul>
@@ -465,6 +480,45 @@
 
 
 
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.staticfile.org/mathjax/3.0.5/es5/tex-svg.js" ></script>
+
+  
 
 
 

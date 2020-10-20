@@ -132,6 +132,18 @@
             </li>
           
         
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
         
           <li class="nav-item" id="search-btn">
             <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
@@ -223,17 +235,15 @@
               <h2 id="Preface"><a href="#Preface" class="headerlink" title="Preface"></a>Preface</h2><p>​        上个期末考试期结束，就打算每周做一个小的总结，一是方便后续的总复习，而来能够 push 自己按时按计划复习。本学期主要学习的课程有《计组》、《算法》、《数据结构》、《数据科学基础》还有《线代》。数学课的内容重点在于刷题，不会像其他课一样总结主要概念和框架，可能会总结一些偏重难点。尽量 push 自己在每天都补充一些内容，以便于在一周的周六内发布。</p>
 <h2 id="算法设计与分析"><a href="#算法设计与分析" class="headerlink" title="算法设计与分析"></a>算法设计与分析</h2><h3 id="0-尾递归"><a href="#0-尾递归" class="headerlink" title="0. 尾递归"></a>0. 尾递归</h3><p>我们常常用尾递归的方式将递归转化为迭代。</p>
 <h4 id="0-0-回顾-SICP-中-Scheme-的尾递归"><a href="#0-0-回顾-SICP-中-Scheme-的尾递归" class="headerlink" title="0.0. 回顾 SICP 中 Scheme 的尾递归"></a>0.0. 回顾 SICP 中 Scheme 的尾递归</h4><p>因为函数式语言的最大特征之一是无法赋值，因此无法使用过程式语言中的 for 或者 while 循环来实现迭代。为了减小开销使得递归的效率更高，Scheme 引入了尾递归。(调用之后释放空间，与传统递归不同)</p>
-<pre><code class="hljs scheme">(<span class="hljs-name"><span class="hljs-builtin-name">define</span></span> (<span class="hljs-name">fact</span> n)
+<div class="hljs"><pre><code class="hljs scheme">(<span class="hljs-name"><span class="hljs-builtin-name">define</span></span> (<span class="hljs-name">fact</span> n)
   (<span class="hljs-name"><span class="hljs-builtin-name">define</span></span> (<span class="hljs-name">fact-tail</span> n result)
     (<span class="hljs-name"><span class="hljs-builtin-name">if</span></span> (<span class="hljs-name"><span class="hljs-builtin-name">&lt;=</span></span> n <span class="hljs-number">1</span>)
         result
         (<span class="hljs-name">fact-tail</span> (<span class="hljs-name"><span class="hljs-builtin-name">-</span></span> n <span class="hljs-number">1</span>) (<span class="hljs-name"><span class="hljs-builtin-name">*</span></span> n result))))
-  (<span class="hljs-name">fact-tail</span> n <span class="hljs-number">1</span>))</code></pre>
-
+  (<span class="hljs-name">fact-tail</span> n <span class="hljs-number">1</span>))</code></pre></div>
 <p>Scheme 中的递归会使用一个辅助函数。每调用一次辅助函数之后，函数不需要在返回到调用者的函数，而是直接带着 result 调用后续的函数。</p>
 <h4 id="0-1-尾递归的基本概念"><a href="#0-1-尾递归的基本概念" class="headerlink" title="0.1. 尾递归的基本概念"></a>0.1. 尾递归的基本概念</h4><ul>
-<li><p>尾递归：一个递归函数仅仅在运算的最后才递归调用自身，并且调用后直接返回。</p>
-</li>
+<li>尾递归：一个递归函数仅仅在运算的最后才递归调用自身，并且调用后直接返回。</li>
 <li><p>尾递归转换为迭代的方法：</p>
 <ul>
 <li>将每个参数转换为变量声明；</li>
@@ -241,7 +251,7 @@
 </ul>
 </li>
 <li><p>e.g.</p>
-<pre><code class="hljs C">Euclid_recursion(<span class="hljs-keyword">int</span> m, <span class="hljs-keyword">int</span> n)&#123;
+<div class="hljs"><pre><code class="hljs C">Euclid_recursion(<span class="hljs-keyword">int</span> m, <span class="hljs-keyword">int</span> n)&#123;
 	<span class="hljs-keyword">if</span>(n == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> m;
     <span class="hljs-keyword">else</span> &#123;
         <span class="hljs-keyword">int</span> rem = m % n;
@@ -260,10 +270,7 @@ Euclid_tailRecursion(<span class="hljs-keyword">int</span> m1, <span class="hljs
             m = n;
         &#125;
     &#125;
-&#125;</code></pre>
-
-
-
+&#125;</code></pre></div>
 </li>
 </ul>
 <h3 id="1-排序问题和排序算法-1"><a href="#1-排序问题和排序算法-1" class="headerlink" title="1. 排序问题和排序算法-1"></a>1. 排序问题和排序算法-1</h3><h4 id="1-1-插入排序（Insertion-Sort"><a href="#1-1-插入排序（Insertion-Sort" class="headerlink" title="1. 1. 插入排序（Insertion Sort)"></a>1. 1. 插入排序（Insertion Sort)</h4><h5 id="1-1-1-插入排序的基本内涵和实现"><a href="#1-1-1-插入排序的基本内涵和实现" class="headerlink" title="1.1.1. 插入排序的基本内涵和实现"></a>1.1.1. 插入排序的基本内涵和实现</h5><ul>
@@ -272,14 +279,14 @@ Euclid_tailRecursion(<span class="hljs-keyword">int</span> m1, <span class="hljs
 <li><p>递归情况：n &gt; 1时，分成两组——任意数 v 和其余的n-1个数；然后递归地排好剩下的n-1个数，再将v插入到已经排序完成的数列的适当位置，得到排序完成的数组。</p>
 </li>
 <li><p>如何插入？(下面的Insert_Abs就是插入算法)</p>
-<pre><code class="hljs Java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span>[] Insert_Abs(<span class="hljs-keyword">int</span> v, <span class="hljs-keyword">int</span>[] list)&#123;
+<div class="hljs"><pre><code class="hljs Java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span>[] Insert_Abs(<span class="hljs-keyword">int</span> v, <span class="hljs-keyword">int</span>[] list)&#123;
 	<span class="hljs-keyword">if</span>(list.length() == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> v;
 	<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (v &lt;= Head(list)) <span class="hljs-keyword">return</span> &#123;v&#125; + list;
 	<span class="hljs-keyword">else</span> <span class="hljs-keyword">return</span> Head(list) + Insert_Abs(v, Tail(list));
-&#125;</code></pre>
+&#125;</code></pre></div>
 </li>
 <li><p>实现</p>
-<pre><code class="hljs Java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span>[] insert(<span class="hljs-keyword">int</span>[] A)&#123;
+<div class="hljs"><pre><code class="hljs Java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span>[] insert(<span class="hljs-keyword">int</span>[] A)&#123;
     <span class="hljs-keyword">int</span> i, j;
     <span class="hljs-keyword">int</span> len = A.length;
     <span class="hljs-keyword">int</span> target;
@@ -293,8 +300,7 @@ Euclid_tailRecursion(<span class="hljs-keyword">int</span> m1, <span class="hljs
         A[j] = target;					<span class="hljs-comment">//这个算法是从前向后插入，课上是从后向前</span>
     &#125;
     <span class="hljs-keyword">return</span> A;
-&#125;</code></pre>
-
+&#125;</code></pre></div>
 </li>
 </ul>
 <h5 id="1-1-2-插入排序-Insert-函数的循环不变式"><a href="#1-1-2-插入排序-Insert-函数的循环不变式" class="headerlink" title="1.1.2. 插入排序 Insert 函数的循环不变式"></a>1.1.2. 插入排序 Insert 函数的循环不变式</h5><ul>
@@ -307,7 +313,9 @@ Euclid_tailRecursion(<span class="hljs-keyword">int</span> m1, <span class="hljs
 </li>
 <li><p>时间复杂度：Ο(n<sup>2</sup>)</p>
 </li>
-<li><p>平均情况：对于每一个 i ，对应会有 j 个比较次数（内循环）。<br>$$<br>\frac{1}{i+1}\sum_{j=1}^{i}j + \frac{1}{i+1}(i) = \frac{i}{2}+1-\frac{1}{i+1}<br>$$<br>求和之后，仍是 Ο(n<sup>2</sup>)。</p>
+<li><p>平均情况：对于每一个 i ，对应会有 j 个比较次数（内循环）。</p>
+<script type="math/tex; mode=display">
+\frac{1}{i+1}\sum_{j=1}^{i}j + \frac{1}{i+1}(i) = \frac{i}{2}+1-\frac{1}{i+1}</script><p>求和之后，仍是 Ο(n<sup>2</sup>)。</p>
 </li>
 </ul>
 <h4 id="1-2-快速排序"><a href="#1-2-快速排序" class="headerlink" title="1.2. 快速排序"></a>1.2. 快速排序</h4><h5 id="1-2-1-基本思路和实现"><a href="#1-2-1-基本思路和实现" class="headerlink" title="1.2.1 基本思路和实现"></a>1.2.1 基本思路和实现</h5><ul>
@@ -322,7 +330,7 @@ Euclid_tailRecursion(<span class="hljs-keyword">int</span> m1, <span class="hljs
 </ul>
 </li>
 <li><p>以下是“挖坑法”：（均在数组的原地址空间内进行改动）</p>
-<pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">quickSort</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] arr, <span class="hljs-keyword">int</span> start, <span class="hljs-keyword">int</span> end)</span></span>&#123;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">quickSort</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] arr, <span class="hljs-keyword">int</span> start, <span class="hljs-keyword">int</span> end)</span></span>&#123;
   <span class="hljs-keyword">if</span>(end &lt;= start) <span class="hljs-keyword">return</span>;
     <span class="hljs-keyword">int</span> pivotIndex = partition(arr, start, end);
     quickSort(arr, start, pivotIndex-<span class="hljs-number">1</span>);
@@ -361,12 +369,11 @@ Euclid_tailRecursion(<span class="hljs-keyword">int</span> m1, <span class="hljs
 	<span class="hljs-comment">//补上漏洞</span>
     arr[index] = pivot;
     <span class="hljs-keyword">return</span> index;
-&#125;</code></pre>
-
+&#125;</code></pre></div>
 <ul>
 <li>“指针交换法”：先把pivot以外的元素排好，再把pivot插入到其中相应的位置。</li>
 </ul>
-<pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">quickSort</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] arr, <span class="hljs-keyword">int</span> start, <span class="hljs-keyword">int</span> end)</span></span>&#123;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">quickSort</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] arr, <span class="hljs-keyword">int</span> start, <span class="hljs-keyword">int</span> end)</span></span>&#123;
     <span class="hljs-keyword">if</span>(start &gt;= end) <span class="hljs-keyword">return</span>;
     <span class="hljs-keyword">int</span> pivotIndex = partition(arr, start, end);
     quickSort(arr, start, pivotIndex-<span class="hljs-number">1</span>);
@@ -403,12 +410,11 @@ Euclid_tailRecursion(<span class="hljs-keyword">int</span> m1, <span class="hljs
     arr[start] = p;
 
     <span class="hljs-keyword">return</span> left;
-&#125;</code></pre>
-
+&#125;</code></pre></div>
 <ul>
 <li>可以用“栈”重写非递归形式的快速排序：</li>
 </ul>
-<pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">quickSort</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] arr, <span class="hljs-keyword">int</span> start, <span class="hljs-keyword">int</span> end)</span></span>&#123;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">quickSort</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] arr, <span class="hljs-keyword">int</span> start, <span class="hljs-keyword">int</span> end)</span></span>&#123;
     Stack&lt;Map&lt;String, Integer&gt;&gt; quickSortStack = <span class="hljs-keyword">new</span> Stack&lt;Map&lt;String, Integer&gt;&gt;();
     Map&lt;String, Integer&gt; rootParam = <span class="hljs-keyword">new</span> HashMap&lt;String, Integer&gt;();
     rootParam.put(<span class="hljs-string">&quot;start&quot;</span>, start);
@@ -462,10 +468,7 @@ Euclid_tailRecursion(<span class="hljs-keyword">int</span> m1, <span class="hljs
     arr[start] = p;
   
     <span class="hljs-keyword">return</span> left;
-&#125;</code></pre>
-
-
-
+&#125;</code></pre></div>
 </li>
 </ul>
 <h2 id="计算机组织与结构"><a href="#计算机组织与结构" class="headerlink" title="计算机组织与结构"></a>计算机组织与结构</h2><h3 id="1-Introduction-前瞻"><a href="#1-Introduction-前瞻" class="headerlink" title="1. Introduction 前瞻"></a>1. Introduction 前瞻</h3><h4 id="1-1-结构与组织-Architecture-amp-Organization"><a href="#1-1-结构与组织-Architecture-amp-Organization" class="headerlink" title="1.1. 结构与组织 Architecture &amp; Organization"></a>1.1. 结构与组织 Architecture &amp; Organization</h4><h5 id="1-1-1-Architecture-结构"><a href="#1-1-1-Architecture-结构" class="headerlink" title="1.1.1. Architecture 结构"></a>1.1.1. Architecture 结构</h5><ul>
@@ -482,10 +485,10 @@ Euclid_tailRecursion(<span class="hljs-keyword">int</span> m1, <span class="hljs
 <li>控制单元：指挥信息的处理；</li>
 <li>输入设备：将信息送入计算机中；</li>
 <li>输出设备：将处理结果以某种形式显示在计算机外；</li>
-<li><img src="%E5%86%AF%E8%AF%BA%E4%BE%9D%E6%9B%BC.png" srcset="/img/loading.gif" alt="冯诺依曼架构"></li>
+<li><img src="冯诺依曼.png" srcset="/img/loading.gif" alt="冯诺依曼架构"></li>
 </ul>
 <h4 id="1-3-摩尔定律"><a href="#1-3-摩尔定律" class="headerlink" title="1.3. 摩尔定律"></a>1.3. 摩尔定律</h4><p>单个芯片上的晶体管数量每过18个月就会翻一倍。</p>
-<p><img src="%E6%95%B0%E6%8D%AE%E6%B5%81%E5%90%91.png" srcset="/img/loading.gif" alt="数据流向图"></p>
+<p><img src="数据流向.png" srcset="/img/loading.gif" alt="数据流向图"></p>
 <h4 id="1-4-CPU表现（CPU-Performance）"><a href="#1-4-CPU表现（CPU-Performance）" class="headerlink" title="1.4. CPU表现（CPU Performance）"></a>1.4. CPU表现（CPU Performance）</h4><h5 id="1-3-1-系统时钟"><a href="#1-3-1-系统时钟" class="headerlink" title="1.3.1 系统时钟"></a>1.3.1 系统时钟</h5><ul>
 <li>时钟频率（Clock rate）：计算机在进行基本操作时，一秒内的时钟周期频数。</li>
 <li>时钟周期（Clock cycle）：CPU的一次电磁脉冲；</li>
@@ -494,15 +497,20 @@ Euclid_tailRecursion(<span class="hljs-keyword">int</span> m1, <span class="hljs
 <h5 id="1-3-2-指令加载"><a href="#1-3-2-指令加载" class="headerlink" title="1.3.2 指令加载"></a>1.3.2 指令加载</h5><ul>
 <li><p>CPI（Cycles Per Instruction）：一条指令所经历的时钟周期数；</p>
 </li>
-<li><p>总CPI的计算公式：<br>$$<br>CPI = \frac{\sum_{i=1}^{n}(CPI_i×I_i)}{I_C}, I_C=\sum_{i-1}^{n}I_i<br>$$</p>
+<li><p>总CPI的计算公式：</p>
+<script type="math/tex; mode=display">
+CPI = \frac{\sum_{i=1}^{n}(CPI_i×I_i)}{I_C}, I_C=\sum_{i-1}^{n}I_i</script></li>
+<li><p>处理时间</p>
+<script type="math/tex; mode=display">
+T=I_C×CPI×t</script><script type="math/tex; mode=display">
+T=I_C×[p+(m×k)]×t</script><p>p：从处理器到存储器之间传输消耗的时钟周期；</p>
 </li>
-<li><p>处理时间<br>$$<br>T=I_C×CPI×t<br>$$</p>
-<p>$$<br>T=I_C×[p+(m×k)]×t<br>$$<br>p：从处理器到存储器之间传输消耗的时钟周期；</p>
-</li>
-<li><p>Million Instructions Per Second (MIPS)<br>$$<br>MIPS=\frac{I_C}{T×10^6}=\frac{f}{CPI×10^6}<br>$$</p>
-</li>
-<li><p>Million Floating Point Operations Per Second (MFLOPS)<br>$$<br>MFLOPS=\frac{N_{floating-point op}}{T×10^6}<br>$$</p>
-</li>
+<li><p>Million Instructions Per Second (MIPS)</p>
+<script type="math/tex; mode=display">
+MIPS=\frac{I_C}{T×10^6}=\frac{f}{CPI×10^6}</script></li>
+<li><p>Million Floating Point Operations Per Second (MFLOPS)</p>
+<script type="math/tex; mode=display">
+MFLOPS=\frac{N_{floating-point op}}{T×10^6}</script></li>
 </ul>
 <h5 id="1-3-3-评价标准（Benchmarks）"><a href="#1-3-3-评价标准（Benchmarks）" class="headerlink" title="1.3.3 评价标准（Benchmarks）"></a>1.3.3 评价标准（Benchmarks）</h5><ul>
 <li><p>评测系统的表现；</p>
@@ -511,12 +519,12 @@ Euclid_tailRecursion(<span class="hljs-keyword">int</span> m1, <span class="hljs
 <ul>
 <li>算术平均值：结果之和除以总数，得到平均的结果；</li>
 </ul>
-<p>$$<br>R_A = \frac{1}{m}\sum_{i=1}^{m}R_i<br>$$</p>
-<ul>
+<script type="math/tex; mode=display">
+R_A = \frac{1}{m}\sum_{i=1}^{m}R_i</script><ul>
 <li>调和平均值：一次除以结果得到单次结果的倒数，对其求和再去除总次数得到调和平均值；</li>
 </ul>
-<p>$$<br>R_H=\frac{m}{\sum_{i=1}^{m}\frac{1}{R_i}}<br>$$</p>
-</li>
+<script type="math/tex; mode=display">
+R_H=\frac{m}{\sum_{i=1}^{m}\frac{1}{R_i}}</script></li>
 </ul>
 <h3 id="2-计算机的顶层视角"><a href="#2-计算机的顶层视角" class="headerlink" title="2. 计算机的顶层视角"></a>2. 计算机的顶层视角</h3><h4 id="2-1-计算机组成元素"><a href="#2-1-计算机组成元素" class="headerlink" title="2.1. 计算机组成元素"></a>2.1. 计算机组成元素</h4><ul>
 <li>数据和指令存储在一个可读可写存储器；</li>
@@ -524,10 +532,10 @@ Euclid_tailRecursion(<span class="hljs-keyword">int</span> m1, <span class="hljs
 <li>指令的加载按一定顺序进行；</li>
 </ul>
 <h4 id="2-1-1-存储器"><a href="#2-1-1-存储器" class="headerlink" title="2.1.1. 存储器"></a>2.1.1. 存储器</h4><ul>
-<li><img src="%E5%86%85%E5%AD%98%E5%A2%99.png" srcset="/img/loading.gif"></li>
+<li><img src="/img/内存墙.png" srcset="/img/loading.gif" alt=""></li>
 <li>Memory Wall：数据从主存到CPU之间的传输速度的发展速度难以跟得上CPU的发展速度。</li>
 <li>解决方案：在主存和CPU之间添加一个cache来减少主存的高频访问和数据传送率；提高一次获取的信息量；</li>
-<li><img src="%E5%AD%98%E5%82%A8%E5%99%A8.png" srcset="/img/loading.gif"></li>
+<li><img src="/img/存储器.png" srcset="/img/loading.gif" alt=""></li>
 </ul>
 <h5 id="2-1-1-1-约束条件"><a href="#2-1-1-1-约束条件" class="headerlink" title="2.1.1.1. 约束条件"></a>2.1.1.1. 约束条件</h5><ul>
 <li>容量：越大越好；</li>
@@ -539,7 +547,7 @@ Euclid_tailRecursion(<span class="hljs-keyword">int</span> m1, <span class="hljs
 </ul>
 <h5 id="2-1-1-3-解决措施"><a href="#2-1-1-3-解决措施" class="headerlink" title="2.1.1.3. 解决措施"></a>2.1.1.3. 解决措施</h5><ul>
 <li>存储器层次结构（金字塔）；</li>
-<li><img src="%E5%AD%98%E5%82%A8%E5%99%A8%E5%B1%82%E6%AC%A1%E7%BB%93%E6%9E%84.png" srcset="/img/loading.gif"></li>
+<li><img src="/img/存储器层次结构.png" srcset="/img/loading.gif" alt=""></li>
 </ul>
 <h4 id="2-1-2-I-O"><a href="#2-1-2-I-O" class="headerlink" title="2.1.2. I/O"></a>2.1.2. I/O</h4><ul>
 <li>在存储器、CPU和外部资源之间交换数据的模块；</li>
@@ -552,31 +560,31 @@ Euclid_tailRecursion(<span class="hljs-keyword">int</span> m1, <span class="hljs
 <li>CPU 在等待 I/O 设备时需要等待；</li>
 <li>解决方案：<ul>
 <li>中断：一种被其他模块打断并可能影响正常处理顺序时的机制；</li>
-<li><img src="%E4%B8%AD%E6%96%AD%E6%9C%BA%E5%88%B6.png" srcset="/img/loading.gif"></li>
+<li><img src="/img/中断机制.png" srcset="/img/loading.gif" alt=""></li>
 </ul>
 </li>
 <li>中断检测</li>
-<li><img src="%E4%B8%AD%E6%96%AD%E5%A4%84%E7%90%86.png" srcset="/img/loading.gif"></li>
+<li><img src="/img/中断处理.png" srcset="/img/loading.gif" alt=""></li>
 </ul>
 <h5 id="2-1-3-2-多重中断（分优先级嵌套中断）"><a href="#2-1-3-2-多重中断（分优先级嵌套中断）" class="headerlink" title="2.1.3.2. 多重中断（分优先级嵌套中断）"></a>2.1.3.2. 多重中断（分优先级嵌套中断）</h5><ul>
-<li><img src="%E5%A4%9A%E4%B8%AD%E6%96%AD.png" srcset="/img/loading.gif"></li>
+<li><img src="/img/多中断.png" srcset="/img/loading.gif" alt=""></li>
 <li>还有一种执行完一个中断再执行下一个的中断；</li>
 </ul>
-<h5 id="2-1-3-3-Theoretical-maximum-performance"><a href="#2-1-3-3-Theoretical-maximum-performance" class="headerlink" title="2.1.3.3. Theoretical maximum performance"></a>2.1.3.3. Theoretical maximum performance</h5><p><img src="%E5%A4%84%E7%90%86%E5%B7%AE%E8%B7%9D.png" srcset="/img/loading.gif"></p>
+<h5 id="2-1-3-3-Theoretical-maximum-performance"><a href="#2-1-3-3-Theoretical-maximum-performance" class="headerlink" title="2.1.3.3. Theoretical maximum performance"></a>2.1.3.3. Theoretical maximum performance</h5><p><img src="/img/处理差距.png" srcset="/img/loading.gif" alt=""></p>
 <ul>
 <li>随着技术的发展，出现了流水线、高速缓存、多核多线程等等使得计算机性能表现突飞猛进；</li>
 <li>时钟频率也在不断上涨，但是上涨到了一定数值就停滞了。如果时钟频率过高，单条指令的处理时间会缩短，处理能力会下降。</li>
 </ul>
 <h4 id="2-1-4-总线-Bus"><a href="#2-1-4-总线-Bus" class="headerlink" title="2.1.4. 总线 Bus"></a>2.1.4. 总线 Bus</h4><ul>
 <li>连接多个设备的通路——总线；</li>
-<li><img src="%E6%80%BB%E7%BA%BF.png" srcset="/img/loading.gif"></li>
+<li><img src="/img/总线.png" srcset="/img/loading.gif" alt=""></li>
 </ul>
 <h5 id="2-1-4-1-数据传输类型"><a href="#2-1-4-1-数据传输类型" class="headerlink" title="2.1.4.1. 数据传输类型"></a>2.1.4.1. 数据传输类型</h5><ul>
 <li>数据线：在系统模块之间传输数据；</li>
 <li>地址线：指定<em>数据线上和I/O端口上</em>的数据的<strong>来源或者目的地</strong>的地址；</li>
 <li>控制线：控制【访问】、【数据的使用】和【地址线的使用】；</li>
 <li>数据线和地址线上的内容可以复用；控制线上的内容不能复用；</li>
-<li><img src="%E4%B8%89%E7%A7%8D%E7%BA%BF.png" srcset="/img/loading.gif"></li>
+<li><img src="/img/三种线.png" srcset="/img/loading.gif" alt=""></li>
 </ul>
 <h2 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h2><h3 id="0-C-基础"><a href="#0-C-基础" class="headerlink" title="0. C++基础"></a>0. C++基础</h3><ul>
 <li>系统开发的一种方法是把类的声明放在 header 文件中，成员函数的实现分开放在代码文件中，在函数的实现代码中通过<strong>作用域设定命令“::”</strong>，将该函数归属到某一类。</li>
@@ -630,8 +638,8 @@ Euclid_tailRecursion(<span class="hljs-keyword">int</span> m1, <span class="hljs
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2020/07/10/%E5%A4%A7%E4%B8%80%E5%9B%9E%E9%A1%BE/">
-                        <span class="hidden-mobile">大一回顾</span>
+                      <a href="/2020/05/03/CoreJava-6/">
+                        <span class="hidden-mobile">CoreJava-6</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -828,6 +836,45 @@ Euclid_tailRecursion(<span class="hljs-keyword">int</span> m1, <span class="hljs
 
 
 
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.staticfile.org/mathjax/3.0.5/es5/tex-svg.js" ></script>
+
+  
 
 
 

@@ -132,6 +132,18 @@
             </li>
           
         
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
         
           <li class="nav-item" id="search-btn">
             <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
@@ -220,40 +232,44 @@
             <h1 style="display: none">TOEFL-writing-notes</h1>
             
             <div class="markdown-body" id="post-body">
-              <h2 id="Getting-Started"><a href="#Getting-Started" class="headerlink" title="Getting Started"></a>Getting Started</h2><table>
+              <h2 id="Getting-Started"><a href="#Getting-Started" class="headerlink" title="Getting Started"></a>Getting Started</h2><div class="table-container">
+<table>
 <thead>
 <tr>
-<th align="center">注意事项</th>
-<th align="center">综合写作</th>
-<th align="center">独立写作</th>
+<th style="text-align:center">注意事项</th>
+<th style="text-align:center">综合写作</th>
+<th style="text-align:center">独立写作</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">形式</td>
-<td align="center">读+听+写</td>
-<td align="center">写</td>
+<tbody>
+<tr>
+<td style="text-align:center">形式</td>
+<td style="text-align:center">读+听+写</td>
+<td style="text-align:center">写</td>
 </tr>
 <tr>
-<td align="center">时间</td>
-<td align="center">20min</td>
-<td align="center">30min</td>
+<td style="text-align:center">时间</td>
+<td style="text-align:center">20min</td>
+<td style="text-align:center">30min</td>
 </tr>
 <tr>
-<td align="center">字数</td>
-<td align="center">150~225</td>
-<td align="center">&gt;300</td>
+<td style="text-align:center">字数</td>
+<td style="text-align:center">150~225</td>
+<td style="text-align:center">&gt;300</td>
 </tr>
 <tr>
-<td align="center">题材</td>
-<td align="center">Academic</td>
-<td align="center">Non-Academic</td>
+<td style="text-align:center">题材</td>
+<td style="text-align:center">Academic</td>
+<td style="text-align:center">Non-Academic</td>
 </tr>
 <tr>
-<td align="center">观点</td>
-<td align="center">Objective</td>
-<td align="center">Subjective</td>
+<td style="text-align:center">观点</td>
+<td style="text-align:center">Objective</td>
+<td style="text-align:center">Subjective</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <h3 id="1-综合写作考试流程"><a href="#1-综合写作考试流程" class="headerlink" title="1. 综合写作考试流程"></a>1. 综合写作考试流程</h3><p>Wrting Based on reading and listening.</p>
 <p>Step1: You will have <strong>3</strong> minute to read a passage.</p>
 <ul>
@@ -513,6 +529,45 @@
 
 
 
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.staticfile.org/mathjax/3.0.5/es5/tex-svg.js" ></script>
+
+  
 
 
 

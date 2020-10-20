@@ -132,6 +132,18 @@
             </li>
           
         
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
         
           <li class="nav-item" id="search-btn">
             <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
@@ -254,14 +266,8 @@
 </li>
 </ul>
 <h4 id="1-2-红黑树的插入"><a href="#1-2-红黑树的插入" class="headerlink" title="1.2 红黑树的插入"></a>1.2 红黑树的插入</h4><ul>
-<li><pre><code class="c++">RBtree rbtInset(RBtree oldRBtree, Element newElement)&#123;
-  InsReturn ans = rbtIns(oldRBtree, newNode);
-  if(ans.newTree.color != black)&#123;
-    ans.newTree.color = black; //黑高度增加的途径。
-  &#125;
-  return ans.newTree;
-&#125;
-<pre><code class="hljs xl">
+<li>```c++<br>RBtree rbtInset(RBtree oldRBtree, Element newElement){<br>  InsReturn ans = rbtIns(oldRBtree, newNode);<br>  if(ans.newTree.color != black){<div class="hljs"><pre><code>ans.newTree.color = black; //黑高度增加的途径。
+</code></pre></div>  }<br>  return ans.newTree;<br>}<div class="hljs"><pre><code class="hljs xl">
 - **插入红色结点不会影响黑色高度限制**；【每次插入都不改变黑高度】
 
 - 簇：一个黑色结点和所有可从该黑色结点经由非黑色边达到的红色结点组成的集合，称为**簇**。
@@ -292,41 +298,28 @@
       &#125; <span class="hljs-keyword">else</span> &#123;
         <span class="hljs-function"><span class="hljs-title">old_tree</span>-&gt;</span><span class="hljs-function"><span class="hljs-title">right</span>-&gt;</span><span class="hljs-built_in">color</span> = color_black;
       &#125;
-    &#125;</code></pre>
-</code></pre>
+    &#125;</code></pre></div>
 </li>
 </ul>
 <h4 id="1-3-修正红黑树（RepairLeft-和-RepairRight）"><a href="#1-3-修正红黑树（RepairLeft-和-RepairRight）" class="headerlink" title="1.3 修正红黑树（RepairLeft 和 RepairRight）"></a>1.3 修正红黑树（RepairLeft 和 RepairRight）</h4><ul>
 <li><p>ok：不需要修正；</p>
 <ul>
-<li><pre><code class="c++">if(ansLeft.status == status.ok)&#123;
-  ans.new_tree = old_tree;
-  ans.status = status.ok;
-  return ans
-&#125;
-old_tree-&gt;left = ansLeft.new_tree;
-<pre><code class="hljs fortran">
+<li>```c++<br>if(ansLeft.status == status.ok){<br>  ans.new_tree = old_tree;<br>  ans.status = status.ok;<br>  return ans<br>}<br>old_tree-&gt;left = ansLeft.new_tree;<div class="hljs"><pre><code class="hljs fortran">
 - rbr：不要调整；要将返回值存入相应的field。
 
   - ```c++
     <span class="hljs-keyword">if</span>(ansLeft<span class="hljs-number">.</span><span class="hljs-keyword">status</span> == <span class="hljs-keyword">status</span><span class="hljs-number">.</span>rbr)&#123;
       ans<span class="hljs-number">.</span>new_tree = old_tree;
       ans<span class="hljs-number">.</span><span class="hljs-keyword">status</span> = <span class="hljs-keyword">status</span><span class="hljs-number">.</span>ok;
-    &#125;</code></pre></code></pre>
+    &#125;</code></pre></div>
 </li>
 </ul>
 </li>
 <li><p>brb：如果父结点是黑色的，不修正；否则需要向上调整（若当前不调整，返回的状态为rrb）</p>
 <ul>
-<li><pre><code class="c++">if(ansLeft.status == status.brb)&#123;
-  ans.new_tree = old_tree;
-  if(old_tree-&gt;color == color_black)&#123;
-    ans.status = status.ok;
-  &#125; else &#123;
-    ans.status = status_rrb;
-  &#125;
-&#125;
-<pre><code class="hljs maxima">
+<li>```c++<br>if(ansLeft.status == status.brb){<br>  ans.new_tree = old_tree;<br>  if(old_tree-&gt;color == color_black){<div class="hljs"><pre><code>ans.status = status.ok;
+</code></pre></div>  } else {<div class="hljs"><pre><code>ans.status = status_rrb;
+</code></pre></div>  }<br>}<div class="hljs"><pre><code class="hljs maxima">
 - rrb：【**当前的父结点的颜色一定为黑色**】根据oldTree的右（左）子节点的情况进行调整（分别对应<span class="hljs-number">4</span>-node和<span class="hljs-number">3</span>-node两种颜色冲突的情况）；
 
   - ```c++
@@ -339,7 +332,7 @@ old_tree-&gt;left = ansLeft.new_tree;
        ans.new_tree = rebalLeft(old_tree, ansLeft.<span class="hljs-built_in">status</span>);
        ans.<span class="hljs-built_in">status</span> = rbr;
      &#125;
-    &#125;</code></pre></code></pre>
+    &#125;</code></pre></div>
 </li>
 </ul>
 </li>
@@ -364,16 +357,16 @@ old_tree-&gt;left = ansLeft.new_tree;
 </li>
 <li><p>对数复杂度小于幂函数复杂度！</p>
 </li>
-<li><p>$$<br>logn \in O(n^{\alpha}) ,{\forall}{\alpha}&gt;0<br>$$</p>
-</li>
+<li><script type="math/tex; mode=display">
+logn \in O(n^{\alpha}) ,{\forall}{\alpha}>0</script></li>
 <li><p>幂函数复杂度小于指数复杂度！</p>
 </li>
-<li><p>$$<br>n^k \in O(c^n) ,{\forall}c&gt;0<br>$$</p>
-</li>
+<li><script type="math/tex; mode=display">
+n^k \in O(c^n) ,{\forall}c>0</script></li>
 <li><p>阶乘用斯特林公式处理：</p>
 </li>
-<li><p>$$<br>n!≈\sqrt{2{\pi}n}(\frac{n}{e})^n<br>$$</p>
-</li>
+<li><script type="math/tex; mode=display">
+n!≈\sqrt{2{\pi}n}(\frac{n}{e})^n</script></li>
 </ul>
 <h4 id="2-2-Ω"><a href="#2-2-Ω" class="headerlink" title="2.2 Ω"></a>2.2 Ω</h4><ul>
 <li>复杂度的下界（包含）</li>
@@ -384,8 +377,8 @@ old_tree-&gt;left = ansLeft.new_tree;
 <h4 id="2-4-Ο-Ω-Θ的性质"><a href="#2-4-Ο-Ω-Θ的性质" class="headerlink" title="2.4 Ο, Ω, Θ的性质"></a>2.4 <em>Ο</em>, Ω, Θ的性质</h4><ul>
 <li><p><em>Ο</em>是一个等价关系——有传递性、对称性和自反性；</p>
 </li>
-<li><p>$$<br>O(f+g) = O(max(f,g))<br>$$</p>
-</li>
+<li><script type="math/tex; mode=display">
+O(f+g) = O(max(f,g))</script></li>
 </ul>
 <h4 id="2-5-o-和-ω"><a href="#2-5-o-和-ω" class="headerlink" title="2.5 o 和 ω"></a>2.5 o 和 ω</h4><ul>
 <li>f与它的上界（下界）之间有一段不可忽视的距离。（不能大致相等）不光表示小于（大于），也表示f达不到g。</li>
@@ -393,22 +386,22 @@ old_tree-&gt;left = ansLeft.new_tree;
 <h4 id="2-6-分治递归"><a href="#2-6-分治递归" class="headerlink" title="2.6 分治递归"></a>2.6 分治递归</h4><ul>
 <li><p>将规模为n的问题分解成a个规模为n/b的子问题并递归地求解，并且分解/合成的总开销是f(n)的。</p>
 </li>
-<li><p>$$<br>T(n) = aT(\frac{n}{b})+f(n)<br>$$</p>
-</li>
+<li><script type="math/tex; mode=display">
+T(n) = aT(\frac{n}{b})+f(n)</script></li>
 <li><p>主定理：</p>
 <ul>
-<li><p>$$<br>f(n){\in}O(𝑛^{log_𝑏⁡{𝑎−𝜀}})，T(n)\in(𝑛^{log_𝑏⁡𝑎})<br>$$</p>
-</li>
-<li><p>$$<br>f(n){\in}{\Theta}(𝑛^{log_𝑏⁡{𝑎}})，T(n){\in}{\Theta}(f(n)log(n))<br>$$</p>
-</li>
+<li><script type="math/tex; mode=display">
+f(n){\in}O(𝑛^{log_𝑏⁡{𝑎−𝜀}})，T(n)\in(𝑛^{log_𝑏⁡𝑎})</script></li>
+<li><script type="math/tex; mode=display">
+f(n){\in}{\Theta}(𝑛^{log_𝑏⁡{𝑎}})，T(n){\in}{\Theta}(f(n)log(n))</script></li>
 <li><p>具体见《算法导论》。</p>
 </li>
-<li><p>特别的一个特殊情况：</p>
-</li>
+<li>特别的一个特殊情况：</li>
 </ul>
-<p>$$<br>f(m)\in\Theta(m^Elog^a(m))<br>$$</p>
-<p>​       它的解为：<br>$$<br>T(n)\in\Theta(n^Elog^{a+1}(n))<br>$$</p>
-</li>
+<script type="math/tex; mode=display">
+f(m)\in\Theta(m^Elog^a(m))</script><p>​       它的解为：</p>
+<script type="math/tex; mode=display">
+T(n)\in\Theta(n^Elog^{a+1}(n))</script></li>
 </ul>
 <h2 id="计算机组成与设计"><a href="#计算机组成与设计" class="headerlink" title="计算机组成与设计"></a>计算机组成与设计</h2><h3 id="1-Carry-Look-Ahead-Adder"><a href="#1-Carry-Look-Ahead-Adder" class="headerlink" title="1. Carry Look Ahead Adder"></a>1. Carry Look Ahead Adder</h3><ul>
 <li>Gate Latency<ul>
@@ -418,17 +411,17 @@ old_tree-&gt;left = ansLeft.new_tree;
 <li>计算CarryOut需要2个延迟</li>
 </ul>
 </li>
-<li><img src="%E5%8A%A0%E6%B3%95%E5%99%A8.png" srcset="/img/loading.gif" alt="加法器及其延迟"></li>
-<li>再上图中，计算<em>XY</em>和<em>X+Y</em>（即<em>P</em>和<em>G</em>）需要1个延迟，计算所有的<em>C</em>需要两个延迟，计算所有的<em>S</em>又需要3个延迟。（注：根据之前的推导，任意*C<sub>n</sub><em>都可以用</em>P、G、C<sub>n</sub>*来表示）</li>
+<li><img src="/img/加法器.png" srcset="/img/loading.gif" alt="加法器及其延迟"></li>
+<li>再上图中，计算<em>XY</em>和<em>X+Y</em>（即<em>P</em>和<em>G</em>）需要1个延迟，计算所有的<em>C</em>需要两个延迟，计算所有的<em>S</em>又需要3个延迟。（注：根据之前的推导，任意<em>C<sub>n</sub></em>都可以用<em>P、G、C<sub>n</sub></em>来表示）</li>
 </ul>
 <h3 id="2-Partial-Carry-Look-Ahead-Adder"><a href="#2-Partial-Carry-Look-Ahead-Adder" class="headerlink" title="2. Partial Carry Look Ahead Adder"></a>2. Partial Carry Look Ahead Adder</h3><ul>
-<li><p><img src="%E9%83%A8%E5%88%86%E5%8A%A0%E6%B3%95%E5%99%A8.png" srcset="/img/loading.gif" alt="部分加法器及其延迟"></p>
+<li><p><img src="/img/部分加法器.png" srcset="/img/loading.gif" alt="部分加法器及其延迟"></p>
 </li>
 <li><p>在第一个时间周期内计算出所有的<em>P</em>和<em>G</em>，最右边的第一个CLA计算出<em>C8</em>需要3个延迟，往后的<em>C16</em>和<em>C24</em>都需要两个时间周期，最后计算最后的<em>C</em>和<em>S</em>还需要5个延迟。</p>
 </li>
 </ul>
 <h3 id="3-Addition"><a href="#3-Addition" class="headerlink" title="3. Addition"></a>3. Addition</h3><p><em>overflow</em> = C<sub>n</sub>⊕C<sub>n-1</sub> ? Why?</p>
-<p>证明和分析：如果overflow为0，只有两种情况——正数加正数得到负数和负数加负数得到正数。所以我们可以通过符号位来判断：<em>overflow</em> = X<sub>n</sub>Y<sub>n</sub><del>S<sub>n</sub>+</del>X<sub>n</sub>~Y<sub>n</sub>S<sub>n</sub>，当X<sub>n</sub>Y<sub>n</sub>同时为1的时候，S<sub>n</sub>若为0则溢出。当X<sub>n</sub>Y<sub>n</sub>同时为0的时候，S<sub>n</sub>若为1则溢出。</p>
+<p>证明和分析：如果overflow为0，只有两种情况——正数加正数得到负数和负数加负数得到正数。所以我们可以通过符号位来判断：<em>overflow</em> = X<sub>n</sub>Y<sub>n</sub>~S<sub>n</sub>+~X<sub>n</sub>~Y<sub>n</sub>S<sub>n</sub>，当X<sub>n</sub>Y<sub>n</sub>同时为1的时候，S<sub>n</sub>若为0则溢出。当X<sub>n</sub>Y<sub>n</sub>同时为0的时候，S<sub>n</sub>若为1则溢出。</p>
 <h3 id="4-Subtraction"><a href="#4-Subtraction" class="headerlink" title="4. Subtraction"></a>4. Subtraction</h3><h3 id="5-Multiplication"><a href="#5-Multiplication" class="headerlink" title="5. Multiplication"></a>5. Multiplication</h3><ul>
 <li><p>大概步骤：</p>
 <ul>
@@ -439,8 +432,8 @@ old_tree-&gt;left = ansLeft.new_tree;
 </li>
 <li><p>Booth算法</p>
 </li>
-<li><p>$$<br>P_{i+1}=2^{-1}×(P_i+X×(Y_i-Y_{i+1}))<br>$$</p>
-<ul>
+<li><script type="math/tex; mode=display">
+P_{i+1}=2^{-1}×(P_i+X×(Y_i-Y_{i+1}))</script><ul>
 <li>初识情况令Y<sub>0</sub> = 0.</li>
 <li>根据 <em>Y<sub>i+1</sub> - Y<sub>i</sub></em> 来判断是 <em>+X，-X，+0</em></li>
 <li>右移部分和；</li>
@@ -459,11 +452,11 @@ old_tree-&gt;left = ansLeft.new_tree;
 <li>当除数和被除数异号的时候，每次操作的减法变为<em>加法</em>。</li>
 <li>若每次的加法或减法溢出，则做逆操作使得被除数恢复（recover）。</li>
 <li>如果被除数和除数的异号的，我们需要对商修正——取反加一。</li>
-<li><img src="%E9%99%A4%E6%B3%95.png" srcset="/img/loading.gif" alt="除法符号表"></li>
+<li><img src="/img/除法.png" srcset="/img/loading.gif" alt="除法符号表"></li>
 <li><strong>将错就错版本</strong>：<ul>
 <li>符号扩展n位，然后存储在余数-商寄存器；</li>
 <li>如果被除数和除数有相同的符号做减法，否则做加法：<ul>
-<li>如果余数和除数有相同的符号，*Q<sub>n</sub>*为1，反之为0。</li>
+<li>如果余数和除数有相同的符号，<em>Q<sub>n</sub></em>为1，反之为0。</li>
 </ul>
 </li>
 <li>如果余数和除数有相同的符号，那么 <em>R<sub>i+1</sub> = 2R<sub>i</sub> - Y</em> ，否则 <em>R<sub>i+1</sub> = 2R<sub>i</sub> + Y</em> （注：有相同符号说明不需要补上之前错减的操作，继续-Y就可以；若不同说明需要减去之前的操作，因为前面已经错减了，左移*2之后，加上一个Y就可以）<ul>
@@ -708,6 +701,45 @@ old_tree-&gt;left = ansLeft.new_tree;
 
 
 
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.staticfile.org/mathjax/3.0.5/es5/tex-svg.js" ></script>
+
+  
 
 
 
