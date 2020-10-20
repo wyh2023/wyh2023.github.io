@@ -1,0 +1,703 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/avatar.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  <title>CoreJava-4 - Hexo</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+    
+  
+
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>wyh0110JX</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container page-header text-center fade-in-up">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-04-26 13:12" pubdate>
+        2020年4月26日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2.5k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      26
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto" id="post">
+            <!-- SEO header -->
+            <h1 style="display: none">CoreJava-4</h1>
+            
+            <div class="markdown-body" id="post-body">
+              <h3 id="Chapter-4-对象与类"><a href="#Chapter-4-对象与类" class="headerlink" title="Chapter 4 对象与类"></a>Chapter 4 对象与类</h3><ol>
+<li><p>封装：将数据和行为组合在一个包中，并对对象的使用者隐藏了数据的实现方式，对象中的数据成为实例域。</p>
+<ul>
+<li>实现封装的关键在于<strong>绝对不能</strong>让类中的方法直接地访问其他类的实例域。</li>
+<li>封装的优点<ul>
+<li>可以改变内部实现，除了该类的方法之外，不会影响其他的代码。</li>
+<li>更改器方法可以执行错误检查，然而直接赋值不会进行这些处理。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>对象</p>
+<ul>
+<li>对象的三个特性：<ul>
+<li>对象的行为：可以对对象施加哪些操作，或可以对对象施加哪些方法？</li>
+<li>对象的状态：当施加那些方法时，对象如何响应？</li>
+<li>对象标识：如何辨别具有相同行为与状态的不同对象？</li>
+</ul>
+</li>
+<li>对象的行为是用可调用的方法定义的。</li>
+<li>每个对象都有一个唯一的<strong>身份</strong></li>
+</ul>
+</li>
+<li><p>识别类</p>
+<ul>
+<li>从设计类开始，然后再往每个类中添加方法。</li>
+<li>“找动词与名词”</li>
+</ul>
+</li>
+<li><p>类之间的关系</p>
+<ul>
+<li>“依赖（use-a）”：如果一个类的方法操纵另一个类的对象，我们就说一个类依赖另一个类。<strong>应该尽可能将互相依赖的类减到最少——让类之间的耦合度最小。</strong></li>
+<li>“聚合（has-a）”：类A的对象包含类B的对象。</li>
+<li>“继承（is-a）”</li>
+</ul>
+</li>
+<li><p>对象与对象变量：要想使用对象，就必须首先构造对象，并制定其初始状态。然后，对对象应用方法。</p>
+<ul>
+<li>构造器： 特殊的方法，用来构造并初始化对象。</li>
+<li>一个对象变量并没有实际包含一个对象，而仅仅应用一个对象。deadline = birthday两个Date类的对象。</li>
+<li>如果将方法应用到null对象上就会引发运行错误。</li>
+<li>访问器方法——只访问对象而不修改对象的方法；修改的叫做构造器方法。</li>
+</ul>
+</li>
+<li><p>Emplyee类</p>
+<ul>
+<li>最简单的类定义形式为：<pre><code class="hljs Java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ClassName</span></span>&#123;
+    field;
+    constructor;
+    method;
+&#125;</code></pre>
+</li>
+</ul>
+</li>
+<li><p>构造器</p>
+<ul>
+<li>构造器与类同名。</li>
+<li>每个类可以有一个以上的构造器。</li>
+<li>构造器可以有0个、1个或多个参数。</li>
+<li>构造器没有返回值。</li>
+<li>构造器总是伴随着new操作一起调用。</li>
+<li><strong>不要在构造器中定义与实例域重名的局部变量</strong></li>
+</ul>
+</li>
+<li><p>隐式参数与显式参数</p>
+<ul>
+<li>隐式参数是出现在方法名前的对象；</li>
+<li>显式参数是方法名后面括号里的数值；</li>
+<li>在每一个方法中，关键字</li>
+</ul>
+</li>
+<li><p>一个方法可以访问所属类的所有对象的私有数据。</p>
+</li>
+<li><p>如果一个方法与当前实现机制非常紧密或者需要一个特别的协议以及一个特别的调用次序，最好将这样的方法设置成private的。</p>
+<ul>
+<li>只要方法是私有的，就可以确保它不会被外部的其他类所调用，因此可以将其删去。</li>
+</ul>
+</li>
+<li><p>final实例域</p>
+<ul>
+<li>可以将实例域定义为final，在构建对象的时候必须将它初始化。并且在后面的操作中不能将它修改。</li>
+<li>final修饰符大多应用于基本（primitive）类型域，或不可变类型域（类中的每个方法都不会改变其对象。）</li>
+</ul>
+</li>
+<li><p>静态域： 如果将域定义为static，每个类中只有一个这样的域。而每一个对象对于所有的实例域却都有自己的一份拷贝。</p>
+<ul>
+<li>这个类的所有实例域将共享一个“nextID”域；</li>
+<li>它属于类，不属于一个独立的对象；</li>
+</ul>
+</li>
+<li><p>静态方法：不能向对象实施操作的方法。</p>
+<ul>
+<li>没有隐式的参数。静态方法是没有this参数的方法。</li>
+<li>静态方法可以访问自身类中的静态域；</li>
+<li>建议使用类名来调用静态方法；</li>
+<li>在以下两种情况使用静态方法：<ul>
+<li>一个方法不需要访问对象状态，其所需参数都是通过显示参数提供（如Math.pow）;</li>
+<li>一个方法只需要访问类的静态域（如Employee.getNextID）；</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>工厂方法构造对象；</p>
+<ul>
+<li>将类的创建单独放到一个类里进行，这个类就叫做工厂。</li>
+<li>不利用构造器有两个原因：<ol>
+<li>无法命名构造器。构造器的名字必须和类名相同。但是货币的实例需要不同的名字；</li>
+<li>当使用构造器时，无法改变所构造的对象类型。<pre><code class="hljs Java">NumberFormat currencyFormatter = NumberFormat.gerCurrencyInstance();
+NumberFormat percentFormatter = NumberFormat.getpercentInstance();</code></pre>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>main方法：<strong>不需要使用对象调用静态方法</strong></p>
+<ul>
+<li>例子：不需要构造Math对象就可以直接调用Math.pow。</li>
+<li>main方法也是一个静态方法。main方法不对任何对象进行操作。事实上在程序启动时没有任何一个对象。静态的main方法将执行并创建程序所需要的对象。</li>
+</ul>
+</li>
+<li><p>Java总是采用按值调用。</p>
+<ul>
+<li><strong>Java对对象采用的不是引用调用，实际上，对象引用是按值传递的。</strong></li>
+<li>一个方法不能修改一个基本数据类型的参数（按值传递参数）；</li>
+<li>一个方法可以改变一个对象的参数的状态；</li>
+<li>**一个方法不能让对象参数引用一个新的对象 **</li>
+</ul>
+</li>
+<li><p>重载：有些类可以有多个构造器。如果多个方法有相同的名字、不同的参数，便产生了重载；编译器通过用各个方法给出的参数类型与特定方法调用所使用的值的类型进行匹配来挑选出相应的方法（重载解析）。</p>
+<ul>
+<li>Java允许重载任何方法，不只是构造器方法。完整描述一个方法需要指出方法名以及参数类型。这叫做方法的<strong>签名</strong>。</li>
+</ul>
+</li>
+<li><p>默认域初始化：数值为0、布尔值为false、对象引用为null。</p>
+</li>
+<li><p>无参数构造器，如果在编写一个类时没有编写构造器，系统就会提供一个无参数构造器。这个构造器将所有实数域设置为默认值。</p>
+</li>
+<li><p>显示域初始化，通过重载类的构造器方法，可以采用多种形式设置类的实例域的初始状态。</p>
+</li>
+<li><p>参数变量用同样的名字将实例域屏蔽起来。可以用this.salary的方式访问实例域。回想一下，this指示隐式参数，也就是所构造的对象。</p>
+<pre><code class="hljs Java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Employee</span><span class="hljs-params">(String name, <span class="hljs-keyword">double</span> salary)</span></span>&#123;
+    <span class="hljs-keyword">this</span>.name = name;
+    <span class="hljs-keyword">this</span>.salary = salary;
+&#125;</code></pre>
+</li>
+<li><p>调用另一个构造器。如果构造器的第一个语句形如this(…)，这个构造器将调用同一个类的另一个构造器。公共的构造器代码部分只编写一次即可。</p>
+<pre><code class="hljs Java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Employee</span><span class="hljs-params">(<span class="hljs-keyword">double</span> s)</span></span>&#123;
+    <span class="hljs-keyword">this</span>(<span class="hljs-string">&quot;Emplyee #&quot;</span> + nextID, s);
+    nextID++;
+ &#125;</code></pre>
+</li>
+<li><p>初始化块。在一个类的声明中，可以包含多个代码块。只要构造类的对象，这些块就会被执行。</p>
+<pre><code class="hljs Java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Employee</span></span>&#123;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> nextID;
+    
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> id;
+    <span class="hljs-keyword">private</span> String name;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">double</span> salary;
+    
+    <span class="hljs-comment">//object initialization block</span>
+    &#123;
+        id = nextID;
+        nextID++;
+    &#125;
+    
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Employee</span><span class="hljs-params">(String n, <span class="hljs-keyword">double</span> s)</span></span>&#123;
+        <span class="hljs-keyword">this</span>.name = n;
+        <span class="hljs-keyword">this</span>.salary = s;
+    &#125;
+&#125;</code></pre>
+<p>在上述示例中，无论使用哪个构造器构造对象，id域都在对象初始化模块中被初始化。<strong>运行初始化模块，然后才运行构造器的主体部分。</strong></p>
+</li>
+<li><p>调用构造器的具体处理步骤：</p>
+<ol>
+<li>所有数据域被初始化为默认值。</li>
+<li>按照在类声明中出现的次序，一次执行所有域初始化语句和初始化块。</li>
+<li>如果构造器第一行调用了第二个构造器，则执行第二个构造器主体。</li>
+<li>执行这个构造器的主体。</li>
+</ol>
+</li>
+<li><p>静态初始化块</p>
+<ul>
+<li><strong>初始化块只调用一次（类加载时），而普通初始化块可以调用多次，随着对象的创建而加载。</strong></li>
+<li>一个类中可以有多个静态初始化块和多个普通初始化块；静态初始化块的执行要早于普通初始化块；同一个类型的初始化块的执行顺序取决于定义的先后顺序！</li>
+<li>在一个类中如果有多个不同的初始化块，初始化属性，构造器，执行顺序是：静态初始化块|静态属性初始化 &gt; 普通初始化块|普通属性初始化 &gt; 构造器</li>
+</ul>
+</li>
+<li><p>对象析构与finalize方法</p>
+<ul>
+<li>Java自动回收垃圾，不支持析构器。</li>
+<li>可以为任何一个类添加finalize方法。finalize方法在垃圾回收器清除对象之前调用。在实际应用中，不要依赖于使用finalize方法回收任何短缺的资源，这是因为很难知道这个方法什么时候才能够调用。</li>
+</ul>
+</li>
+<li><p>包，Java允许使用包（package）将类组织起来。</p>
+<ul>
+<li>使用包的主要原因是确保类名的唯一性。</li>
+<li>从编译器的角度来看，嵌套的包之间没有任何关系。例如，java.util包与java.util.jar包毫无关系。每一个都有独立的集合。</li>
+</ul>
+</li>
+<li><p>静态导入</p>
+<ul>
+<li>在源文件顶部，添加一条import static java.lang.System.*;</li>
+<li>可以更简洁比如Math.sqrt可以简写为sqrt</li>
+</ul>
+</li>
+<li><p>将类放入包中，就必须将包的名字放在源文件的开头，包中定义类的代码之前。如果没有在源文件中放置package语句，这个源文件中的类就被放置在一个默认包中。</p>
+</li>
+<li><p>注释</p>
+<ol>
+<li>方法注释<ol>
+<li>@param 变量描述</li>
+<li>@return 描述</li>
+<li>@throws 类描述</li>
+</ol>
+</li>
+<li>通用注释<ol>
+<li>@author 姓名</li>
+<li>@version 版本</li>
+<li>@since 引入特性的版本描述</li>
+<li>@see 引用</li>
+</ol>
+</li>
+<li>包注释单独在包中添加文档</li>
+</ol>
+</li>
+<li><p>类设计技巧</p>
+<ol>
+<li>一定要保证数据私有，绝对不要破坏封装性。</li>
+<li>一定要对数据初始化。</li>
+<li>不要在类中使用过多的基本类型。</li>
+<li>不是所有的域都需要独立的域访问器和域更改器。</li>
+<li>将职责过多的类进行分解。</li>
+<li>类名和方法名要能够体现它们的职责。</li>
+<li>优先使用不可变的类。</li>
+</ol>
+</li>
+</ol>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Core-Java/">Core Java</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/04/26/CoreJava-5/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">CoreJava-5</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/04/26/CoreJava-3/">
+                        <span class="hidden-mobile">CoreJava-3</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '#post-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "CoreJava-4&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

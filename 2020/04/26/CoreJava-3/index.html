@@ -1,0 +1,539 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/avatar.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  <title>CoreJava-3 - Hexo</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+    
+  
+
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>wyh0110JX</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container page-header text-center fade-in-up">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-04-26 13:07" pubdate>
+        2020年4月26日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      678 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      8
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto" id="post">
+            <!-- SEO header -->
+            <h1 style="display: none">CoreJava-3</h1>
+            
+            <div class="markdown-body" id="post-body">
+              <h3 id="Chapter-3-基本设计结构"><a href="#Chapter-3-基本设计结构" class="headerlink" title="Chapter 3 基本设计结构"></a>Chapter 3 基本设计结构</h3><ol>
+<li><p>关键字<em>final</em>表示常量。关键字<em>final</em>表示这个变量只能被赋值一次。常量名全部使用大写。</p>
+</li>
+<li><p><em>static final</em>设置类常量。可在一个类的多个方法中使用。如果生命为public，即<em>public</em>，则其他类的方法也可以使用这个常量。</p>
+</li>
+<li><p><em>strictfp</em>关键字标记点方法必须使用严格的浮点计算来生成可再生的结果。</p>
+</li>
+<li><p>String 中的<em>substring</em>方法，s.substring(a, b)得到以a为index开头，到b为止但不包含b的字符串，长度为b-a。</p>
+</li>
+<li><p><em>join</em>方法，String.join(“/“, “S”, “M”, “L”, “XL”);得到的是字符串”S/M/L/XL”。</p>
+</li>
+<li><p>String类对象是不可变字符串。编译器可以让字符串共享。</p>
+</li>
+<li><p>检查字符串是否相等可以用.equals()方法。如果不区分大小写可以用equalsIgnoreCase方法。<em>一定不要使用==运算符来检测两个字符串是否相等。这只能确定两个字符串是否在同一个位置上</em></p>
+</li>
+<li><p>“”是空串，有长度有内容。null表示目前没有任何对象与该变量关联。</p>
+</li>
+<li><p>码点与代码单元</p>
+</li>
+</ol>
+<ul>
+<li>int[] codePoints = str.codePoints().toArray();将字符串转成一个数组。</li>
+<li>String str = new String(codePoints, 0, codePoints.length);将码点数组转化成一个字符串。</li>
+</ul>
+<ol start="10">
+<li><p>构建字符串</p>
+<pre><code class="hljs Java">StringBuilder builder = <span class="hljs-keyword">new</span> StringBuilder();
+builder.append(ch);<span class="hljs-comment">// appends a single character</span>
+builder.append(str);<span class="hljs-comment">// appends a string</span>
+String completedString = builder.toString();</code></pre>
+</li>
+<li><p>控制台输入</p>
+<pre><code class="hljs Java">Scanner in = <span class="hljs-keyword">new</span> Scanner(System.in);
+String name = in.nextLine();
+<span class="hljs-keyword">int</span> age = in.nextInt();</code></pre>
+</li>
+<li><p>文件出入与输出</p>
+<pre><code class="hljs Java"><span class="hljs-comment">//input</span>
+Scanner in = <span class="hljs-keyword">new</span> Scanner(Paths.get(<span class="hljs-string">&quot;myfile.txt&quot;</span>), <span class="hljs-string">&quot;UTF-8&quot;</span>);
+<span class="hljs-comment">//output</span>
+PrintWriter out = <span class="hljs-keyword">new</span> PrintWriter(<span class="hljs-string">&quot;myfile.txt&quot;</span>), <span class="hljs-string">&quot;UTF-8&quot;</span>);</code></pre>
+</li>
+<li><p>Java SE 7 开始，switch中的case标签还可以是字符串字面量。</p>
+</li>
+<li><p>break或continue后接label, 可以在中断之后直接跳到label的位置继续执行。</p>
+</li>
+<li><p>大数值BigInteger实现大整数；BigDecimal实现大浮点数。</p>
+<pre><code class="hljs Java">BigInteger a = BigInteger.valueOf(<span class="hljs-number">100</span>);<span class="hljs-comment">//将普通数值转换为大数值；</span>
+BigInteger c = a.add(b); <span class="hljs-comment">// c = a + b;</span>
+BigInteger d = c.multiply(b.add(BigInteger.valueOf(<span class="hljs-number">2</span>))); <span class="hljs-comment">// d = c * (b + 2)</span></code></pre>
+</li>
+<li><p>数组</p>
+<pre><code class="hljs Java"><span class="hljs-keyword">int</span>[] a= <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[<span class="hljs-number">100</span>];</code></pre></li>
+</ol>
+<ul>
+<li>创建一个数组时，所有元素都初始化为0。boolean数组的元素会初始化为false。对象数组会初始化为null。<pre><code class="hljs Java"><span class="hljs-comment">//下面所有字符串都是null</span>
+String[] names = <span class="hljs-keyword">new</span> String[<span class="hljs-number">10</span>];
+<span class="hljs-comment">//下面所有字符串都是空串</span>
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; i++) names[i] = <span class="hljs-string">&quot;&quot;</span>;</code></pre></li>
+<li>一旦创建了数组就不能改变它的大小。</li>
+</ul>
+<ol start="17">
+<li>for each 循环</li>
+</ol>
+<ul>
+<li>for (variable : collection) statement<pre><code class="hljs Java">System.out.println(Arrays.toString(a));<span class="hljs-comment">//打印数组；</span></code></pre>
+</li>
+</ul>
+<ol start="18">
+<li><p>数组拷贝</p>
+<pre><code class="hljs Java"><span class="hljs-keyword">int</span>[] copiedLuckyNumbers = Arrays.copyOf(luckyNumbers, luckynumbers.length);</code></pre></li>
+<li><p>Array.sort(a); 进行排序</p>
+</li>
+<li><p>不规则数组</p>
+<pre><code class="hljs Java"><span class="hljs-keyword">int</span>[][] odds = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[MAX+<span class="hljs-number">1</span>][];
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> n = <span class="hljs-number">0</span>; n &lt;= MAX; n+<span class="hljs-number">1</span>)
+    odds[n] = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[n+<span class="hljs-number">1</span>];
+<span class="hljs-comment">//以上生成的是一个三角形数组</span></code></pre></li>
+</ol>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Core-Java/">Core Java</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/04/26/CoreJava-4/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">CoreJava-4</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '#post-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "CoreJava-3&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,723 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/avatar.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  <title>week3_Grade2_fall - Hexo</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+    
+  
+
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>wyh0110JX</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container page-header text-center fade-in-up">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-09-26 17:24" pubdate>
+        2020年9月26日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2.2k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      26
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto" id="post">
+            <!-- SEO header -->
+            <h1 style="display: none">week3_Grade2_fall</h1>
+            
+            <div class="markdown-body" id="post-body">
+              <h2 id="算法设计与分析"><a href="#算法设计与分析" class="headerlink" title="算法设计与分析"></a>算法设计与分析</h2><h3 id="1-红黑树"><a href="#1-红黑树" class="headerlink" title="1. 红黑树"></a>1. 红黑树</h3><p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/e136ec79235c">30张图彻底理解红黑树</a></p>
+<h4 id="1-1-红黑树定义"><a href="#1-1-红黑树定义" class="headerlink" title="1.1 红黑树定义"></a>1.1 红黑树定义</h4><ul>
+<li>基本限制：<ul>
+<li>满足二叉搜索树；</li>
+<li>每个节点要么是黑色的，要么是红色的；</li>
+<li>所有的外部节点都是黑色的（每个叶子结点【NIL】是黑色）；</li>
+<li>颜色限制：红色结点没有红色的子节点（每个红色结点的两个子节点一定都是黑色的）；</li>
+<li>黑色高度限制：每个从给定结点u到外部节点的路径的黑色长度相等。（任意一结点到每个叶子结点到路径都包含数量相同的黑结点）<ul>
+<li>推论：如果一个结点存在黑子节点，那么该结点肯定有两个子节点；</li>
+</ul>
+</li>
+<li>根结点是黑色的；</li>
+</ul>
+</li>
+<li>ARB tree (Almost-red-black tree)<ul>
+<li>根结点是红色的；</li>
+</ul>
+</li>
+<li>递归定义<ul>
+<li>约定高度为h的红黑树为RB<sub>h</sub>，高度为h的Almost-red-black Tree为ARB<sub>h</sub></li>
+<li>一个二叉树是ARB<sub>h</sub>，那么<ul>
+<li>根结点是红色的；</li>
+<li>左右子树都是RB<sub>h-1</sub></li>
+</ul>
+</li>
+<li>一个二叉树是RB<sub>h</sub>，那么<ul>
+<li>根结点是黑色的；</li>
+<li>左右子树是RB<sub>h-1</sub>或ARB<sub>h</sub></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="1-2-红黑树的插入"><a href="#1-2-红黑树的插入" class="headerlink" title="1.2 红黑树的插入"></a>1.2 红黑树的插入</h4><ul>
+<li><pre><code class="c++">RBtree rbtInset(RBtree oldRBtree, Element newElement)&#123;
+  InsReturn ans = rbtIns(oldRBtree, newNode);
+  if(ans.newTree.color != black)&#123;
+    ans.newTree.color = black; //黑高度增加的途径。
+  &#125;
+  return ans.newTree;
+&#125;
+<pre><code class="hljs xl">
+- **插入红色结点不会影响黑色高度限制**；【每次插入都不改变黑高度】
+
+- 簇：一个黑色结点和所有可从该黑色结点经由非黑色边达到的红色结点组成的集合，称为**簇**。
+
+- 冲突簇（Critical cluster）：起因于<span class="hljs-number">3</span>或<span class="hljs-number">4</span>个红色结点的颜色冲突。如果存在一个从根结点开始到达某结点的通路的长度大于<span class="hljs-number">1</span>，那么这个簇称为**冲突簇**。因为一个簇中的所有边都是非黑边，那么存在一条长度为<span class="hljs-number">2</span>的通路说明簇中一个红色结点与另一个红色结点之间有一条边。
+
+- 颜色漂移（Color flip）：冲突簇的根结点和它的子结点变换颜色，当没有新的冲突簇出现时，插入结束。（教材原话：We perform a *<span class="hljs-built_in">color</span> flip* <span class="hljs-keyword">with</span> the root of the cluster, call it *r*, <span class="hljs-built_in">and</span> its two children.）对于三个结点的冲突簇情况不能使用颜色漂移。【三个结点的情况使得中间那个结点变为黑色】
+
+  - ```c++
+    void rb_tree_main::colorFlip(rb_tree * old_tree)&#123;
+      <span class="hljs-comment">//修改根结点的颜色</span>
+      <span class="hljs-function"><span class="hljs-title">if</span>(old_tree-&gt;</span><span class="hljs-built_in">color</span> == color_black)&#123;
+        <span class="hljs-function"><span class="hljs-title">old_tree</span>-&gt;</span><span class="hljs-built_in">color</span> = color_red;
+      &#125; <span class="hljs-keyword">else</span> &#123;
+        <span class="hljs-function"><span class="hljs-title">old_tree</span>-&gt;</span><span class="hljs-built_in">color</span> = color_black;
+      &#125;
+      
+      <span class="hljs-comment">//修改根的左子结点的颜色</span>
+      <span class="hljs-function"><span class="hljs-title">if</span>(old_tree-&gt;</span><span class="hljs-function"><span class="hljs-title">left</span>-&gt;</span><span class="hljs-built_in">color</span> == color_black)&#123;
+        <span class="hljs-function"><span class="hljs-title">old_tree</span>-&gt;</span><span class="hljs-function"><span class="hljs-title">left</span>-&gt;</span><span class="hljs-built_in">color</span> = color_red;
+      &#125; <span class="hljs-keyword">else</span> &#123;
+        <span class="hljs-function"><span class="hljs-title">old_tree</span>-&gt;</span><span class="hljs-function"><span class="hljs-title">left</span>-&gt;</span><span class="hljs-built_in">color</span> = color_black;
+      &#125;
+      
+      <span class="hljs-comment">//修改根的右子节点的颜色</span>
+      <span class="hljs-function"><span class="hljs-title">if</span>(old_tree-&gt;</span><span class="hljs-function"><span class="hljs-title">right</span>-&gt;</span><span class="hljs-built_in">color</span> == color_clack)&#123;
+        <span class="hljs-function"><span class="hljs-title">old_tree</span>-&gt;</span><span class="hljs-function"><span class="hljs-title">right</span>-&gt;</span><span class="hljs-built_in">color</span> = color_red;
+      &#125; <span class="hljs-keyword">else</span> &#123;
+        <span class="hljs-function"><span class="hljs-title">old_tree</span>-&gt;</span><span class="hljs-function"><span class="hljs-title">right</span>-&gt;</span><span class="hljs-built_in">color</span> = color_black;
+      &#125;
+    &#125;</code></pre>
+</code></pre>
+</li>
+</ul>
+<h4 id="1-3-修正红黑树（RepairLeft-和-RepairRight）"><a href="#1-3-修正红黑树（RepairLeft-和-RepairRight）" class="headerlink" title="1.3 修正红黑树（RepairLeft 和 RepairRight）"></a>1.3 修正红黑树（RepairLeft 和 RepairRight）</h4><ul>
+<li><p>ok：不需要修正；</p>
+<ul>
+<li><pre><code class="c++">if(ansLeft.status == status.ok)&#123;
+  ans.new_tree = old_tree;
+  ans.status = status.ok;
+  return ans
+&#125;
+old_tree-&gt;left = ansLeft.new_tree;
+<pre><code class="hljs fortran">
+- rbr：不要调整；要将返回值存入相应的field。
+
+  - ```c++
+    <span class="hljs-keyword">if</span>(ansLeft<span class="hljs-number">.</span><span class="hljs-keyword">status</span> == <span class="hljs-keyword">status</span><span class="hljs-number">.</span>rbr)&#123;
+      ans<span class="hljs-number">.</span>new_tree = old_tree;
+      ans<span class="hljs-number">.</span><span class="hljs-keyword">status</span> = <span class="hljs-keyword">status</span><span class="hljs-number">.</span>ok;
+    &#125;</code></pre></code></pre>
+</li>
+</ul>
+</li>
+<li><p>brb：如果父结点是黑色的，不修正；否则需要向上调整（若当前不调整，返回的状态为rrb）</p>
+<ul>
+<li><pre><code class="c++">if(ansLeft.status == status.brb)&#123;
+  ans.new_tree = old_tree;
+  if(old_tree-&gt;color == color_black)&#123;
+    ans.status = status.ok;
+  &#125; else &#123;
+    ans.status = status_rrb;
+  &#125;
+&#125;
+<pre><code class="hljs maxima">
+- rrb：【**当前的父结点的颜色一定为黑色**】根据oldTree的右（左）子节点的情况进行调整（分别对应<span class="hljs-number">4</span>-node和<span class="hljs-number">3</span>-node两种颜色冲突的情况）；
+
+  - ```c++
+    <span class="hljs-keyword">if</span>(ansLeft.<span class="hljs-built_in">status</span> == <span class="hljs-built_in">status</span>.rrb)&#123;
+     <span class="hljs-keyword">if</span>(old_tree-&gt;right-&gt;<span class="hljs-built_in">color</span> == color_red)&#123;
+       colorFlip(old_tree);
+       ans.new_tree = old_tree;
+       ans.<span class="hljs-built_in">status</span> = <span class="hljs-built_in">status</span>.brb;
+     &#125; <span class="hljs-keyword">else</span> &#123;
+       ans.new_tree = rebalLeft(old_tree, ansLeft.<span class="hljs-built_in">status</span>);
+       ans.<span class="hljs-built_in">status</span> = rbr;
+     &#125;
+    &#125;</code></pre></code></pre>
+</li>
+</ul>
+</li>
+<li><p>brr：和rrb的处理情况类似；</p>
+</li>
+<li><p>所有的处理都不会对黑高度造成影响；</p>
+</li>
+</ul>
+<h4 id="1-4-红黑树的删除"><a href="#1-4-红黑树的删除" class="headerlink" title="1.4 红黑树的删除"></a>1.4 红黑树的删除</h4><ul>
+<li>只有一个子节点的结点可以直接删除；</li>
+<li><strong>保持颜色限制，调整高度。</strong><ul>
+<li>删除红色结点，黑高度不变，没有任何影响；</li>
+<li>删除黑色结点，该结点所在的子树的黑高度减少了1，需要进行修正。<strong>并且这种修正可能导致更高的子树的黑高度降低，需要继续修正。</strong></li>
+</ul>
+</li>
+<li>删除时，将该结点与它在中序遍历之后的后一个结点互换。删除互换后的该结点。将该结点的右结点代替被删除的集合。</li>
+</ul>
+<h3 id="2-渐进复杂性"><a href="#2-渐进复杂性" class="headerlink" title="2. 渐进复杂性"></a>2. 渐进复杂性</h3><h4 id="2-1-Ο"><a href="#2-1-Ο" class="headerlink" title="2.1 Ο"></a>2.1 <em>Ο</em></h4><ul>
+<li><p>复杂度的上界（包含）</p>
+</li>
+<li><p>判断是否包含在<em>Ο</em>的时候可以使用【洛必达法则】。</p>
+</li>
+<li><p>对数复杂度小于幂函数复杂度！</p>
+</li>
+<li><p>$$<br>logn \in O(n^{\alpha}) ,{\forall}{\alpha}&gt;0<br>$$</p>
+</li>
+<li><p>幂函数复杂度小于指数复杂度！</p>
+</li>
+<li><p>$$<br>n^k \in O(c^n) ,{\forall}c&gt;0<br>$$</p>
+</li>
+<li><p>阶乘用斯特林公式处理：</p>
+</li>
+<li><p>$$<br>n!≈\sqrt{2{\pi}n}(\frac{n}{e})^n<br>$$</p>
+</li>
+</ul>
+<h4 id="2-2-Ω"><a href="#2-2-Ω" class="headerlink" title="2.2 Ω"></a>2.2 Ω</h4><ul>
+<li>复杂度的下界（包含）</li>
+</ul>
+<h4 id="2-3-Θ"><a href="#2-3-Θ" class="headerlink" title="2.3 Θ"></a>2.3 Θ</h4><ul>
+<li>复杂度上界与下界的交集——大致相同于真实复杂度；</li>
+</ul>
+<h4 id="2-4-Ο-Ω-Θ的性质"><a href="#2-4-Ο-Ω-Θ的性质" class="headerlink" title="2.4 Ο, Ω, Θ的性质"></a>2.4 <em>Ο</em>, Ω, Θ的性质</h4><ul>
+<li><p><em>Ο</em>是一个等价关系——有传递性、对称性和自反性；</p>
+</li>
+<li><p>$$<br>O(f+g) = O(max(f,g))<br>$$</p>
+</li>
+</ul>
+<h4 id="2-5-o-和-ω"><a href="#2-5-o-和-ω" class="headerlink" title="2.5 o 和 ω"></a>2.5 o 和 ω</h4><ul>
+<li>f与它的上界（下界）之间有一段不可忽视的距离。（不能大致相等）不光表示小于（大于），也表示f达不到g。</li>
+</ul>
+<h4 id="2-6-分治递归"><a href="#2-6-分治递归" class="headerlink" title="2.6 分治递归"></a>2.6 分治递归</h4><ul>
+<li><p>将规模为n的问题分解成a个规模为n/b的子问题并递归地求解，并且分解/合成的总开销是f(n)的。</p>
+</li>
+<li><p>$$<br>T(n) = aT(\frac{n}{b})+f(n)<br>$$</p>
+</li>
+<li><p>主定理：</p>
+<ul>
+<li><p>$$<br>f(n){\in}O(𝑛^{log_𝑏⁡{𝑎−𝜀}})，T(n)\in(𝑛^{log_𝑏⁡𝑎})<br>$$</p>
+</li>
+<li><p>$$<br>f(n){\in}{\Theta}(𝑛^{log_𝑏⁡{𝑎}})，T(n){\in}{\Theta}(f(n)log(n))<br>$$</p>
+</li>
+<li><p>具体见《算法导论》。</p>
+</li>
+<li><p>特别的一个特殊情况：</p>
+</li>
+</ul>
+<p>$$<br>f(m)\in\Theta(m^Elog^a(m))<br>$$</p>
+<p>​       它的解为：<br>$$<br>T(n)\in\Theta(n^Elog^{a+1}(n))<br>$$</p>
+</li>
+</ul>
+<h2 id="计算机组成与设计"><a href="#计算机组成与设计" class="headerlink" title="计算机组成与设计"></a>计算机组成与设计</h2><h3 id="1-Carry-Look-Ahead-Adder"><a href="#1-Carry-Look-Ahead-Adder" class="headerlink" title="1. Carry Look Ahead Adder"></a>1. Carry Look Ahead Adder</h3><ul>
+<li>Gate Latency<ul>
+<li>AND：1</li>
+<li>OR：1</li>
+<li>XOR：3</li>
+<li>计算CarryOut需要2个延迟</li>
+</ul>
+</li>
+<li><img src="%E5%8A%A0%E6%B3%95%E5%99%A8.png" srcset="/img/loading.gif" alt="加法器及其延迟"></li>
+<li>再上图中，计算<em>XY</em>和<em>X+Y</em>（即<em>P</em>和<em>G</em>）需要1个延迟，计算所有的<em>C</em>需要两个延迟，计算所有的<em>S</em>又需要3个延迟。（注：根据之前的推导，任意*C<sub>n</sub><em>都可以用</em>P、G、C<sub>n</sub>*来表示）</li>
+</ul>
+<h3 id="2-Partial-Carry-Look-Ahead-Adder"><a href="#2-Partial-Carry-Look-Ahead-Adder" class="headerlink" title="2. Partial Carry Look Ahead Adder"></a>2. Partial Carry Look Ahead Adder</h3><ul>
+<li><p><img src="%E9%83%A8%E5%88%86%E5%8A%A0%E6%B3%95%E5%99%A8.png" srcset="/img/loading.gif" alt="部分加法器及其延迟"></p>
+</li>
+<li><p>在第一个时间周期内计算出所有的<em>P</em>和<em>G</em>，最右边的第一个CLA计算出<em>C8</em>需要3个延迟，往后的<em>C16</em>和<em>C24</em>都需要两个时间周期，最后计算最后的<em>C</em>和<em>S</em>还需要5个延迟。</p>
+</li>
+</ul>
+<h3 id="3-Addition"><a href="#3-Addition" class="headerlink" title="3. Addition"></a>3. Addition</h3><p><em>overflow</em> = C<sub>n</sub>⊕C<sub>n-1</sub> ? Why?</p>
+<p>证明和分析：如果overflow为0，只有两种情况——正数加正数得到负数和负数加负数得到正数。所以我们可以通过符号位来判断：<em>overflow</em> = X<sub>n</sub>Y<sub>n</sub><del>S<sub>n</sub>+</del>X<sub>n</sub>~Y<sub>n</sub>S<sub>n</sub>，当X<sub>n</sub>Y<sub>n</sub>同时为1的时候，S<sub>n</sub>若为0则溢出。当X<sub>n</sub>Y<sub>n</sub>同时为0的时候，S<sub>n</sub>若为1则溢出。</p>
+<h3 id="4-Subtraction"><a href="#4-Subtraction" class="headerlink" title="4. Subtraction"></a>4. Subtraction</h3><h3 id="5-Multiplication"><a href="#5-Multiplication" class="headerlink" title="5. Multiplication"></a>5. Multiplication</h3><ul>
+<li><p>大概步骤：</p>
+<ul>
+<li>每一步计算部分和；</li>
+<li>右移部分和；</li>
+<li>如果<em>Y<sub>i</sub>=0</em>的话，只移动；</li>
+</ul>
+</li>
+<li><p>Booth算法</p>
+</li>
+<li><p>$$<br>P_{i+1}=2^{-1}×(P_i+X×(Y_i-Y_{i+1}))<br>$$</p>
+<ul>
+<li>初识情况令Y<sub>0</sub> = 0.</li>
+<li>根据 <em>Y<sub>i+1</sub> - Y<sub>i</sub></em> 来判断是 <em>+X，-X，+0</em></li>
+<li>右移部分和；</li>
+<li>重复第二步和第三步；</li>
+</ul>
+</li>
+<li><p>为了使结果正确，每一步应当使用算数右移。补充上去的符号位在计算出结果的符号位会被舍去。</p>
+</li>
+</ul>
+<h3 id="6-Division"><a href="#6-Division" class="headerlink" title="6. Division"></a>6. Division</h3><ul>
+<li>将被除数（remainder）的左边补上<em>n</em>位的<strong>符号位</strong>，除数左边补上<em>n</em>位的0，每一次将除数减被除数，再右移除数一位，若差大于等于0，则在此处的商置为1，将商左移一位。（原始版本）<ul>
+<li>（remainder和quotient合在一起）依然是用division减remainder（前面的n位），如果是异号则用加法。</li>
+</ul>
+</li>
+<li><strong>余数一定和被除数同号</strong>（用除数不断去逼近被除数，但是不能越过它）</li>
+<li>当除数和被除数异号的时候，每次操作的减法变为<em>加法</em>。</li>
+<li>若每次的加法或减法溢出，则做逆操作使得被除数恢复（recover）。</li>
+<li>如果被除数和除数的异号的，我们需要对商修正——取反加一。</li>
+<li><img src="%E9%99%A4%E6%B3%95.png" srcset="/img/loading.gif" alt="除法符号表"></li>
+<li><strong>将错就错版本</strong>：<ul>
+<li>符号扩展n位，然后存储在余数-商寄存器；</li>
+<li>如果被除数和除数有相同的符号做减法，否则做加法：<ul>
+<li>如果余数和除数有相同的符号，*Q<sub>n</sub>*为1，反之为0。</li>
+</ul>
+</li>
+<li>如果余数和除数有相同的符号，那么 <em>R<sub>i+1</sub> = 2R<sub>i</sub> - Y</em> ，否则 <em>R<sub>i+1</sub> = 2R<sub>i</sub> + Y</em> （注：有相同符号说明不需要补上之前错减的操作，继续-Y就可以；若不同说明需要减去之前的操作，因为前面已经错减了，左移*2之后，加上一个Y就可以）<ul>
+<li>如果新的余数和除数有相同的符号，将商置为1，否则置为0。</li>
+</ul>
+</li>
+<li>重复。</li>
+</ul>
+</li>
+</ul>
+<h3 id="7-浮点数运算"><a href="#7-浮点数运算" class="headerlink" title="7. 浮点数运算"></a>7. 浮点数运算</h3><ul>
+<li>对阶</li>
+</ul>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/WeeklyReview/">WeeklyReview</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/10/16/week4-Grade2-fall/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">week4_Grade2_fall</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/09/22/TOEFL-reading-notes/">
+                        <span class="hidden-mobile">TOEFL_reading_notes</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '#post-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "week3_Grade2_fall&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

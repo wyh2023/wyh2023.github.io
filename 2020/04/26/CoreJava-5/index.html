@@ -1,0 +1,710 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/avatar.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  <title>CoreJava-5 - Hexo</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+    
+  
+
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>wyh0110JX</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container page-header text-center fade-in-up">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-04-26 13:14" pubdate>
+        2020年4月26日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2.8k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      31
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto" id="post">
+            <!-- SEO header -->
+            <h1 style="display: none">CoreJava-5</h1>
+            
+            <div class="markdown-body" id="post-body">
+              <h3 id="Chapter-5-继承"><a href="#Chapter-5-继承" class="headerlink" title="Chapter 5 继承"></a>Chapter 5 继承</h3><ol>
+<li><p>定义子类</p>
+<ul>
+<li>关键字extends表明正在构造的新类派生于一个已存在的类。已存在的类称为<strong>超类、基类、父类；</strong>新类称为<strong>子类、派生类或孩子类。</strong>子类的功能比超类更加丰富。</li>
+<li>通过扩展超类定义子类的时候，仅需要指出子类与超类的不同之处。</li>
+</ul>
+</li>
+<li><p>覆盖方法（override）</p>
+<ul>
+<li>Manager类的getSalary方法不能够直接地访问超类的私有域。只有Employee类的方法才能够访问私有部分。</li>
+<li>super不是一个对象的引用，他只是一个指示编译器调用超类方法的指示器。<pre><code class="hljs Java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">double</span> <span class="hljs-title">getSalary</span><span class="hljs-params">()</span></span>&#123;
+    <span class="hljs-comment">//double baseSalary = getSalary();这句也不可以，因为getSalary会循环调用；</span>
+    <span class="hljs-keyword">double</span> baseSalary = <span class="hljs-keyword">super</span>.gerSalary();
+    <span class="hljs-keyword">return</span> baseSalary + bonus;
+&#125;</code></pre>
+</li>
+</ul>
+</li>
+<li><p>子类构造器</p>
+<ul>
+<li>语句super(n, s, year, month, day)是“调用超类Employee中含有n、s、year、month、day参数的构造器”的简写形式。</li>
+<li>Manager类不能访问Employee的私有域，所以必须利用Employee类的构造器对这部分私有域进行初始化。通过super实现对超类构造器的调用。<strong>使用super调用构造器的语句必须是子类构造器的第一条语句。</strong></li>
+<li>没有使用super就会自动调用默认（即无参数）构造器。<pre><code class="hljs Java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Manager</span><span class="hljs-params">(String name, <span class="hljs-keyword">double</span> salary, <span class="hljs-keyword">int</span> year, <span class="hljs-keyword">int</span> month, <span class="hljs-keyword">int</span> day)</span></span>&#123;
+    <span class="hljs-keyword">super</span>(name, salary, year, month, day);
+    bonus = <span class="hljs-number">0</span>;
+&#125;</code></pre>
+</li>
+</ul>
+</li>
+<li><p>继承层次，继承并不限于一个层次。</p>
+<ul>
+<li>由一个公共超类派生出来的所有类的集合被称为<em>继承层次</em>。</li>
+<li>在继承层次中，从某个特定的类到其祖先的路径被称为该类的<em>继承链</em>。</li>
+</ul>
+</li>
+<li><p>多态</p>
+<ul>
+<li>“is-a”规则的另一种表述法是置换法则。它表明程序中出现超类的任何地方都可以用子类对象置换。</li>
+<li>在Java中，子类数组的引用可以转换成超类数组的引用，而不需要采用强制类型转换。</li>
+</ul>
+</li>
+</ol>
+<pre><code class="hljs Java">Manager[] manager = <span class="hljs-keyword">new</span> Manager[<span class="hljs-number">10</span>];
+Employee[] staff = managers;
+<span class="hljs-comment">//managers和staff引用的是同一个数组。</span></code></pre>
+
+<ol start="6">
+<li><p><strong><em>理解方法调用</em></strong>，下面假设要调用x.f(args),隐式参数声明为一个类C的对象。</p>
+<ul>
+<li>编译器查看对象的声明类型和方法名。如果存在多个名字为f但参数类型不一样的方法，编译器会意义列举所有C类中名为f的方法和其超类中访问属性为public且名为f的方法（超类的私有方法不可访问）。</li>
+<li>接下来，编译器将查看调用方法时提供的参数类型。如果在所有名为f的方法中存在一个与提供参数类型完全匹配，就选择这个方法。这个过程叫“<strong>重载解析</strong>”。允许类型转换。如果编译器没有找到与参数类型匹配的方法，或者发现经过类型转换后有多个方法与之匹配，就会报一个错误。</li>
+<li>如果是private方法、static方法、final方法或者构造器，那么编译器将可以准确地知道应该调用哪个方法，我们将这种方法称为<strong>静态绑定</strong>。与此对应的是，调用的方法<strong>依赖于隐式参数的实际类型</strong>，并且在运行时时间<strong>动态绑定</strong>。</li>
+<li>当程序运行，并且采用动态绑定调用方法时，虚拟机一定调用与x所引用对象的实际类型最合适的那个方法。<ul>
+<li>假设x的实际类型是D，它是C类的子类。如果D类定义了方法f(String)，就直接调用它；否则，将在D类的超类中寻找f(String)，以此类推。</li>
+</ul>
+</li>
+<li>方法表：列出了所有方法的签名和实际调用的方法。如果调用super.f(param)，编译器将对隐式参数超类的方法表进行搜索。</li>
+<li>调用 e.getSalary() 的解析过程为：<ul>
+<li>首先，虚拟机提取e的实际类型的方法表。</li>
+<li>接下来，虚拟机搜索定义getSalary签名的类。此时，虚拟机已经知道应该调用哪个方法。</li>
+<li>最后，虚拟机调用方法。</li>
+</ul>
+</li>
+<li>动态绑定有一个重要的特性：无需对现存的代码进行修改，就可以对程序进行扩展。</li>
+<li>在覆盖一个方法的时候，子类方法不能低于超类方法的可见性。特别是，如果超类方法是public，子类方法一定要声明为public。</li>
+</ul>
+</li>
+<li><p>阻止继承：final类和方法</p>
+<ul>
+<li>不允许扩展的类被称为final类。</li>
+<li>声明格式：public final class Executive extends Manager{ … }</li>
+<li>类中的特定方法也可以被声明为final。如果这样做，子类就不能覆盖这个方法，final类中所有的方法自动地成为final方法。</li>
+<li>将方法或类声明为final主要目的是：确保它们不会在子类中改变语意。</li>
+<li>如果一个方法没有被覆盖并且很短，编译器就能够对它进行优化处理，这个过程被称为<em>内联</em>。如果子类中有覆盖这个方法，优化器将取消对覆盖方法的内联。</li>
+</ul>
+</li>
+<li><p>强制类型转换，仅需要用一对圆括号将目标类名括起来，并放置在需要转换的对象引用之前就可以了。</p>
+<ul>
+<li>进行类型转换的唯一原因是：在暂时忽视对象的实际类型之后，使用对象的全部功能。</li>
+<li>将一个子类的引用赋给一个超类变量，编译器是允许的。但将一个超类的引用赋给一个子类变量，必须进行类型转换，这样才能够通过运行时的检查。<ul>
+<li><strong>在进行类型转换之前，先查看一下是否能够成功地转换。</strong></li>
+<li><strong>只能在继承层次内进行类型转换</strong></li>
+<li><strong>在将超类转换成子类之前，应该使用instanceof进行检查。</strong></li>
+</ul>
+</li>
+<li>实际上，通过类型转换调整对象的类型并不是一种好的做法。因为多态性的动态绑定机制能够自动地找到对应的方法。在一般情况下，应该尽量少用类型转换和 instanceof 运算符。</li>
+</ul>
+</li>
+</ol>
+<pre><code class="hljs Java">Manager boss = <span class="hljs-keyword">new</span> Manager(...);
+staff[<span class="hljs-number">0</span>] = boss;
+staff[<span class="hljs-number">1</span>] = <span class="hljs-keyword">new</span> Employee(...);
+staff[<span class="hljs-number">2</span>] = <span class="hljs-keyword">new</span> Employee(...);
+
+Manager boss = (Manager) staff[<span class="hljs-number">0</span>]; <span class="hljs-comment">//Allowed</span>
+Manager boss = (Manager) staff[<span class="hljs-number">1</span>]; <span class="hljs-comment">//Error</span>
+
+<span class="hljs-keyword">if</span> (staff[<span class="hljs-number">1</span>] <span class="hljs-keyword">instanceof</span> Manager)&#123;
+    boss = (Manager) staff[<span class="hljs-number">1</span>];
+&#125; <span class="hljs-comment">//check the instance before</span></code></pre>
+<ol start="8">
+<li>抽象类，从某种角度按，<em>祖先类</em>更加通用，人们只将它作为派生其他类的基类，而不作为想使用的特定的实例类。<ul>
+<li>为了提高程序的清晰度，包含一个或多个抽象方法的类本身必须被声明为抽象的。</li>
+<li>许多程序员认为，在抽象类中不能包含具体方法。建议尽量通用的域和方法（不管是否是抽象的）放在超类（不管是不是抽象类）中。</li>
+<li>扩展抽象类可以有两种选择。<ul>
+<li>一种是在抽象类中定义部分抽象类或不定义抽象类方法，这样就必须将子类也标记为抽象类。</li>
+<li>另一种是定义全部的抽象方法，这样一来子类就不是抽象的了。</li>
+</ul>
+</li>
+<li>类即使不含抽象方法，也可以将类声明为抽象类。</li>
+<li>抽象类不能被实例化。也就是说，如果将一个类声明为abstract，就不能创建这个类的对象。</li>
+<li>可以定义一个抽象类的对象变量。但是它只能引用非抽象子类的实例。</li>
+</ul>
+</li>
+</ol>
+<pre><code class="hljs Java">Person p = <span class="hljs-keyword">new</span> Student(<span class="hljs-string">&quot;Vince Vu&quot;</span>, <span class="hljs-string">&quot;Economics&quot;</span>);</code></pre>
+
+<ol start="9">
+<li>受访问保护<ul>
+<li>子类也不能访问超类的私有域。</li>
+<li>例如，如果超类Employee中的hireDay声明为protected，而不是私有的，Manager中的方法就可以直接访问它。不过，Manager类中的方法只能够访问Manager对象中的hireDay域，而不能访问其他Employee对象中的这个域。</li>
+</ul>
+</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>修饰词</th>
+<th>本类</th>
+<th>同一个包的类</th>
+<th>继承类</th>
+<th>其他类</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>private</td>
+<td>√</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+</tr>
+<tr>
+<td>默认</td>
+<td>√</td>
+<td>√</td>
+<td>×</td>
+<td>×</td>
+</tr>
+<tr>
+<td>protected</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>×</td>
+</tr>
+<tr>
+<td>public</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+</tr>
+</tbody></table>
+<ol start="10">
+<li><p>Object类，它是Java中所有类的始祖，在Java中每个类都是由它扩展而来的。在Java中，只有基本类型不是对象。</p>
+<ul>
+<li>equals方法，用来检测一个对象是否等于另外一个对象。判断两个对象是否具有相同的引用（内容）。<pre><code class="hljs Java"><span class="hljs-comment">//重写equals</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Manager</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Employee</span></span>&#123;
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">equals</span><span class="hljs-params">(Object otherObject)</span></span>&#123;
+        <span class="hljs-keyword">if</span>(!<span class="hljs-keyword">super</span>.equals(otherObject)) <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+        <span class="hljs-comment">//super.equals checked that this and otherObject belong to the same class</span>
+        Manager other = (Manager) otherObject;
+        <span class="hljs-keyword">return</span> bonus == other.bonus;
+    &#125;
+&#125;</code></pre>
+</li>
+</ul>
+</li>
+<li><p>泛型数组列表ArrayList</p>
+<ul>
+<li>ArrayList  是一个采用类型参数的泛型类。为了指定数组列表保存的元素对象类型，需要用一对尖括号将类名括起来加在后面。</li>
+<li>add方法可以将元素添加到数组列表中。</li>
+<li>ensureCapacity(int num)方法，分配一个包含num个对象的内部数组。</li>
+<li>.size()方法类似于length。</li>
+<li>trimToSize() 将数组列表的存储容量削减到当前尺寸。</li>
+<li>.set(i, harry)将第i个元素设置为harry。</li>
+<li>.get()同理。</li>
+<li>.toArray(int[] a)将其拷贝到一个数组中。</li>
+<li>.remove(n)</li>
+<li>将原始ArrayList赋值给一个类型化的ArrayList会得到一个警告。而一个类型化的数组传递给一个普通方法不会出现警告，并且不需要任何的类型转换。</li>
+</ul>
+</li>
+<li><p>对象包装器与自动装箱（wrapper）</p>
+<ul>
+<li>自动装箱：list.add(3) 将自动转换成 list.add(Integer.ValueOf(3))，同样的将Integer对象赋值给一个int值的时候，会自动拆箱。</li>
+<li>对象之间的比较要使用equals方法。</li>
+</ul>
+</li>
+<li><p>枚举类</p>
+</li>
+</ol>
+<pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">enum</span> <span class="hljs-title">Size</span></span>&#123;
+    SMALL(<span class="hljs-string">&quot;S&quot;</span>), MEDIUM(<span class="hljs-string">&quot;M&quot;</span>),LARGE(<span class="hljs-string">&quot;L&quot;</span>),EXTRA_LARGE(<span class="hljs-string">&quot;XL&quot;</span>);
+    
+    <span class="hljs-keyword">private</span> String abbreviation;
+    
+    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-title">Size</span><span class="hljs-params">(String abbreviation)</span> </span>&#123;
+      	<span class="hljs-keyword">this</span>.abbreviation = abbreviation;
+    &#125;
+    
+    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getAbbreviation</span><span class="hljs-params">()</span></span>&#123;
+        <span class="hljs-keyword">return</span> abbreviation;
+    &#125;
+&#125;</code></pre>
+
+<ol start="14">
+<li><p>Class类</p>
+<ul>
+<li>getName方法，返回类的名more字。</li>
+<li>一个Class对象实际上表示的是一个类型，而这个类型未必一定是一种类。例如，int不是类，但int.class是一个Class类型的对象。</li>
+<li>Class类实际上是一个泛型类。例如，Employee.class的类型是Class<Employee>。</li>
+<li>虚拟机为每个类型管理一个Class对象。因此，可以用==运算符实现两个类对象的比较操作。</li>
+<li>newInstance方法乐意用来动态创建一个类的实例。它会调用默认的构造器初始化新创建的对象。如果没有默认的构造器，会抛出一个异常。</li>
+</ul>
+</li>
+<li><p>利用反射分析类的能力。Field、Method和Constructor分别用于描述类的域、方法和构造器。都有getName方法返回项目的名称。</p>
+<ul>
+<li>Field类有一个getType方法，用来返回所描述域所属类型的Class对象。</li>
+<li>Modifier类中isPublic、isPrivate或isFinal判断方法或构造器判断是否是public、private或final。</li>
+<li>Class的getFields、getMethods和getConstructor方法将分别返回类提供的public域、方法和构造器数组。</li>
+</ul>
+</li>
+<li><p><strong>继承的设计技巧</strong></p>
+<ol>
+<li>将公共操作和域放在超类</li>
+<li>不要使用受保护的域</li>
+<li>使用继承实现”is-a”关系</li>
+<li>除非所有继承的方法都有意义，否则不要使用继承</li>
+<li>在覆盖方法时，不要改变预期的行为</li>
+<li>使用多态，而非类型信息</li>
+<li>不要过多使用反射</li>
+</ol>
+</li>
+</ol>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Core-Java/">Core Java</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/05/03/CoreJava-6/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">CoreJava-6</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/04/26/CoreJava-4/">
+                        <span class="hidden-mobile">CoreJava-4</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '#post-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "CoreJava-5&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
