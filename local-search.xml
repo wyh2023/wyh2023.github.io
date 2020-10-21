@@ -47,6 +47,10 @@
       
       <tag>WeeklyReview</tag>
       
+      <tag>并查集</tag>
+      
+      <tag>内存</tag>
+      
     </tags>
     
   </entry>
@@ -97,6 +101,10 @@
       
       <tag>WeeklyReview</tag>
       
+      <tag>计组作业</tag>
+      
+      <tag>Hashing</tag>
+      
     </tags>
     
   </entry>
@@ -121,6 +129,12 @@
     <tags>
       
       <tag>WeeklyReview</tag>
+      
+      <tag>红黑树</tag>
+      
+      <tag>渐进复杂性</tag>
+      
+      <tag>ALU</tag>
       
     </tags>
     
