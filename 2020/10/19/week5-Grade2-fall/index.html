@@ -189,7 +189,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      817 字
+      1.2k 字
     </span>
   
 
@@ -199,7 +199,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      9
+      13
        分钟
     </span>
   
@@ -327,31 +327,84 @@ H(i)=2^{H(i-1)}</script><p><em>log<sup>\</em>&lt;/sup&gt;(n)<em> = min{ </em>k<e
 <li>和EPROM一样的高集成度；</li>
 <li>可以在块级擦除，但字节不行；</li>
 </ul>
-<h4 id="1-6-Refreshing"><a href="#1-6-Refreshing" class="headerlink" title="1.6 Refreshing"></a>1.6 Refreshing</h4><ul>
+<h4 id="1-6-Refreshing"><a href="#1-6-Refreshing" class="headerlink" title="1.6 Refreshing"></a>1.6 Refreshing</h4><h5 id="集中式刷新"><a href="#集中式刷新" class="headerlink" title="集中式刷新"></a>集中式刷新</h5><ul>
 <li>刷新的过程中不能对存储器进行操作；</li>
 <li>停止读写操作，集中刷新</li>
+</ul>
+<h5 id="非集中式刷新"><a href="#非集中式刷新" class="headerlink" title="非集中式刷新"></a>非集中式刷新</h5><ul>
 <li>每次存储周期都刷新——读写周期会延长；</li>
+</ul>
+<h5 id="异步刷新"><a href="#异步刷新" class="headerlink" title="异步刷新"></a>异步刷新</h5><ul>
 <li>避开现在正在使用的一行，若有一行一直都没有刷新，快到64ms都要强制刷新；</li>
 </ul>
 <h4 id="1-7"><a href="#1-7" class="headerlink" title="1.7"></a>1.7</h4><h5 id="1-7-1-位扩展"><a href="#1-7-1-位扩展" class="headerlink" title="1.7.1 位扩展"></a>1.7.1 位扩展</h5><ul>
 <li>地址线没有变换；</li>
-<li>数据线增加；</li>
+<li>扩展寻址单元个数——数据线增加；</li>
 <li>用八块4K<em>1bit的芯片构成4K\</em>8的内存</li>
 </ul>
 <h5 id="1-7-2-增加寻址单元个数（字扩展）"><a href="#1-7-2-增加寻址单元个数（字扩展）" class="headerlink" title="1.7.2 增加寻址单元个数（字扩展）"></a>1.7.2 增加寻址单元个数（字扩展）</h5><ul>
-<li>地址线增加；（2倍多一根）</li>
-<li>数据线不变；</li>
-<li>用四块16K<em>8bit的芯片来构成 64K\</em>8bit的芯片</li>
+<li><p>地址线增加；（2倍多一根）</p>
+</li>
+<li><script type="math/tex; mode=display">
+\lceil log_2(n) \rceil</script></li>
+<li><p>数据线不变；</p>
+</li>
+<li><p>用四块16K<em>8bit的芯片来构成 64K\</em>8bit的芯片</p>
+</li>
 </ul>
 <h5 id="1-73-同时扩展"><a href="#1-73-同时扩展" class="headerlink" title="1.73 同时扩展"></a>1.73 同时扩展</h5><ul>
 <li>地址线增加；</li>
 <li>数据线增加；</li>
 <li>用8块16K<em>4bit的芯片来构成 64K\</em>8bit的芯片</li>
 </ul>
+<h3 id="1-8"><a href="#1-8" class="headerlink" title="1.8"></a>1.8</h3><ul>
+<li>行列选择：选择线减少；</li>
+<li>地址译码器；</li>
+</ul>
 <h3 id="2-Cache"><a href="#2-Cache" class="headerlink" title="2. Cache"></a>2. Cache</h3><h4 id="2-1-How-Cache-Works"><a href="#2-1-How-Cache-Works" class="headerlink" title="2.1 How Cache Works?"></a>2.1 How Cache Works?</h4><ul>
 <li>Check</li>
 <li>Hit</li>
 <li>Miss</li>
+</ul>
+<h4 id="2-2-局部性原理"><a href="#2-2-局部性原理" class="headerlink" title="2.2 局部性原理"></a>2.2 局部性原理</h4><ul>
+<li>空间局部性；</li>
+<li>时间局部性；</li>
+</ul>
+<h4 id="2-3-Average-Access-Time"><a href="#2-3-Average-Access-Time" class="headerlink" title="2.3 Average Access Time"></a>2.3 Average Access Time</h4><ul>
+<li><script type="math/tex; mode=display">
+T_A = p ×T_C+(1-p)×(T_C + T_M)</script></li>
+<li><script type="math/tex; mode=display">
+T_A = T_C + (1-p)×T_M</script></li>
+<li><script type="math/tex; mode=display">
+T_A < T_M， p>\frac{T_C}{T_M}</script></li>
+</ul>
+<h4 id="2-4-Elements-of-Cache-Design"><a href="#2-4-Elements-of-Cache-Design" class="headerlink" title="2.4 Elements of Cache Design"></a>2.4 Elements of Cache Design</h4><ul>
+<li><p>Cache Size 越大越好？</p>
+<ul>
+<li>不是，变好的幅度会越来越小。“局部性”，并不会牵扯到太大的范围，并且块越大块内寻找的成本就会越高。</li>
+</ul>
+</li>
+<li><p>Mapping Function</p>
+<ul>
+<li>Cache line</li>
+<li>直接映射 Direct Mapping<ul>
+<li>地址 = Tag + 行号 + 块内地址；<ul>
+<li>先根据行号找到Cache对应的行，然后比对tag，若不相同则miss，否则根据块内地址选择对应的字节。若miss，根据tag+行号找到主存储器中的内容（低几位）相同，将内容放入cache并且重写tag，将放入内容（根据块内地址查找）送入cpu。</li>
+</ul>
+</li>
+<li>每个块只能存入一个地方。查找很快。映射的时候也很快，每个块只有一个地方可以去。</li>
+<li>缺点：很容易引起“抖动（Thrashing）”。Cache小的时候容易引起抖动。</li>
+</ul>
+</li>
+<li>关联映射 Associative Mapping<ul>
+<li>地址 = Tag + 块内地址；</li>
+<li>根据tag寻找（遍历）</li>
+<li>避免了抖动，但是实现相对复杂，寻找的成本比较高。</li>
+</ul>
+</li>
+<li>组关联 Set Associative Mapping</li>
+</ul>
+</li>
 </ul>
 
             </div>
