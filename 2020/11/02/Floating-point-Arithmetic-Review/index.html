@@ -189,7 +189,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.5k 字
+      2.2k 字
     </span>
   
 
@@ -199,7 +199,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      22
+      31
        分钟
     </span>
   
@@ -302,7 +302,55 @@ String ansFriction;
   ansFriction = alu.sub(bFriction, aFriction); 
 &#125;</code></pre></div>
 <p>这里为什么要在小数位前面加上两个0呢？首先，我们之后要对尾数部分进行加减运算，因为我们要进行的是带符号运算，因此，我们应该补充上至少一个符号位。所以最左边的0是作为符号位的。那么第二个0，就是用来判断加减之后是否溢出的。</p>
-<p>首先我们应该明白一件事：<strong>两个正数或者负数之间的减法不会发生溢出。</strong>所以，对于加法来说，这个溢出位只判断同符号数相加之后是否？</p>
+<p>对于异号加法，我们转化为同号减法；对于同号，直接做加法。</p>
+<p>如果想加减之后等于0，那么计算结果为0，返回0！</p>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">if</span>(ansFriction.equals(<span class="hljs-string">&quot;000000000000000000000000000000&quot;</span>))&#123;
+  <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;00000000000000000000000000000000&quot;</span>;
+&#125;</code></pre></div>
+<p>针对符号位，首先我们应该明白一件事：<strong>两个正数或者负数之间的减法不会发生溢出。</strong>所以，对于加法来说，这个溢出位只判断同符号数相加之后是否溢出。</p>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">if</span>(aSign == bSign)&#123;
+  ansBuilder.append(aSign);
+&#125; <span class="hljs-keyword">else</span> &#123;
+  <span class="hljs-keyword">if</span>(ansFriction.charAt(<span class="hljs-number">0</span>)==<span class="hljs-string">&#x27;1&#x27;</span>)&#123;
+    <span class="hljs-comment">//a + b</span>
+    <span class="hljs-keyword">if</span>(aSign == <span class="hljs-string">&#x27;1&#x27;</span>)&#123;
+      ansBuilder.append(<span class="hljs-string">&quot;0&quot;</span>);
+    &#125; <span class="hljs-keyword">else</span> &#123;
+      ansBuilder.append(<span class="hljs-string">&quot;1&quot;</span>);
+    &#125;
+    ansFriction = Neg(ansFriction);
+  &#125; <span class="hljs-keyword">else</span> &#123;
+    ansBuilder.append(aSign);
+  &#125;
+&#125;</code></pre></div>
+<p>当a与b的符号相同时，发生的是加法，并且两个数的尾数都是正数。所以结果的符号直接与a或b相同即可。当a和b异号的时候，我们需要知道的是a和b之间的差。通过减法，再将得到的结果取绝对值，就可以得到它们的差。至于符号，我们靠上面的代码来判断：注意，我们上面是用a减去b。<strong>那么如果得到的结果是负数并且a是负数，说明a的绝对值小于b的绝对值，a+b得到的是正数。</strong>所以我们将返回值的符号位设为和b相同即可（谁的绝对值大和谁的符号相同）。最后将尾数部分取绝对值。如果为正数，说明a的绝对值更大，符号和a相同。</p>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">if</span>(ansFriction.charAt(<span class="hljs-number">26</span>) == <span class="hljs-string">&#x27;1&#x27;</span>)&#123;
+  ansFriction = alu.add(ansFriction, <span class="hljs-string">&quot;000000000000000000000000001000&quot;</span>);
+&#125;</code></pre></div>
+<p>判断保护位。如果最后的四位保护位的无符号整数值大于7（四位表示范围是0～15，比一半大就进位），则在尾数部分进位1。在机器级表示中，可直接判断保护位的最左位是不是1，此处判断是不是大于7是为了更好的理解内涵。</p>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">if</span>(ansFriction.charAt(<span class="hljs-number">1</span>)==<span class="hljs-string">&#x27;1&#x27;</span>)&#123;
+  <span class="hljs-keyword">if</span>(aExp.equals(<span class="hljs-string">&quot;11111110&quot;</span>))&#123;
+    ansBuilder.append(<span class="hljs-string">&quot;1111111100000000000000000000000&quot;</span>);
+    <span class="hljs-keyword">return</span> ansBuilder.toString();
+  &#125;
+  aExp = alu.add(aExp, <span class="hljs-string">&quot;00000001&quot;</span>);
+  ansFriction = ansFriction.substring(<span class="hljs-number">1</span>, <span class="hljs-number">29</span>);
+&#125; <span class="hljs-keyword">else</span> &#123;
+  ansFriction = ansFriction.substring(<span class="hljs-number">2</span>, <span class="hljs-number">30</span>);
+&#125;</code></pre></div>
+<p>这里判断两数相加之后是否进位，如果进位就在阶码处+1，将尾数左移一位。此处应该判断结果是否会溢出，若溢出则返回无穷。因为此时我的小数部分是30位（2位补充的“00”+1位规格化的0/1+23位尾数+4位保护位），因此取相应的1到28位（左移）或2到30位（无左移）；</p>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">while</span> (ansFriction.charAt(<span class="hljs-number">0</span>) == <span class="hljs-string">&#x27;0&#x27;</span>)&#123;
+  aExp = alu.sub(<span class="hljs-string">&quot;00000001&quot;</span>, aExp);
+  ansFriction = ansFriction + <span class="hljs-string">&quot;0&quot;</span>;
+  ansFriction = ansFriction.substring(<span class="hljs-number">1</span>, <span class="hljs-number">28</span>);
+&#125;</code></pre></div>
+<p>每当目前的尾数的第一位不为1，则需要进行规格化操作；（因为前面已经处理过全为0的情况，因此该循环可以终止）</p>
+<div class="hljs"><pre><code class="hljs java">ansFriction = ansFriction.substring(<span class="hljs-number">0</span>, <span class="hljs-number">24</span>);
+ansBuilder.append(aExp);
+ansBuilder.append(ansFriction, <span class="hljs-number">1</span>, <span class="hljs-number">24</span>);
+
+<span class="hljs-keyword">return</span> ansBuilder.toString();</code></pre></div>
+<p>完成答案。</p>
 <h3 id="辅助函数一览"><a href="#辅助函数一览" class="headerlink" title="辅助函数一览"></a>辅助函数一览</h3><ol>
 <li>计算一串01序列的无符号整数值；</li>
 </ol>

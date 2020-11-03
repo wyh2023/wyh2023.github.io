@@ -189,7 +189,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.2k 字
+      1.4k 字
     </span>
   
 
@@ -199,7 +199,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      13
+      16
        分钟
     </span>
   
@@ -381,7 +381,7 @@ T_A < T_M， p>\frac{T_C}{T_M}</script></li>
 <h4 id="2-4-Elements-of-Cache-Design"><a href="#2-4-Elements-of-Cache-Design" class="headerlink" title="2.4 Elements of Cache Design"></a>2.4 Elements of Cache Design</h4><ul>
 <li><p>Cache Size 越大越好？</p>
 <ul>
-<li>不是，变好的幅度会越来越小。“局部性”，并不会牵扯到太大的范围，并且块越大块内寻找的成本就会越高。</li>
+<li>不是，变好的幅度会越来越小。“局部性”，并不会牵扯到太大的范围，并且块越大块内寻找的成本就会越高。块太大了之后，带来的数据是局部性比较差的、比较老的数据。</li>
 </ul>
 </li>
 <li><p>Mapping Function</p>
@@ -392,8 +392,8 @@ T_A < T_M， p>\frac{T_C}{T_M}</script></li>
 <li>先根据行号找到Cache对应的行，然后比对tag，若不相同则miss，否则根据块内地址选择对应的字节。若miss，根据tag+行号找到主存储器中的内容（低几位）相同，将内容放入cache并且重写tag，将放入内容（根据块内地址查找）送入cpu。</li>
 </ul>
 </li>
-<li>每个块只能存入一个地方。查找很快。映射的时候也很快，每个块只有一个地方可以去。</li>
-<li>缺点：很容易引起“抖动（Thrashing）”。Cache小的时候容易引起抖动。</li>
+<li>每个块只能存入一个地方。查找很快。映射的时候也很快，每个块只有一个地方可以去。换的也快。</li>
+<li>缺点：很容易引起“抖动（Thrashing）”。Cache小的时候容易引起抖动。换一个（很容易出现这个情况）就会换一整个块。</li>
 </ul>
 </li>
 <li>关联映射 Associative Mapping<ul>
@@ -402,9 +402,40 @@ T_A < T_M， p>\frac{T_C}{T_M}</script></li>
 <li>避免了抖动，但是实现相对复杂，寻找的成本比较高。</li>
 </ul>
 </li>
-<li>组关联 Set Associative Mapping</li>
+<li>直接映射适合大容量cache，关联映射适合小的；<ul>
+<li>大容量cache不容易出现抖动。</li>
+<li>直接映射查找快，大cache影响小；关联映射遍历查找，小cache效率更高。</li>
 </ul>
 </li>
+<li>组关联 Set Associative Mapping<ul>
+<li>行的大小和块的大小一样大。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="替换算法"><a href="#替换算法" class="headerlink" title="替换算法"></a>替换算法</h4><ul>
+<li>LRU 最近最少用算法；</li>
+<li>FIFO 先进先出；</li>
+<li>LFU 使用频率最少；</li>
+<li>Random 随机。</li>
+</ul>
+<h4 id="写策略"><a href="#写策略" class="headerlink" title="写策略"></a>写策略</h4><ul>
+<li><p>Write Through</p>
+<ul>
+<li>替换的时候同时写主存和Cache；</li>
+<li>一改就要访问主存；</li>
+<li>提高了cache和主存的一致性；</li>
+</ul>
+</li>
+<li><p>Write Back</p>
+<ul>
+<li>当块被替换时，只修改Cache。；</li>
+<li>需要一个脏位来表示这一个块是否被调整过；如果是1就写回去，如果是0就替换掉；</li>
+<li>优点：减少对主存的操作到最小的程度；</li>
+</ul>
+</li>
+<li></li>
 </ul>
 
             </div>
