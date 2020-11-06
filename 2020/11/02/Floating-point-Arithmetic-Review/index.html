@@ -189,7 +189,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      2.2k 字
+      2k 字
     </span>
   
 
@@ -199,7 +199,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      31
+      29
        分钟
     </span>
   
@@ -324,10 +324,6 @@ String ansFriction;
   &#125;
 &#125;</code></pre></div>
 <p>当a与b的符号相同时，发生的是加法，并且两个数的尾数都是正数。所以结果的符号直接与a或b相同即可。当a和b异号的时候，我们需要知道的是a和b之间的差。通过减法，再将得到的结果取绝对值，就可以得到它们的差。至于符号，我们靠上面的代码来判断：注意，我们上面是用a减去b。<strong>那么如果得到的结果是负数并且a是负数，说明a的绝对值小于b的绝对值，a+b得到的是正数。</strong>所以我们将返回值的符号位设为和b相同即可（谁的绝对值大和谁的符号相同）。最后将尾数部分取绝对值。如果为正数，说明a的绝对值更大，符号和a相同。</p>
-<div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">if</span>(ansFriction.charAt(<span class="hljs-number">26</span>) == <span class="hljs-string">&#x27;1&#x27;</span>)&#123;
-  ansFriction = alu.add(ansFriction, <span class="hljs-string">&quot;000000000000000000000000001000&quot;</span>);
-&#125;</code></pre></div>
-<p>判断保护位。如果最后的四位保护位的无符号整数值大于7（四位表示范围是0～15，比一半大就进位），则在尾数部分进位1。在机器级表示中，可直接判断保护位的最左位是不是1，此处判断是不是大于7是为了更好的理解内涵。</p>
 <div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">if</span>(ansFriction.charAt(<span class="hljs-number">1</span>)==<span class="hljs-string">&#x27;1&#x27;</span>)&#123;
   <span class="hljs-keyword">if</span>(aExp.equals(<span class="hljs-string">&quot;11111110&quot;</span>))&#123;
     ansBuilder.append(<span class="hljs-string">&quot;1111111100000000000000000000000&quot;</span>);
@@ -384,8 +380,8 @@ ansBuilder.append(ansFriction, <span class="hljs-number">1</span>, <span class="
 &#125;</code></pre></div>
 <h3 id="完整的ADD函数"><a href="#完整的ADD函数" class="headerlink" title="完整的ADD函数"></a>完整的ADD函数</h3><div class="hljs"><pre><code class="hljs java"><span class="hljs-function">String <span class="hljs-title">add</span><span class="hljs-params">(String a,String b)</span></span>&#123;
   <span class="hljs-comment">// TODO</span>
-  <span class="hljs-keyword">if</span>(a.equals(<span class="hljs-string">&quot;00000000000000000000000000000000&quot;</span>)) <span class="hljs-keyword">return</span> b;
-  <span class="hljs-keyword">if</span>(b.equals(<span class="hljs-string">&quot;00000000000000000000000000000000&quot;</span>)) <span class="hljs-keyword">return</span> a;
+  <span class="hljs-keyword">if</span>(a.startsWith(<span class="hljs-string">&quot;0000000000000000000000000000000&quot;</span>, <span class="hljs-number">1</span>)) <span class="hljs-keyword">return</span> b;
+  <span class="hljs-keyword">if</span>(b.startsWith(<span class="hljs-string">&quot;0000000000000000000000000000000&quot;</span>, <span class="hljs-number">1</span>)) <span class="hljs-keyword">return</span> a;
 
   String aExp = a.substring(<span class="hljs-number">1</span>, <span class="hljs-number">9</span>);
   String bExp = b.substring(<span class="hljs-number">1</span>, <span class="hljs-number">9</span>);
@@ -441,13 +437,9 @@ ansBuilder.append(ansFriction, <span class="hljs-number">1</span>, <span class="
   <span class="hljs-keyword">if</span>(ansFriction.equals(<span class="hljs-string">&quot;000000000000000000000000000000&quot;</span>))&#123;
     <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;00000000000000000000000000000000&quot;</span>;
   &#125;
+
   <span class="hljs-keyword">if</span>(aSign == bSign)&#123;
-    <span class="hljs-keyword">if</span>(ansFriction.charAt(<span class="hljs-number">0</span>)==<span class="hljs-string">&#x27;1&#x27;</span>)&#123;
-      ansBuilder.append(<span class="hljs-string">&quot;1&quot;</span>);
-      ansFriction = Neg(ansFriction);
-    &#125; <span class="hljs-keyword">else</span> &#123;
-      ansBuilder.append(<span class="hljs-string">&quot;0&quot;</span>);
-    &#125;
+    ansBuilder.append(aSign);
   &#125; <span class="hljs-keyword">else</span> &#123;
     <span class="hljs-keyword">if</span>(ansFriction.charAt(<span class="hljs-number">0</span>)==<span class="hljs-string">&#x27;1&#x27;</span>)&#123;
       <span class="hljs-comment">//a + b</span>
@@ -462,9 +454,11 @@ ansBuilder.append(ansFriction, <span class="hljs-number">1</span>, <span class="
     &#125;
   &#125;
 
-  <span class="hljs-keyword">if</span>(unsignedVal(ansFriction.substring(<span class="hljs-number">26</span>, <span class="hljs-number">30</span>))&gt;<span class="hljs-number">7</span>)&#123;
-    ansFriction = alu.add(ansFriction, <span class="hljs-string">&quot;000000000000000000000000000001&quot;</span>);
-  &#125;
+  <span class="hljs-comment">/*</span>
+<span class="hljs-comment">        if(unsignedVal(ansFriction.substring(26, 30))&gt;7)&#123;</span>
+<span class="hljs-comment">            ansFriction = alu.add(ansFriction, &quot;000000000000000000000000001000&quot;);</span>
+<span class="hljs-comment">        &#125;</span>
+<span class="hljs-comment">         */</span>
   <span class="hljs-keyword">if</span>(ansFriction.charAt(<span class="hljs-number">1</span>)==<span class="hljs-string">&#x27;1&#x27;</span>)&#123;
     <span class="hljs-keyword">if</span>(aExp.equals(<span class="hljs-string">&quot;11111110&quot;</span>))&#123;
       ansBuilder.append(<span class="hljs-string">&quot;1111111100000000000000000000000&quot;</span>);
@@ -485,7 +479,7 @@ ansBuilder.append(ansFriction, <span class="hljs-number">1</span>, <span class="
   &#125;
   ansFriction = ansFriction.substring(<span class="hljs-number">0</span>, <span class="hljs-number">24</span>);
   ansBuilder.append(aExp);
-  ansBuilder.append(ansFriction.substring(<span class="hljs-number">1</span>, <span class="hljs-number">24</span>));
+  ansBuilder.append(ansFriction, <span class="hljs-number">1</span>, <span class="hljs-number">24</span>);
 
   <span class="hljs-keyword">return</span> ansBuilder.toString();
 &#125;</code></pre></div>
@@ -513,6 +507,12 @@ ansBuilder.append(ansFriction, <span class="hljs-number">1</span>, <span class="
                 <div class="post-prevnext row">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2020/11/06/Floating-point-Arithmetic-Review-2/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Integer-Arithmetic-Review-mul&div</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">

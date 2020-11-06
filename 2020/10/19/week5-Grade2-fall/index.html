@@ -189,7 +189,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.4k 字
+      1.5k 字
     </span>
   
 
@@ -199,7 +199,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      16
+      17
        分钟
     </span>
   
@@ -409,6 +409,14 @@ T_A < T_M， p>\frac{T_C}{T_M}</script></li>
 </li>
 <li>组关联 Set Associative Mapping<ul>
 <li>行的大小和块的大小一样大。</li>
+<li>优点：在固定的组里进行操作；</li>
+</ul>
+</li>
+<li>相关性：<ul>
+<li>直接关联：1；</li>
+<li>关联映射：C；</li>
+<li>组关联：K；</li>
+<li>相关性越低，命中率越低，cache越短。</li>
 </ul>
 </li>
 </ul>
@@ -430,14 +438,14 @@ T_A < T_M， p>\frac{T_C}{T_M}</script></li>
 </li>
 <li><p>Write Back</p>
 <ul>
-<li>当块被替换时，只修改Cache。；</li>
+<li>只修改Cache。当块被替换的时候；</li>
 <li>需要一个脏位来表示这一个块是否被调整过；如果是1就写回去，如果是0就替换掉；</li>
 <li>优点：减少对主存的操作到最小的程度；</li>
 </ul>
 </li>
-<li></li>
 </ul>
-
+<h4 id="行的大小"><a href="#行的大小" class="headerlink" title="行的大小"></a>行的大小</h4><p>行的大小会影响Cache的命中率；块太小，一次性拿进来的东西太少，块太大，拿进来没用的东西太多，减少行数会造成更换过于频繁。</p>
+<h4 id="多级Cache"><a href="#多级Cache" class="headerlink" title="多级Cache"></a>多级Cache</h4>
             </div>
             <hr>
             <div>
