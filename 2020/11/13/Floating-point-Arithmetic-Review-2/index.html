@@ -189,7 +189,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      2k 字
+      3.1k 字
     </span>
   
 
@@ -199,7 +199,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      26
+      46
        分钟
     </span>
   
@@ -232,7 +232,8 @@
             <h1 style="display: none">Floating-point-Arithmetic-Review-2</h1>
             
             <div class="markdown-body" id="post-body">
-              <h2 id="浮点数乘除法运算编程作业总结"><a href="#浮点数乘除法运算编程作业总结" class="headerlink" title="浮点数乘除法运算编程作业总结"></a>浮点数乘除法运算编程作业总结</h2><h3 id="浮点数乘法"><a href="#浮点数乘法" class="headerlink" title="浮点数乘法"></a>浮点数乘法</h3><h4 id="1-特殊情况"><a href="#1-特殊情况" class="headerlink" title="1. 特殊情况"></a>1. 特殊情况</h4><p>任何数和NaN相乘以及0和无穷相乘得到的结果都是NaN。我们首先需要对此进行特判：</p>
+              <h2 id="浮点数乘除法运算编程作业总结"><a href="#浮点数乘除法运算编程作业总结" class="headerlink" title="浮点数乘除法运算编程作业总结"></a>浮点数乘除法运算编程作业总结</h2><p>多有说的不清楚以及还想不太清楚的地方，希望多多包涵( ´▽` )ﾉ</p>
+<h3 id="浮点数乘法"><a href="#浮点数乘法" class="headerlink" title="浮点数乘法"></a>浮点数乘法</h3><h4 id="1-特殊情况"><a href="#1-特殊情况" class="headerlink" title="1. 特殊情况"></a>1. 特殊情况</h4><p>任何数和NaN相乘以及0和无穷相乘得到的结果都是NaN。我们首先需要对此进行特判：</p>
 <div class="hljs"><pre><code class="hljs java"><span class="hljs-comment">//如果两个乘数中有一个是NaN，返回NaN</span>
 <span class="hljs-keyword">if</span>(Pattern.matches(a, IEEE754Float.NaN) || Pattern.matches(b, IEEE754Float.NaN))&#123;
   <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;NaN&quot;</span>;
@@ -374,7 +375,7 @@ ansExp = add(<span class="hljs-string">&quot;01111111&quot;</span>, tmp);
 &#125;
 
 <span class="hljs-keyword">if</span>(tmpCF == <span class="hljs-string">&#x27;1&#x27;</span> &amp;&amp; CF == <span class="hljs-string">&#x27;1&#x27;</span>)&#123;
-  <span class="hljs-keyword">return</span> ansSign + <span class="hljs-string">&quot;1111111100000000000000000000000&quot;</span>
+  <span class="hljs-keyword">return</span> ansSign + <span class="hljs-string">&quot;1111111100000000000000000000000&quot;</span>;
 &#125;
 </code></pre></div>
 <h4 id="计算小数部分"><a href="#计算小数部分" class="headerlink" title="计算小数部分"></a>计算小数部分</h4><div class="hljs"><pre><code class="hljs java">ansFrac = divFrac(countB, countA).substring(<span class="hljs-number">0</span>, <span class="hljs-number">24</span>);
@@ -388,8 +389,9 @@ ansFrac = ansFrac.substring(<span class="hljs-number">1</span>, <span class="hlj
 
 <span class="hljs-keyword">return</span> ansSign + ansExp + ansFrac;</code></pre></div>
 <p>规格化不多赘述</p>
-<p>重点是下面的小数部分除法。我们需要一个余数部分remainder，商quotient。对参数我们都在前面加上一位0。因为小数可能会出现无法除尽的情况，对于这一位无法除尽的1，我们需要保留到下一次减法。</p>
-<p>【未完待续……】</p>
+<p>重点是下面的小数部分除法。我们需要一个余数部分remainder，商quotient。<strong>对参数我们都在前面加上一位0。</strong></p>
+<p>因为小数可能会出现无法除尽的情况。倘若只有28位，<strong>当remainder的最高位为1且不能减去除数的时候</strong>，最高位的1就会在左移之后消失，产生错误。因此这个最高位的1需要保留到下一次减法。现在的remainder是29位的，src，也就是除数，是28位的（第29位被我们手动置为0），所以当remainder的最高位为1的时候，remainder一定会大于src（除数），因此肯定可以使得减法进行。</p>
+<p>这里首先减去除数，一旦减多了，就把除数加回来。怎么判断减多了？利用刚才仔细分析的CF。一旦CF为0，即减法需要借位，则说明减多了；一旦CF为1，说明“enough“，减对了。</p>
 <div class="hljs"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">divFrac</span> <span class="hljs-params">(String src, String dest)</span></span>&#123;
   String remainder = <span class="hljs-string">&quot;0&quot;</span> + dest;
   String quotient = <span class="hljs-string">&quot;00000000000000000000000000000&quot;</span>;
@@ -408,6 +410,208 @@ ansFrac = ansFrac.substring(<span class="hljs-number">1</span>, <span class="hlj
   <span class="hljs-keyword">return</span> quotient;
 &#125;
 </code></pre></div>
+<p>ppt截图：</p>
+<p><img src="/img/COA/FloatMul.jpg" srcset="/img/loading.gif" alt=""></p>
+<h3 id="完整代码（包括辅助函数）"><a href="#完整代码（包括辅助函数）" class="headerlink" title="完整代码（包括辅助函数）"></a>完整代码（包括辅助函数）</h3><div class="hljs"><pre><code class="hljs java"><span class="hljs-function">String <span class="hljs-title">mul</span><span class="hljs-params">(String a, String b)</span> </span>&#123;
+  <span class="hljs-keyword">if</span>(Pattern.matches(a, IEEE754Float.NaN) || Pattern.matches(b, IEEE754Float.NaN))&#123;
+    <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;NaN&quot;</span>;
+  &#125;
+
+  String ansExp;
+  String ansFrac;
+
+  <span class="hljs-keyword">char</span> signA = a.charAt(<span class="hljs-number">0</span>);
+  <span class="hljs-keyword">char</span> signB = b.charAt(<span class="hljs-number">0</span>);
+
+  String ansSign = (signA == signB)? <span class="hljs-string">&quot;0&quot;</span>:<span class="hljs-string">&quot;1&quot;</span>;
+
+  <span class="hljs-keyword">if</span>(a.equals(IEEE754Float.N_ZERO) || b.equals(IEEE754Float.N_ZERO)
+     || a.equals(IEEE754Float.P_ZERO) || b.equals(IEEE754Float.P_ZERO))&#123;
+    <span class="hljs-keyword">if</span>(Pattern.matches(a, IEEE754Float.NaN) || Pattern.matches(b, IEEE754Float.NaN))&#123;
+      <span class="hljs-keyword">return</span> IEEE754Float.NaN;
+    &#125;
+    <span class="hljs-keyword">if</span>(a.startsWith(<span class="hljs-string">&quot;11111111&quot;</span>, <span class="hljs-number">1</span>) || b.startsWith(<span class="hljs-string">&quot;11111111&quot;</span>, <span class="hljs-number">1</span>))&#123;
+      <span class="hljs-keyword">return</span> IEEE754Float.NaN;
+    &#125;
+    <span class="hljs-keyword">return</span> ansSign + <span class="hljs-string">&quot;0000000000000000000000000000000&quot;</span>;
+  &#125;
+
+  String expA = a.substring(<span class="hljs-number">1</span>, <span class="hljs-number">9</span>);
+  String expB = b.substring(<span class="hljs-number">1</span>, <span class="hljs-number">9</span>);
+
+  String bitA = (expA.equals(<span class="hljs-string">&quot;00000000&quot;</span>))? <span class="hljs-string">&quot;0&quot;</span>:<span class="hljs-string">&quot;1&quot;</span>;
+  String bitB = (expB.equals(<span class="hljs-string">&quot;00000000&quot;</span>))? <span class="hljs-string">&quot;0&quot;</span>:<span class="hljs-string">&quot;1&quot;</span>;
+
+  String fracA = a.substring(<span class="hljs-number">9</span>);
+  String fracB = b.substring(<span class="hljs-number">9</span>);
+
+  String countA = bitA + fracA + <span class="hljs-string">&quot;0000&quot;</span>; <span class="hljs-comment">//28</span>
+  String countB = bitB + fracB + <span class="hljs-string">&quot;0000&quot;</span>;
+
+  String tmp = add(expA, expB);
+  <span class="hljs-comment">//CF 判断有没有溢出；</span>
+  <span class="hljs-keyword">char</span> tmpCF = CF;
+  ansExp = sub(<span class="hljs-string">&quot;01111111&quot;</span>, tmp);
+  <span class="hljs-comment">//CF 判断有没有借位；</span>
+
+  <span class="hljs-keyword">if</span>((tmpCF==<span class="hljs-string">&#x27;1&#x27;</span> &amp;&amp; CF==<span class="hljs-string">&#x27;1&#x27;</span>) || ansExp.equals(<span class="hljs-string">&quot;11111111&quot;</span>))&#123; <span class="hljs-comment">//一开始溢出了但是没有借位，说明</span>
+    <span class="hljs-keyword">if</span>(signA==signB) <span class="hljs-keyword">return</span> IEEE754Float.P_INF;
+    <span class="hljs-keyword">else</span> <span class="hljs-keyword">return</span> IEEE754Float.N_INF;
+  &#125;
+
+  <span class="hljs-keyword">if</span>(tmpCF==<span class="hljs-string">&#x27;0&#x27;</span> &amp;&amp; CF==<span class="hljs-string">&#x27;0&#x27;</span>)&#123; <span class="hljs-comment">//一开始没有溢出，但是有借位</span>
+    <span class="hljs-keyword">if</span>(signA==signB) <span class="hljs-keyword">return</span> IEEE754Float.P_ZERO;
+    <span class="hljs-keyword">else</span> <span class="hljs-keyword">return</span> IEEE754Float.N_ZERO;
+  &#125;
+
+  ansFrac = mulFrac(countA, countB).substring(<span class="hljs-number">1</span>, <span class="hljs-number">25</span>);
+
+  <span class="hljs-comment">//Normalize</span>
+  <span class="hljs-keyword">while</span> (ansFrac.charAt(<span class="hljs-number">0</span>) == <span class="hljs-string">&#x27;0&#x27;</span> &amp;&amp; !ansExp.equals(<span class="hljs-string">&quot;00000000&quot;</span>))&#123;
+    ansFrac = ansFrac.substring(<span class="hljs-number">1</span>) + <span class="hljs-string">&quot;0&quot;</span>;
+    ansExp = sub(<span class="hljs-string">&quot;00000001&quot;</span>, ansExp);
+  &#125;
+  ansFrac = ansFrac.substring(<span class="hljs-number">1</span>, <span class="hljs-number">24</span>);
+
+  <span class="hljs-keyword">return</span> ansSign + ansExp + ansFrac;
+&#125;
+
+<span class="hljs-comment">/**</span>
+<span class="hljs-comment">     * compute the float mul of a / b</span>
+<span class="hljs-comment">     */</span>
+<span class="hljs-function">String <span class="hljs-title">div</span><span class="hljs-params">(String a, String b)</span> </span>&#123;
+
+  String ansExp;
+  String ansFrac;
+
+  <span class="hljs-keyword">char</span> signA = a.charAt(<span class="hljs-number">0</span>);
+  <span class="hljs-keyword">char</span> signB = b.charAt(<span class="hljs-number">0</span>);
+
+  String ansSign = (signA == signB)? <span class="hljs-string">&quot;0&quot;</span>:<span class="hljs-string">&quot;1&quot;</span>;
+
+  <span class="hljs-keyword">if</span>(b.startsWith(<span class="hljs-string">&quot;0000000000000000000000000000000&quot;</span>, <span class="hljs-number">1</span>))&#123;
+    <span class="hljs-keyword">if</span>(a.equals(IEEE754Float.N_ZERO) || a.equals(IEEE754Float.P_ZERO))&#123;
+      <span class="hljs-keyword">return</span> IEEE754Float.NaN;
+    &#125; <span class="hljs-keyword">else</span> &#123;
+      <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> ArithmeticException();
+    &#125;
+  &#125;
+
+  <span class="hljs-keyword">if</span>(a.startsWith(<span class="hljs-string">&quot;0000000000000000000000000000000&quot;</span>, <span class="hljs-number">1</span>))&#123;
+    <span class="hljs-keyword">return</span> ansSign + <span class="hljs-string">&quot;0000000000000000000000000000000&quot;</span>;
+  &#125;
+
+  String expA = a.substring(<span class="hljs-number">1</span>, <span class="hljs-number">9</span>);
+  String expB = b.substring(<span class="hljs-number">1</span>, <span class="hljs-number">9</span>);
+
+  String bitA = (expA.equals(<span class="hljs-string">&quot;00000000&quot;</span>))? <span class="hljs-string">&quot;0&quot;</span>:<span class="hljs-string">&quot;1&quot;</span>;
+  String bitB = (expB.equals(<span class="hljs-string">&quot;00000000&quot;</span>))? <span class="hljs-string">&quot;0&quot;</span>:<span class="hljs-string">&quot;1&quot;</span>;
+
+  String fracA = a.substring(<span class="hljs-number">9</span>);
+  String fracB = b.substring(<span class="hljs-number">9</span>);
+
+  String countA = bitA + fracA + <span class="hljs-string">&quot;0000&quot;</span>; <span class="hljs-comment">//28</span>
+  String countB = bitB + fracB + <span class="hljs-string">&quot;0000&quot;</span>;
+
+  String tmp = sub(expB, expA);
+  <span class="hljs-comment">//CF 判断有没有溢出；</span>
+  <span class="hljs-keyword">char</span> tmpCF = CF;
+  ansExp = add(<span class="hljs-string">&quot;01111111&quot;</span>, tmp);
+  <span class="hljs-comment">//CF 判断有没有借位；</span>
+
+  <span class="hljs-keyword">if</span>(tmpCF == <span class="hljs-string">&#x27;0&#x27;</span> &amp;&amp; CF == <span class="hljs-string">&#x27;0&#x27;</span>)&#123;
+    <span class="hljs-keyword">return</span> ansSign + <span class="hljs-string">&quot;0000000000000000000000000000000&quot;</span>;
+  &#125;
+
+  <span class="hljs-keyword">if</span>(tmpCF == <span class="hljs-string">&#x27;1&#x27;</span> &amp;&amp; CF == <span class="hljs-string">&#x27;1&#x27;</span>)&#123;
+    <span class="hljs-keyword">return</span> ansSign + <span class="hljs-string">&quot;1111111100000000000000000000000&quot;</span>;
+  &#125;
+
+  ansFrac = divFrac(countB, countA).substring(<span class="hljs-number">0</span>, <span class="hljs-number">24</span>);
+
+  <span class="hljs-comment">//Normalize</span>
+  <span class="hljs-keyword">while</span> (ansFrac.charAt(<span class="hljs-number">0</span>) == <span class="hljs-string">&#x27;0&#x27;</span> &amp;&amp; !ansExp.equals(<span class="hljs-string">&quot;00000000&quot;</span>))&#123;
+    ansFrac = ansFrac.substring(<span class="hljs-number">1</span>) + <span class="hljs-string">&quot;0&quot;</span>;
+    ansExp = sub(<span class="hljs-string">&quot;00000001&quot;</span>, ansExp);
+  &#125;
+  ansFrac = ansFrac.substring(<span class="hljs-number">1</span>, <span class="hljs-number">24</span>);
+
+  <span class="hljs-keyword">return</span> ansSign + ansExp + ansFrac;
+&#125;
+
+<span class="hljs-function">String <span class="hljs-title">add</span><span class="hljs-params">(String src, String dest)</span> </span>&#123;
+  <span class="hljs-keyword">int</span> carry = <span class="hljs-number">0</span>;
+  <span class="hljs-keyword">char</span>[] srcArr = src.toCharArray();
+  <span class="hljs-keyword">char</span>[] destArr = dest.toCharArray();
+  <span class="hljs-keyword">int</span> len = srcArr.length;
+  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=len-<span class="hljs-number">1</span>; i&gt;=<span class="hljs-number">0</span>; i--)&#123;
+    <span class="hljs-keyword">if</span>(srcArr[i]==<span class="hljs-string">&#x27;1&#x27;</span> &amp;&amp; destArr[i]==<span class="hljs-string">&#x27;1&#x27;</span>)&#123;
+      destArr[i] = (carry==<span class="hljs-number">1</span>)? <span class="hljs-string">&#x27;1&#x27;</span>:<span class="hljs-string">&#x27;0&#x27;</span>;
+      carry = <span class="hljs-number">1</span>;
+    &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (srcArr[i]==<span class="hljs-string">&#x27;1&#x27;</span> || destArr[i]==<span class="hljs-string">&#x27;1&#x27;</span>)&#123;
+      <span class="hljs-keyword">if</span>(carry==<span class="hljs-number">1</span>)&#123;
+        destArr[i] = <span class="hljs-string">&#x27;0&#x27;</span>;
+      &#125; <span class="hljs-keyword">else</span> &#123;
+        destArr[i] = <span class="hljs-string">&#x27;1&#x27;</span>;
+        carry = <span class="hljs-number">0</span>;
+      &#125;
+    &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (carry == <span class="hljs-number">1</span>)&#123;
+      destArr[i] = <span class="hljs-string">&#x27;1&#x27;</span>;
+      carry = <span class="hljs-number">0</span>;
+    &#125;
+  &#125;
+  <span class="hljs-keyword">this</span>.CF = (carry == <span class="hljs-number">1</span>)? <span class="hljs-string">&#x27;1&#x27;</span>:<span class="hljs-string">&#x27;0&#x27;</span>;
+  <span class="hljs-keyword">return</span> String.valueOf(destArr);
+&#125;
+
+<span class="hljs-function">String <span class="hljs-title">sub</span><span class="hljs-params">(String src, String dest)</span> </span>&#123;
+  <span class="hljs-keyword">int</span> carry = <span class="hljs-number">0</span>;
+  <span class="hljs-keyword">char</span>[] srcArr = src.toCharArray();
+  <span class="hljs-keyword">char</span>[] destArr = dest.toCharArray();
+  <span class="hljs-keyword">int</span> len = srcArr.length;
+  <span class="hljs-keyword">int</span> flg = <span class="hljs-number">0</span>;
+  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=len-<span class="hljs-number">1</span>; i&gt;=<span class="hljs-number">0</span>; i--)&#123;
+    <span class="hljs-keyword">if</span>(flg == <span class="hljs-number">1</span>)&#123;
+      srcArr[i] = (srcArr[i]==<span class="hljs-string">&#x27;0&#x27;</span>)? <span class="hljs-string">&#x27;1&#x27;</span>:<span class="hljs-string">&#x27;0&#x27;</span>;
+    &#125;
+    <span class="hljs-keyword">if</span>(srcArr[i]!=<span class="hljs-string">&#x27;0&#x27;</span>)&#123;
+      flg = <span class="hljs-number">1</span>;
+    &#125;
+  &#125;
+  <span class="hljs-keyword">return</span> add(String.valueOf(srcArr), dest);
+&#125;
+
+<span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">mulFrac</span> <span class="hljs-params">(String src, String dest)</span></span>&#123;
+  String Y = dest;
+  String product = <span class="hljs-string">&quot;0000000000000000000000000000&quot;</span>;
+  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>; i&lt;<span class="hljs-number">28</span>; i++)&#123;
+    <span class="hljs-keyword">if</span>(Y.charAt(<span class="hljs-number">27</span>) == <span class="hljs-string">&#x27;1&#x27;</span>)&#123;
+      product = add(src, product);
+    &#125;
+    product = <span class="hljs-string">&quot;0&quot;</span> + product;
+    Y = product.charAt(<span class="hljs-number">28</span>) + Y.substring(<span class="hljs-number">0</span>, <span class="hljs-number">28</span>);
+    product = product.substring(<span class="hljs-number">0</span>, <span class="hljs-number">28</span>);
+  &#125;
+  <span class="hljs-keyword">return</span> product;
+&#125;
+
+<span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">divFrac</span> <span class="hljs-params">(String src, String dest)</span></span>&#123;
+  String remainder = <span class="hljs-string">&quot;0&quot;</span> + dest;
+  String quotient = <span class="hljs-string">&quot;00000000000000000000000000000&quot;</span>;
+  src = <span class="hljs-string">&quot;0&quot;</span> + src;
+  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>; i&lt;<span class="hljs-number">29</span>; i++)&#123;
+    remainder = sub(src, remainder);
+    <span class="hljs-keyword">char</span> tmp = quotient.charAt(<span class="hljs-number">0</span>);
+    <span class="hljs-keyword">if</span>(CF == <span class="hljs-string">&#x27;1&#x27;</span>)&#123;
+      quotient = quotient.substring(<span class="hljs-number">1</span>) + <span class="hljs-string">&quot;1&quot;</span>;
+    &#125; <span class="hljs-keyword">else</span> &#123;
+      remainder = add(src, remainder);
+      quotient = quotient.substring(<span class="hljs-number">1</span>) + <span class="hljs-string">&quot;0&quot;</span>;
+    &#125;
+    remainder = remainder.substring(<span class="hljs-number">1</span>) + tmp;
+  &#125;
+  <span class="hljs-keyword">return</span> quotient;
+&#125;</code></pre></div>
 
             </div>
             <hr>
