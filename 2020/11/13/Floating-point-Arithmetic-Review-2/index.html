@@ -1,0 +1,689 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;light&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.png">
+  <link rel="icon" type="image/png" href="/img/avatar.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  <title>Floating-point-Arithmetic-Review-2 - Hexo</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/darcula.min.css" />
+    
+  
+
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>wyh0110JX</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('/img/%E8%83%8C%E6%99%AF3.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container page-header text-center fade-in-up">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-11-13 17:16" pubdate>
+        2020年11月13日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      26
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto" id="post">
+            <!-- SEO header -->
+            <h1 style="display: none">Floating-point-Arithmetic-Review-2</h1>
+            
+            <div class="markdown-body" id="post-body">
+              <h2 id="浮点数乘除法运算编程作业总结"><a href="#浮点数乘除法运算编程作业总结" class="headerlink" title="浮点数乘除法运算编程作业总结"></a>浮点数乘除法运算编程作业总结</h2><h3 id="浮点数乘法"><a href="#浮点数乘法" class="headerlink" title="浮点数乘法"></a>浮点数乘法</h3><h4 id="1-特殊情况"><a href="#1-特殊情况" class="headerlink" title="1. 特殊情况"></a>1. 特殊情况</h4><p>任何数和NaN相乘以及0和无穷相乘得到的结果都是NaN。我们首先需要对此进行特判：</p>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-comment">//如果两个乘数中有一个是NaN，返回NaN</span>
+<span class="hljs-keyword">if</span>(Pattern.matches(a, IEEE754Float.NaN) || Pattern.matches(b, IEEE754Float.NaN))&#123;
+  <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;NaN&quot;</span>;
+&#125;
+
+String ansExp;
+String ansFrac;
+
+<span class="hljs-keyword">char</span> signA = a.charAt(<span class="hljs-number">0</span>);
+<span class="hljs-keyword">char</span> signB = b.charAt(<span class="hljs-number">0</span>);
+
+String ansSign = (signA == signB)? <span class="hljs-string">&quot;0&quot;</span>:<span class="hljs-string">&quot;1&quot;</span>;
+
+<span class="hljs-comment">//这么写麻烦了很多，在除法中的处理看起来更清爽一些。</span>
+<span class="hljs-comment">//如果两个乘数中有一个是0，那么当另一个数：</span>
+<span class="hljs-comment">//1.为NaN时【貌似重复判断了】结果为NaN</span>
+<span class="hljs-comment">//2.为无穷的时候结果为NaN</span>
+<span class="hljs-comment">//3.其他情况返回0，注意0的符号是两个乘数的异或结果</span>
+<span class="hljs-keyword">if</span>(a.equals(IEEE754Float.N_ZERO) || b.equals(IEEE754Float.N_ZERO)
+   || a.equals(IEEE754Float.P_ZERO) || b.equals(IEEE754Float.P_ZERO))&#123;
+  <span class="hljs-keyword">if</span>(Pattern.matches(a, IEEE754Float.NaN) || Pattern.matches(b, IEEE754Float.NaN))&#123;
+    <span class="hljs-keyword">return</span> IEEE754Float.NaN;
+  &#125;
+  <span class="hljs-keyword">if</span>(a.startsWith(<span class="hljs-string">&quot;11111111&quot;</span>, <span class="hljs-number">1</span>) || b.startsWith(<span class="hljs-string">&quot;11111111&quot;</span>, <span class="hljs-number">1</span>))&#123;
+    <span class="hljs-keyword">return</span> IEEE754Float.NaN;
+  &#125;
+  <span class="hljs-keyword">return</span> ansSign + <span class="hljs-string">&quot;0000000000000000000000000000000&quot;</span>;
+&#125;
+</code></pre></div>
+<h4 id="2-处理参数"><a href="#2-处理参数" class="headerlink" title="2. 处理参数"></a>2. 处理参数</h4><p>上面还处理了结果会用到的符号。下面对两个乘数进行处理，并且补上规格化隐去的小数点之前的0或者1。使用了countA和countB来代表参与运算的小数部分。</p>
+<div class="hljs"><pre><code class="hljs java">String expA = a.substring(<span class="hljs-number">1</span>, <span class="hljs-number">9</span>);
+String expB = b.substring(<span class="hljs-number">1</span>, <span class="hljs-number">9</span>);
+
+String bitA = (expA.equals(<span class="hljs-string">&quot;00000000&quot;</span>))? <span class="hljs-string">&quot;0&quot;</span>:<span class="hljs-string">&quot;1&quot;</span>;
+String bitB = (expB.equals(<span class="hljs-string">&quot;00000000&quot;</span>))? <span class="hljs-string">&quot;0&quot;</span>:<span class="hljs-string">&quot;1&quot;</span>;
+
+String fracA = a.substring(<span class="hljs-number">9</span>);
+String fracB = b.substring(<span class="hljs-number">9</span>);
+
+String countA = bitA + fracA + <span class="hljs-string">&quot;0000&quot;</span>; <span class="hljs-comment">//28</span>
+String countB = bitB + fracB + <span class="hljs-string">&quot;0000&quot;</span>;
+</code></pre></div>
+<h4 id="3-CF以及特判阶码"><a href="#3-CF以及特判阶码" class="headerlink" title="3. CF以及特判阶码"></a>3. CF以及特判阶码</h4><p>这里比较有意思，要单独说一下有关CF位。</p>
+<p>CF位表示的是进位，当无符号数加减法溢出的时候CF会被置为1。什么情况下加法会溢出呢？当n位的两个二进制数相加得到的和大于2<sup>n</sup>时，溢出，也就是最后一位计算的时候CF为1。加法的情况下比较好理解，那么减法呢？在我的实现中，减法是将减数取反加一来实现的。因此，原本需要借位的数相加之后的CF为0，不需要的为1。所以加法和减法的溢出与否和CF的关系是相反的。</p>
+<p>在这里，因为阶码比它的真实值多了127，两个数相乘之和阶码相加，也就加上了两个127，因此我们需要减一个127。正常的两个数之和的范围是0～508。而得到一个可以表示的结果的范围应该是127～381。</p>
+<p>怎么样表示上溢出和下溢出的数更方便呢？</p>
+<p>我们使用CF位！</p>
+<p>如果一开始的加法溢出了，说明得到的结果大于255。如果之后的减法需要借位，说明得到的结果小于等于382（这也说明了还有一种加完得到255的情况）。小于382的情况是合法的，以上的关系都是充要的。因此，当一开始的加法溢出且减法不需要借位的时候，阶码上溢！根据之前对于CF的讨论，<strong>当加法之后的CF为1且减法之后的CF为1时，溢出得到结果无穷。</strong></p>
+<p>如果一开始的加法没有溢出，说明结果小于等于255。如果之后-127的减法需要借位，说明结果处于0～126或256～382。取并集结果：0～126，我们可以知道<strong>当CF在加法之后为0，减127之后也为0的时候，阶码下溢出。</strong></p>
+<p>以下是具体的处理：</p>
+<div class="hljs"><pre><code class="hljs java">String tmp = add(expA, expB);
+<span class="hljs-comment">//CF 判断有没有溢出；</span>
+<span class="hljs-keyword">char</span> tmpCF = CF;
+ansExp = sub(<span class="hljs-string">&quot;01111111&quot;</span>, tmp);
+<span class="hljs-comment">//CF 判断有没有借位；</span>
+
+<span class="hljs-keyword">if</span>((tmpCF==<span class="hljs-string">&#x27;1&#x27;</span> &amp;&amp; CF==<span class="hljs-string">&#x27;1&#x27;</span>) || ansExp.equals(<span class="hljs-string">&quot;11111111&quot;</span>))&#123; <span class="hljs-comment">//一开始溢出了但是没有借位，说明</span>
+  <span class="hljs-keyword">if</span>(signA==signB) <span class="hljs-keyword">return</span> IEEE754Float.P_INF;
+  <span class="hljs-keyword">else</span> <span class="hljs-keyword">return</span> IEEE754Float.N_INF;
+&#125;
+
+<span class="hljs-keyword">if</span>(tmpCF==<span class="hljs-string">&#x27;0&#x27;</span> &amp;&amp; CF==<span class="hljs-string">&#x27;0&#x27;</span>)&#123; <span class="hljs-comment">//一开始没有溢出，但是有借位</span>
+  <span class="hljs-keyword">if</span>(signA==signB) <span class="hljs-keyword">return</span> IEEE754Float.P_ZERO;
+  <span class="hljs-keyword">else</span> <span class="hljs-keyword">return</span> IEEE754Float.N_ZERO;
+&#125;</code></pre></div>
+<p>之后的一步就是小数部分相乘得到结果的fraction。并对结果进行规格化（规格化的过程不多赘述）。</p>
+<div class="hljs"><pre><code class="hljs java">ansFrac = mulFrac(countA, countB).substring(<span class="hljs-number">1</span>, <span class="hljs-number">25</span>);
+
+<span class="hljs-comment">//Normalize</span>
+<span class="hljs-keyword">while</span> (ansFrac.charAt(<span class="hljs-number">0</span>) == <span class="hljs-string">&#x27;0&#x27;</span> &amp;&amp; !ansExp.equals(<span class="hljs-string">&quot;00000000&quot;</span>))&#123;
+  ansFrac = ansFrac.substring(<span class="hljs-number">1</span>) + <span class="hljs-string">&quot;0&quot;</span>;
+  ansExp = sub(<span class="hljs-string">&quot;00000001&quot;</span>, ansExp);
+&#125;
+ansFrac = ansFrac.substring(<span class="hljs-number">1</span>, <span class="hljs-number">24</span>);
+
+<span class="hljs-keyword">return</span> ansSign + ansExp + ansFrac;</code></pre></div>
+<h4 id="4-尾数乘法"><a href="#4-尾数乘法" class="headerlink" title="4. 尾数乘法"></a>4. 尾数乘法</h4><p>在这里给出mulFrac的具体代码：</p>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">mulFrac</span> <span class="hljs-params">(String src, String dest)</span></span>&#123;
+  String Y = dest;
+  String product = <span class="hljs-string">&quot;0000000000000000000000000000&quot;</span>;
+  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>; i&lt;<span class="hljs-number">28</span>; i++)&#123;
+    <span class="hljs-keyword">if</span>(Y.charAt(<span class="hljs-number">27</span>) == <span class="hljs-string">&#x27;1&#x27;</span>)&#123;
+      product = add(src, product);
+    &#125;
+    product = <span class="hljs-string">&quot;0&quot;</span> + product;
+    Y = product.charAt(<span class="hljs-number">28</span>) + Y.substring(<span class="hljs-number">0</span>, <span class="hljs-number">28</span>);
+    product = product.substring(<span class="hljs-number">0</span>, <span class="hljs-number">28</span>);
+  &#125;
+  <span class="hljs-keyword">return</span> product;
+&#125;</code></pre></div>
+<p>参数均是28位（1位规格化隐藏+23位fraction+4位保护位）。这里使用了ppt上的算法，当Y最后一位为1的时候，将部分积的第一位置为1，然后右移；反之置为0，再左移。得到的结果应当为部分积（也是28位），在mul中会被切割整理。以上的操作都是竖式乘法的一种实现，可以用该思路辅助理解。</p>
+<p>ppt截图：</p>
+<p><img src="/img/COA/FloatMul.jpg" srcset="/img/loading.gif" alt=""></p>
+<h3 id="浮点数除法"><a href="#浮点数除法" class="headerlink" title="浮点数除法"></a>浮点数除法</h3><h4 id="1-判断特殊情况"><a href="#1-判断特殊情况" class="headerlink" title="1. 判断特殊情况"></a>1. 判断特殊情况</h4><p>当被除数为0且除数也为0的时候，结果为NaN。除此之外，当被除数为0的时候，结果也为0（注意判断符号）；当除数为0的时候抛出错误。</p>
+<div class="hljs"><pre><code class="hljs java">String ansExp;
+String ansFrac;
+
+<span class="hljs-keyword">char</span> signA = a.charAt(<span class="hljs-number">0</span>);
+<span class="hljs-keyword">char</span> signB = b.charAt(<span class="hljs-number">0</span>);
+
+String ansSign = (signA == signB)? <span class="hljs-string">&quot;0&quot;</span>:<span class="hljs-string">&quot;1&quot;</span>;
+
+<span class="hljs-keyword">if</span>(b.startsWith(<span class="hljs-string">&quot;0000000000000000000000000000000&quot;</span>, <span class="hljs-number">1</span>))&#123;
+  <span class="hljs-keyword">if</span>(a.equals(IEEE754Float.N_ZERO) || a.equals(IEEE754Float.P_ZERO))&#123;
+    <span class="hljs-keyword">return</span> IEEE754Float.NaN;
+  &#125; <span class="hljs-keyword">else</span> &#123;
+    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> ArithmeticException();
+  &#125;
+&#125;
+
+<span class="hljs-keyword">if</span>(a.startsWith(<span class="hljs-string">&quot;0000000000000000000000000000000&quot;</span>, <span class="hljs-number">1</span>))&#123;
+  <span class="hljs-keyword">return</span> ansSign + <span class="hljs-string">&quot;0000000000000000000000000000000&quot;</span>;
+&#125;</code></pre></div>
+<h4 id="2-处理参数-1"><a href="#2-处理参数-1" class="headerlink" title="2. 处理参数"></a>2. 处理参数</h4><p>处理的操作和乘法一致</p>
+<div class="hljs"><pre><code class="hljs java">String expA = a.substring(<span class="hljs-number">1</span>, <span class="hljs-number">9</span>);
+String expB = b.substring(<span class="hljs-number">1</span>, <span class="hljs-number">9</span>);
+
+String bitA = (expA.equals(<span class="hljs-string">&quot;00000000&quot;</span>))? <span class="hljs-string">&quot;0&quot;</span>:<span class="hljs-string">&quot;1&quot;</span>;
+String bitB = (expB.equals(<span class="hljs-string">&quot;00000000&quot;</span>))? <span class="hljs-string">&quot;0&quot;</span>:<span class="hljs-string">&quot;1&quot;</span>;
+
+String fracA = a.substring(<span class="hljs-number">9</span>);
+String fracB = b.substring(<span class="hljs-number">9</span>);
+
+String countA = bitA + fracA + <span class="hljs-string">&quot;0000&quot;</span>; <span class="hljs-comment">//28</span>
+String countB = bitB + fracB + <span class="hljs-string">&quot;0000&quot;</span>;
+
+String tmp = sub(expB, expA);</code></pre></div>
+<h4 id="3-判断阶码的情况"><a href="#3-判断阶码的情况" class="headerlink" title="3. 判断阶码的情况"></a>3. 判断阶码的情况</h4><p>除法在阶码之间发生减法的时候，不会出现上溢出的情况。得到的结果范围是-254～254。如果得到了负数，则CF置为1。因为减法会将127抵消，因此得到的结果需要再加上一个127。<strong>这个时候阶码还是会有可能上溢的！</strong>但好像本次编程作业没有考虑这个情况，因此希望大家注意！</p>
+<p>上溢出的情况是减法不借位，即第一次CF为1，加法进位，第二次的CF为1。得到的结果是无穷。</p>
+<p>下溢出的情况是减法借位而加法不进位，即两次的CF均为0。得到的结果是0。</p>
+<div class="hljs"><pre><code class="hljs java">String tmp = sub(expB, expA);
+<span class="hljs-comment">//CF 判断有没有溢出；</span>
+<span class="hljs-keyword">char</span> tmpCF = CF;
+ansExp = add(<span class="hljs-string">&quot;01111111&quot;</span>, tmp);
+<span class="hljs-comment">//CF 判断有没有借位；</span>
+
+<span class="hljs-keyword">if</span>(tmpCF == <span class="hljs-string">&#x27;0&#x27;</span> &amp;&amp; CF == <span class="hljs-string">&#x27;0&#x27;</span>)&#123;
+  <span class="hljs-keyword">return</span> ansSign + <span class="hljs-string">&quot;0000000000000000000000000000000&quot;</span>;
+&#125;
+
+<span class="hljs-keyword">if</span>(tmpCF == <span class="hljs-string">&#x27;1&#x27;</span> &amp;&amp; CF == <span class="hljs-string">&#x27;1&#x27;</span>)&#123;
+  <span class="hljs-keyword">return</span> ansSign + <span class="hljs-string">&quot;1111111100000000000000000000000&quot;</span>
+&#125;
+</code></pre></div>
+<h4 id="计算小数部分"><a href="#计算小数部分" class="headerlink" title="计算小数部分"></a>计算小数部分</h4><div class="hljs"><pre><code class="hljs java">ansFrac = divFrac(countB, countA).substring(<span class="hljs-number">0</span>, <span class="hljs-number">24</span>);
+
+<span class="hljs-comment">//Normalize</span>
+<span class="hljs-keyword">while</span> (ansFrac.charAt(<span class="hljs-number">0</span>) == <span class="hljs-string">&#x27;0&#x27;</span> &amp;&amp; !ansExp.equals(<span class="hljs-string">&quot;00000000&quot;</span>))&#123;
+  ansFrac = ansFrac.substring(<span class="hljs-number">1</span>) + <span class="hljs-string">&quot;0&quot;</span>;
+  ansExp = sub(<span class="hljs-string">&quot;00000001&quot;</span>, ansExp);
+&#125;
+ansFrac = ansFrac.substring(<span class="hljs-number">1</span>, <span class="hljs-number">24</span>);
+
+<span class="hljs-keyword">return</span> ansSign + ansExp + ansFrac;</code></pre></div>
+<p>规格化不多赘述</p>
+<p>重点是下面的小数部分除法。我们需要一个余数部分remainder，商quotient。对参数我们都在前面加上一位0。因为小数可能会出现无法除尽的情况，对于这一位无法除尽的1，我们需要保留到下一次减法。</p>
+<p>【未完待续……】</p>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">divFrac</span> <span class="hljs-params">(String src, String dest)</span></span>&#123;
+  String remainder = <span class="hljs-string">&quot;0&quot;</span> + dest;
+  String quotient = <span class="hljs-string">&quot;00000000000000000000000000000&quot;</span>;
+  src = <span class="hljs-string">&quot;0&quot;</span> + src;
+  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>; i&lt;<span class="hljs-number">29</span>; i++)&#123;
+    remainder = sub(src, remainder);
+    <span class="hljs-keyword">char</span> tmp = quotient.charAt(<span class="hljs-number">0</span>);
+    <span class="hljs-keyword">if</span>(CF == <span class="hljs-string">&#x27;1&#x27;</span>)&#123;
+      quotient = quotient.substring(<span class="hljs-number">1</span>) + <span class="hljs-string">&quot;1&quot;</span>;
+    &#125; <span class="hljs-keyword">else</span> &#123;
+      remainder = add(src, remainder);
+      quotient = quotient.substring(<span class="hljs-number">1</span>) + <span class="hljs-string">&quot;0&quot;</span>;
+    &#125;
+    remainder = remainder.substring(<span class="hljs-number">1</span>) + tmp;
+  &#125;
+  <span class="hljs-keyword">return</span> quotient;
+&#125;
+</code></pre></div>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/WeeklyReview/">WeeklyReview</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Integer/">Integer</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/11/06/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E5%9F%BA%E7%A1%80%E6%9C%9F%E4%B8%AD%E5%A4%8D%E4%B9%A0/">
+                        <span class="hidden-mobile">数据科学基础期中复习</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '#post-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "Floating-point-Arithmetic-Review-2&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.staticfile.org/mathjax/3.0.5/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
