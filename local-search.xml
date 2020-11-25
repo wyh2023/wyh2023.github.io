@@ -4,6 +4,56 @@
   
   
   <entry>
+    <title>Cache-Lab-COA</title>
+    <link href="/2020/11/24/Cache-Lab-COA/"/>
+    <url>/2020/11/24/Cache-Lab-COA/</url>
+    
+    <content type="html"><![CDATA[<h2 id="Cache-Lab"><a href="#Cache-Lab" class="headerlink" title="Cache Lab"></a>Cache Lab</h2>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>COA</tag>
+      
+      <tag>Cache</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>COA-RAID</title>
+    <link href="/2020/11/19/COA-RAID/"/>
+    <url>/2020/11/19/COA-RAID/</url>
+    
+    <content type="html"><![CDATA[<h2 id="COA-RAID"><a href="#COA-RAID" class="headerlink" title="COA-RAID"></a>COA-RAID</h2><h3 id="RAID（磁盘冗余阵列）"><a href="#RAID（磁盘冗余阵列）" class="headerlink" title="RAID（磁盘冗余阵列）"></a>RAID（磁盘冗余阵列）</h3><ul><li>一组物理磁盘，但是在使用的时候感觉像是一块磁盘</li><li>磁盘出错的情况下，有一定的恢复能力。</li></ul><h4 id="RAID-Level-0"><a href="#RAID-Level-0" class="headerlink" title="RAID Level 0"></a>RAID Level 0</h4><ul><li>IO相应快：好多个I/O过来的话，可以减少等待时间；</li><li>IO数据量较大可以存在不同的空间里，可以提高写的速度。</li><li>缺点：只要有一个盘坏了，会影响许多数据的读取。</li></ul><h4 id="RAID-Level-1"><a href="#RAID-Level-1" class="headerlink" title="RAID Level 1"></a>RAID Level 1</h4><ul><li>镜像：不同时坏的时候，总能取到数据。</li><li>可以加速读取，同时读一块盘上的不同内容。</li></ul><h4 id="RAID-Level-2"><a href="#RAID-Level-2" class="headerlink" title="RAID Level 2"></a>RAID Level 2</h4><ul><li>每一个磁盘都会参与每一次I/O的运算。——条带非常的小；</li><li>使用了海明码——每一次读写的时候都会读数据进行矫验。</li><li>IO响应也可以更快。</li><li>缺点：成本高昂；</li></ul><h4 id="RAID-Level-3"><a href="#RAID-Level-3" class="headerlink" title="RAID Level 3"></a>RAID Level 3</h4><ul><li>使用了奇偶校验；</li><li>如果有一个盘坏了，可以帮它恢复出来；<ul><li>P(b) = b<sub>1</sub>⊕b<sub>2</sub>⊕b<sub>3</sub>⊕b<sub>4</sub></li><li>b<sub>2</sub>⊕P(b)⊕P(b) = b<sub>2</sub>⊕b<sub>1</sub>⊕b<sub>2</sub>⊕b<sub>3</sub>⊕b<sub>4</sub>⊕P(b)</li><li>b<sub>2</sub> = b<sub>1</sub>⊕b<sub>3</sub>⊕b<sub>4</sub>⊕P(b)</li></ul></li><li>缺点：同一时间只能加载一个IO请求。</li></ul><h4 id="RAID-Level-4"><a href="#RAID-Level-4" class="headerlink" title="RAID Level 4"></a>RAID Level 4</h4><ul><li>各个盘之间不要牵绊——条带变大。每个盘变得相对独立</li></ul><h4 id="RAID-Level-5"><a href="#RAID-Level-5" class="headerlink" title="RAID Level 5"></a>RAID Level 5</h4><ul><li>冗余的任务分配在不同的盘上</li><li>并不是完全独立了，只是好一点。</li></ul><h4 id="RAID-Level-6"><a href="#RAID-Level-6" class="headerlink" title="RAID Level 6"></a>RAID Level 6</h4>]]></content>
+    
+    
+    <categories>
+      
+      <category>WeeklyReview</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>WeeklyReview</tag>
+      
+      <tag>RAID</tag>
+      
+      <tag>COA</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Floating-point-Arithmetic-Review-2</title>
     <link href="/2020/11/13/Floating-point-Arithmetic-Review-2/"/>
     <url>/2020/11/13/Floating-point-Arithmetic-Review-2/</url>
@@ -17,6 +67,8 @@
       <tag>WeeklyReview</tag>
       
       <tag>Integer</tag>
+      
+      <tag>COA</tag>
       
     </tags>
     
@@ -87,6 +139,8 @@
       
       <tag>Integer</tag>
       
+      <tag>COA</tag>
+      
     </tags>
     
   </entry>
@@ -98,7 +152,7 @@
     <link href="/2020/11/02/week6-Grade2-fall/"/>
     <url>/2020/11/02/week6-Grade2-fall/</url>
     
-    <content type="html"><![CDATA[<h2 id="算法分析与设计"><a href="#算法分析与设计" class="headerlink" title="算法分析与设计"></a>算法分析与设计</h2><h2 id="计算机组成与结构"><a href="#计算机组成与结构" class="headerlink" title="计算机组成与结构"></a>计算机组成与结构</h2><h3 id="磁盘"><a href="#磁盘" class="headerlink" title="磁盘"></a>磁盘</h3><ul><li><p>本身盘不带有磁性，磁性物质被洒在盘面上；</p></li><li><p>一个扇区的存储容量经常是512B；</p></li><li><p>内外圈读512B的时间都是一样的。只要保证一个角度（内圈）即可。每一圈都是一样的，很容易算出来它在哪个位置。</p></li><li><p>多划分（multiple zone recording）：每多一次扇区就要调整一次磁头的转速【成本高，容易坏】；提高了磁盘的利用效率可以多放几个512B；</p></li><li><p>相同磁道合起来是一个柱面；同一个柱面的数据每次一起写；</p></li><li><p>格式化</p><ul><li>gap多余——提供反应时间。不能够太短。</li></ul></li><li><p>读写数据</p><ul><li><p>寻道时间+旋转延迟+读写时间；</p></li><li><script type="math/tex; mode=display">T_a=T_s+\frac{1}{2r}+\frac{b}{rN}</script></li><li><p>r表示转速；</p></li></ul></li><li><p>磁头扫描算法</p></li></ul>]]></content>
+    <content type="html"><![CDATA[<h2 id="算法分析与设计"><a href="#算法分析与设计" class="headerlink" title="算法分析与设计"></a>算法分析与设计</h2><h2 id="计算机组成与结构"><a href="#计算机组成与结构" class="headerlink" title="计算机组成与结构"></a>计算机组成与结构</h2><h3 id="磁盘"><a href="#磁盘" class="headerlink" title="磁盘"></a>磁盘</h3><ul><li><p>本身盘不带有磁性，磁性物质被洒在盘面上；</p></li><li><p>一个扇区的存储容量经常是512B；</p></li><li><p>内外圈读512B的时间都是一样的。只要保证一个角度（内圈）即可。每一圈都是一样的，很容易算出来它在哪个位置。</p></li><li><p>多划分（multiple zone recording）：每多一次扇区就要调整一次磁头的转速【成本高，容易坏】；提高了磁盘的利用效率可以多放几个512B；</p></li><li><p>相同磁道合起来是一个柱面；同一个柱面的数据每次一起写；</p></li><li><p>格式化</p><ul><li>gap多余——提供反应时间。不能够太短。</li></ul></li><li><p>读写数据</p><ul><li><p>寻道时间+旋转延迟+读写时间；</p></li><li><script type="math/tex; mode=display">T_a=T_s+\frac{1}{2r}+\frac{b}{rN}</script></li><li><p>r表示转速；</p></li></ul></li><li><p>磁头扫描算法</p><ul><li>FCFS：</li><li>SSTF：移动到距离当前磁道最近的。</li><li>SCAN：从0磁道到N；</li><li>C-SCAN：从N磁道到0；</li><li>为什么不来回扫呢？最坏等待时间会变短！</li></ul></li><li><p>磁道号、磁头号。</p><ul><li>同步字节——提醒需要开始读了。</li><li>为什么要加一个gap？——足够长的等待时间方便后面操作。避免所有的扇区划分在一起。</li></ul></li><li><p>写：</p><ul><li>电流——磁场——磁性物质不同排列——电阻变化——恒定电流</li></ul></li><li>寻道时间：磁头移动到目标磁道的时间；</li><li>CD<ul><li>一条线状均匀分布</li><li>CD盘的凹凸不平是压出来的——母盘。</li><li>刻录——高强度激光（反射时承担的两种状态 pit 和 land） </li></ul></li></ul><h3 id="Error"><a href="#Error" class="headerlink" title="Error"></a>Error</h3><ul><li>海明码<ul><li>故障字（syndrome word）</li><li>总共有M+K+1种情况；</li></ul></li><li>只有一位出错的时候表示C出错</li><li>故障字的组合情况是唯一的。</li><li>生成多项式——f</li><li></li></ul>]]></content>
     
     
     <categories>
