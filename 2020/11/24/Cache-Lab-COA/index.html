@@ -189,7 +189,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      2 字
+      1.3k 字
     </span>
   
 
@@ -199,7 +199,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      1
+      14
        分钟
     </span>
   
@@ -232,7 +232,128 @@
             <h1 style="display: none">Cache-Lab-COA</h1>
             
             <div class="markdown-body" id="post-body">
-              <h2 id="Cache-Lab"><a href="#Cache-Lab" class="headerlink" title="Cache Lab"></a>Cache Lab</h2>
+              <h2 id="Cache-Lab"><a href="#Cache-Lab" class="headerlink" title="Cache Lab"></a>Cache Lab</h2><h4 id="前排吐槽"><a href="#前排吐槽" class="headerlink" title="前排吐槽"></a>前排吐槽</h4><p>这次的实验和以往有了比较大的不同。首先，从结构上看要复杂一些，有了不同的模块，更像是实现一个东西，而非过程式的实现得到特定输出的函数。当然，这也给测试代码带来了一些难度，同时增加了阅读框架代码的难度。同时，这也表明了计组这门课的考试难度不会简单，为即将到来的期末而担忧╮(╯▽╰)╭</p>
+<h3 id="知识回顾"><a href="#知识回顾" class="headerlink" title="知识回顾"></a>知识回顾</h3><ul>
+<li>Cache存在的目的是什么？<ul>
+<li>处理器的处理速度远远超过了存储器提供信息的速度而产生了一个bar，Cache的作用就是在处理器与主存之间添加一个缓存，加快存取速度。</li>
+<li>cache中保存的是主存中<strong>块</strong>的副本。</li>
+</ul>
+</li>
+<li>Cache的工作原理是什么？<ul>
+<li><img src="/img/COA/Cache.jpg" srcset="/img/loading.gif" alt=""></li>
+<li>CPU先向Cache索要数据（Check），如果找到则命中（Hit），如果不命中则在主存中寻找数据（Miss），将主存中的数据整块搬到Cache中，然后再从Cache中返回信息给CPU。</li>
+<li>可这样理解，编程作业也是这样实现的：CPU只与Cache交互，从Cache当中Fetch信息，如果命中则返回信息（的位置），不命中则在主存中寻找信息并替换到Cache中。</li>
+</ul>
+</li>
+<li>如何知道Cache是否命中？<ul>
+<li>我们已知数据的地址，那么我们可以推知它在Cache的标志位（tags）是怎么样表示的。在组相联映射中，还要先推得组号，在对应的组中匹配标志。同时，我们还需要注意的是有效位（ValidBit），这一点在课上没有提及，如果有效位置为0，则Cache是不被使用的，因此，在FIFO下，判断Cache是否被使用除了判断时间戳（TimeStamp）还需要判断有效位是否是1。</li>
+<li>因此，在标志位相匹配和有效位为1的情况下，Cache命中。</li>
+</ul>
+</li>
+<li>时间局部性和空间局部性<ul>
+<li>时间局部性：同一个数据在短时间内被使用多次；</li>
+<li>空间局部性：临近的数据在短时间被被连续使用；</li>
+</ul>
+</li>
+<li><img src="/img/COA/CacheCL.jpg" srcset="/img/loading.gif" alt=""></li>
+<li>在替换的过程中，搬运的<strong>是块而不是字</strong>。<ul>
+<li><img src="/img/COA/CacheMove.jpg" srcset="/img/loading.gif" alt=""></li>
+</ul>
+</li>
+<li>Cache之所以需要更多的操作却还能节省时间：<ul>
+<li>是因为它有较高的命中率；</li>
+<li>Cache的存取时间远小于到主存的存取时间；</li>
+</ul>
+</li>
+<li>Cache越大效果越好吗？<ul>
+<li>增大Cache的大小可以提高命中率；</li>
+<li>但是也增大了成本和Cache的存取时间；</li>
+<li>不是，变好的幅度会越来越小。“局部性”，并不会牵扯到太大的范围，并且块越大块内寻找的成本就会越高。块太大了之后，带来的数据是局部性比较差的、比较老的数据。</li>
+</ul>
+</li>
+<li>哪种映射方式更好？<ul>
+<li><img src="/img/COA/Map.jpg" srcset="/img/loading.gif" alt=""></li>
+<li>组相联是直接映射和全相联的一个Trade Off。</li>
+<li>当组相连的组大小为整个Cache时，映射模式本质上是全相联映射；当组大小为1时，本质上是直接映射；</li>
+</ul>
+</li>
+<li>Cache系统的组成？<ul>
+<li><img src="/img/COA/CacheSystem.jpg" srcset="/img/loading.gif" alt=""></li>
+</ul>
+</li>
+<li>替换算法都有什么？分别有怎样的特点和好处？<ul>
+<li>LRU-最近最少用；</li>
+<li>FIFO-先进先出；<ul>
+<li>本次实验使用的主要算法：通过为Cache行添加上一个时间戳来标示CacheLine在Cache里面的存在时间，每次替换时间戳最大的那个。</li>
+</ul>
+</li>
+<li>LFU-使用频率最低；</li>
+<li>Random-随机；</li>
+</ul>
+</li>
+<li>写策略的异同？<ul>
+<li>直写法（Write Through）<ul>
+<li>替换的时候同时写主存和Cache；</li>
+<li>一改就要访问主存；</li>
+<li>提高了cache和主存的一致性；</li>
+</ul>
+</li>
+<li>回写法（Write Back）<ul>
+<li>只修改Cache。只有当主存有变化的时候才将Cache中被修改的信息写回主存；</li>
+<li>需要一个脏位来表示这一个块是否被调整过；如果是1就写回去，如果是0就替换掉；</li>
+<li>优点：减少对主存的操作到最小的程度；</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>CacheLine的行大小是不是越多越好？<ul>
+<li>当行大小从很小变大的时候，命中率会相对提高——更多有用的信息会被搬到Cache中去；</li>
+<li>但当行大小过大，命中率就会降低<ul>
+<li>Cache中的行数会减少，从而导致更多的行替换；</li>
+<li>添加进去的字距离需要的字比较远，以至于小概率在短期内会被用到；</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>多级Cache有什么好处？（亟待补充）</li>
+</ul>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">private</span> <span class="hljs-keyword">char</span>[] helper(String eip, <span class="hljs-keyword">int</span> len, <span class="hljs-keyword">char</span>[] writeData)&#123;
+  <span class="hljs-keyword">char</span>[] data = <span class="hljs-keyword">new</span> <span class="hljs-keyword">char</span>[len];
+  Transformer t = <span class="hljs-keyword">new</span> Transformer();
+  <span class="hljs-keyword">int</span> addr =  Integer.parseInt(t.binaryToInt(<span class="hljs-string">&quot;0&quot;</span> + eip));
+  <span class="hljs-keyword">int</span> upperBound = addr + len;
+  <span class="hljs-keyword">int</span> index = <span class="hljs-number">0</span>;
+  <span class="hljs-keyword">while</span> (addr &lt; upperBound) &#123;
+    <span class="hljs-keyword">int</span> nextSegLen = LINE_SIZE_B - (addr % LINE_SIZE_B);
+    <span class="hljs-keyword">if</span> (addr + nextSegLen &gt;= upperBound) &#123;
+      nextSegLen = upperBound - addr;
+    &#125;
+    <span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;
+    <span class="hljs-keyword">if</span>(writeData == <span class="hljs-keyword">null</span>)&#123;
+      <span class="hljs-keyword">int</span> rowNO = fetch(t.intToBinary(String.valueOf(addr)), nextSegLen);
+      <span class="hljs-keyword">char</span>[] cache_data = cache.get(rowNO).getData();
+      <span class="hljs-keyword">while</span> (i &lt; nextSegLen) &#123;
+        data[index] = cache_data[addr % LINE_SIZE_B + i];
+        index++;
+        i++;
+      &#125;
+    &#125;
+    <span class="hljs-keyword">else</span>&#123;
+      <span class="hljs-keyword">int</span> rowNO = fetch(t.intToBinary(String.valueOf(addr)), nextSegLen);
+      <span class="hljs-keyword">char</span>[] input = <span class="hljs-keyword">new</span> <span class="hljs-keyword">char</span>[LINE_SIZE_B];
+      Arrays.fill(input, <span class="hljs-string">&#x27;0&#x27;</span>);
+      <span class="hljs-keyword">while</span> (i &lt; nextSegLen) &#123;
+        input[addr % LINE_SIZE_B + i] = writeData[index];
+        index++;
+        i++;
+      &#125;
+      writeStrategy.write(rowNO, input);
+    &#125;
+    addr += nextSegLen;
+  &#125;
+  <span class="hljs-keyword">return</span> data;
+&#125;</code></pre></div>
+
             </div>
             <hr>
             <div>
