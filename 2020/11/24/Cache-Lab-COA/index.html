@@ -189,7 +189,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      4k 字
+      3.9k 字
     </span>
   
 
@@ -199,7 +199,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      51
+      49
        分钟
     </span>
   
@@ -300,7 +300,7 @@
 </ul>
 </li>
 <li>回写法（Write Back）<ul>
-<li>只修改Cache。只有当主存有变化的时候才将Cache中被修改的信息写回主存；</li>
+<li>只修改Cache。只有当替换算法要驱逐这个更新过的块时，才把它写到第一层中；</li>
 <li>需要一个脏位来表示这一个块是否被调整过；如果是1就写回去，如果是0就替换掉；</li>
 <li>优点：减少对主存的操作到最小的程度；</li>
 </ul>
@@ -505,6 +505,11 @@
   <span class="hljs-keyword">if</span>(Cache.getCache().getTimeStamp(index)==-<span class="hljs-number">1L</span>)&#123;
     Cache.getCache().incTimeStamp(index);
   &#125;
+  <span class="hljs-comment">//Write Back</span>
+  <span class="hljs-keyword">if</span>(Cache.getCache().getDirty(index))&#123;
+    writeStrategy.writeBack(index);
+    Cache.getCache().setDirty(index, <span class="hljs-keyword">false</span>);
+  &#125;
   Cache.getCache().updateCacheLine(index, addrTag, input);
   <span class="hljs-keyword">return</span> index;
 &#125;</code></pre></div>
@@ -525,7 +530,8 @@
 <p>至此，Cache不命中也处理完了。</p>
 <p>修改到这里应该就可以通过关于“读”的全部用例了。</p>
 <p>那么关于“写”呢？</p>
-<p>我们在知识回顾中提到了，本次实验所使用的回写法，只在我们对主存进行写操作时才把对Cache的修改写回主存。【读操作不进行写回，因此可能产生一致性的问题】</p>
+<p>我们在知识回顾中提到了，本次实验所使用的回写法，只在替换算法要驱逐这个块的时候写回主存。【读操作不进行写回，因此可能产生一致性的问题】</p>
+<p>所以在Replace中已经出现过了写回的判断——在更新cache行之前。</p>
 <p>对Cache的写我们还是要看回<code>helper</code>。我们是通过<code>WriteStrategy</code>对Cache进行写操作的。</p>
 <div class="hljs"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">write</span><span class="hljs-params">(<span class="hljs-keyword">int</span> rowNo, <span class="hljs-keyword">char</span>[] input)</span> </span>&#123;
   <span class="hljs-comment">//TODO</span>
@@ -533,24 +539,7 @@
   Cache.getCache().setData(rowNo, input);
 &#125;</code></pre></div>
 <p>首先，我们要把修改的那行Cache的脏位置为<code>true</code>，提醒主存在写操作（$altered）的时候回写。然后修改Cache里的内容，<code>setData</code>等函数不多赘述了。</p>
-<div class="hljs"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">write</span><span class="hljs-params">(String eip, <span class="hljs-keyword">int</span> len, <span class="hljs-keyword">char</span> []data)</span></span>&#123;
-  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>; i&lt;<span class="hljs-number">1024</span>; i++)&#123;
-    <span class="hljs-keyword">if</span>(Cache.getCache().getDirty(i)) &#123;
-      Cache.getCache().makeWB(i);
-      Cache.getCache().setDirty(i, <span class="hljs-keyword">false</span>);
-    &#125;
-  &#125;
-  <span class="hljs-comment">// 通知Cache缓存失效</span>
-  Cache.getCache().invalid(eip, len);
-  <span class="hljs-comment">// 更新数据</span>
-  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> ptr=<span class="hljs-number">0</span>; ptr&lt;len; ptr++) &#123;
-    memory[Integer.parseInt(<span class="hljs-keyword">new</span> Transformer().binaryToInt(eip)) + ptr] = data[ptr];
-  &#125;
-&#125;</code></pre></div>
 <p>写回的操作是这样的，先调用Cache，找到对应的Cache行，通过自身信息推导出需要写回的内存的地址，写入信息。</p>
-<div class="hljs"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">makeWB</span><span class="hljs-params">(<span class="hljs-keyword">int</span> i)</span></span>&#123;
-  <span class="hljs-keyword">this</span>.writeStrategy.writeBack(i);
-&#125;</code></pre></div>
 <div class="hljs"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">writeBack</span><span class="hljs-params">(<span class="hljs-keyword">int</span> rowNo)</span> </span>&#123;
   <span class="hljs-comment">//TODO</span>
   Cache cache = Cache.getCache();
@@ -578,13 +567,6 @@
   <span class="hljs-keyword">return</span> ret;
 &#125;</code></pre></div>
 <p>首先需要算出的是组数，这可以通过<code>rowNo / setSize</code>得到，比如组大小是4行，在第17行说明在第4组。（以0为起始）。然后算出Tag，它的长度是22-组数的长度。末尾补上十位0就是对应的物理地址。【为什么补上0就可以呢？因为Cache是按块操作的，以<code>&quot;0000000000&quot;</code>对齐的就是一块。】</p>
-<p>然后就可以写入主存了！</p>
-<div class="hljs"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">writeBackM</span><span class="hljs-params">(String eip, <span class="hljs-keyword">char</span>[] data)</span></span>&#123;
-  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> ptr=<span class="hljs-number">0</span>; ptr&lt;<span class="hljs-number">1024</span>; ptr++) &#123;
-    memory[Integer.parseInt(<span class="hljs-keyword">new</span> Transformer().binaryToInt(eip)) + ptr] = data[ptr];
-  &#125;
-&#125;</code></pre></div>
-<p>一个常规的写操作。</p>
 <p>主存的写操作也是有不少值得说的地方，除了判断是否有内容需要写回，将脏位恢复之外。还需要将重写的地方对应的Cache无效化。然后再更新数据。下面给出<code>invalid</code>但不做过多解释。</p>
 <div class="hljs"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">invalid</span><span class="hljs-params">(String sAddr, <span class="hljs-keyword">int</span> len)</span> </span>&#123;
   <span class="hljs-keyword">int</span> from = getBlockNO(sAddr);
