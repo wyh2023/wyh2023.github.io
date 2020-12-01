@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>Diary-1</title>
+    <link href="/2020/12/01/Diary/"/>
+    <url>/2020/12/01/Diary/</url>
+    
+    <content type="html"><![CDATA[<h2 id="多少改写一点记录心情的东西"><a href="#多少改写一点记录心情的东西" class="headerlink" title="多少改写一点记录心情的东西"></a>多少改写一点记录心情的东西</h2><p>（现在是2020年12月1日晚9:28，争取在10:00之前搞定这篇……( ´▽` )ﾉ）</p><p>感觉自己说这些东西一直很没有条理，totally意识流（x</p><p>一切的起因好像都是wls的这一篇表白墙</p><p><img src="/img/wls.jpg" alt=""></p><p>本来一开始想去对线的，因为感觉除了wls很少有人有资格说出这段话（结果没想到真的是wls发的！</p><p>起因是一个学弟的迷茫，询问在软院如何“自救”。的确，经历了让人糟心的大一上，谁不会有这种感受——“靠，怎么这样？”“日，我完蛋了！”“nmd，我高考完就给我这？”</p><p>过了一个学期，经历了一些感人的难忘的好玩的事，也就淡忘了这种感受。紧接着发现自己身边数不清的能人强者过出了不一样的风采，愈发觉得自己又馋又懒又菜，开始萌生了不少混的想法。同样也因为类似的想法错失了许多的锻炼自己的机会……也许感觉自己在成绩上还勉强挽救，想彻彻底底“卷”一个学期。</p><p>然后就开始了这几乎毫无收获的大二上——知识没新学会什么；代码没写多少；除了体重什么都没涨……看着sicp时期的神神们做着我早已看不懂的工作，麻木地安慰自己：要是能卷一卷也行。然而，事实上，“自己就这水平，再复习也没用”。</p><p>感受到了线代的无尽恶意以及与微积分天上地下的反差；无数个ddl前糊弄好的作业和不走心的口语练习，象征着许多天来的得过且过；不断翻倍的开销也代表着没有长进的日日夜夜。没有奢望回忆这些能够使颓废的自己有任何改变，只是希望潜意识里的自己能够多少有些意识。再想想那些怀着“自救”理想的学弟学妹、同学学长以及曾经的自己，只能觉得自己“麻了麻了”。</p><p>今天的SICP夜聊也让自己受教许多，让我开始思考（质疑）自己设定的目标是否正确和合理。实话说，现在也没有一个很明确的答案……仍然只能是走一步看一步，毕竟……怎样的人生选择都不能算是完全错的吧。</p><p>刚开学（大概是国庆后），找樾哥聊了半个多小时，感觉不少话还是要细品一下（此前的自己理解太过片面，盲目追求rank的提升属实不太会有什么好下场。希望可以尽快学会点东西，再会樾哥（所谓提前的2021目标，目前看来现在是学不完了。</p><p>好像也没什么好说的了，对了，想发这么个说说实际上是因为在和园一点点面前的一句话——“我原本觉得我的2020什么都没干就要结束了，但是看了看你，我想起我还是干了件大事的！”</p><p>10点前没写完QAQ，而且还都是瞎写的（</p><p>P.S. wls万物之源！</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Diary</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Diary</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>COA-Disk</title>
     <link href="/2020/11/28/COA-Disk/"/>
     <url>/2020/11/28/COA-Disk/</url>
@@ -37,7 +62,7 @@
     <link href="/2020/11/26/COA-VirtualMemory/"/>
     <url>/2020/11/26/COA-VirtualMemory/</url>
     
-    <content type="html"><![CDATA[<h2 id="COA-VirtualMemory"><a href="#COA-VirtualMemory" class="headerlink" title="COA-VirtualMemory"></a>COA-VirtualMemory</h2><h3 id="分区"><a href="#分区" class="headerlink" title="分区"></a>分区</h3><h4 id="固定大小分区"><a href="#固定大小分区" class="headerlink" title="固定大小分区"></a>固定大小分区</h4><ul><li>操作系统：固定的大小；</li><li>当加载程序的时候，有限放入：目前空的，能放下它的，且最小的。</li><li>缺点：浪费内存</li></ul><h4 id="变化大小分区"><a href="#变化大小分区" class="headerlink" title="变化大小分区"></a>变化大小分区</h4><ul><li>操作系统：固定的大小；</li><li>用户系统——按照需求；</li><li>不停的会产生许多小的空白区域——内存碎片。</li></ul><h3 id="分页"><a href="#分页" class="headerlink" title="分页"></a>分页</h3><p>将内存分成固定大小的块，命名为<strong>页框</strong>，将程序分成固定大小的块，命名为<strong>页</strong>。</p><ul><li><strong>逻辑地址</strong>：指令的地址；</li><li><strong>物理地址</strong>：内存的地址；</li></ul><h3 id="虚拟内存"><a href="#虚拟内存" class="headerlink" title="虚拟内存"></a>虚拟内存</h3><ul><li>允许逻辑地址空间大于实际内存；</li><li>只有需要的程序和数据会被加载进入内存；</li><li>每个进程都会有一个自己的页表；</li></ul>]]></content>
+    <content type="html"><![CDATA[<h2 id="COA-VirtualMemory"><a href="#COA-VirtualMemory" class="headerlink" title="COA-VirtualMemory"></a>COA-VirtualMemory</h2><h3 id="分区"><a href="#分区" class="headerlink" title="分区"></a>分区</h3><h4 id="固定大小分区"><a href="#固定大小分区" class="headerlink" title="固定大小分区"></a>固定大小分区</h4><ul><li>操作系统：固定的大小；</li><li>当加载程序的时候，有限放入：目前空的，能放下它的，且最小的。</li><li>缺点：浪费内存</li></ul><h4 id="变化大小分区"><a href="#变化大小分区" class="headerlink" title="变化大小分区"></a>变化大小分区</h4><ul><li>操作系统：固定的大小；</li><li>用户系统——按照需求；</li><li>不停的会产生许多小的空白区域——内存<strong>碎片</strong>。</li></ul><h3 id="分页"><a href="#分页" class="headerlink" title="分页"></a>分页</h3><p>程序和内存“不连续”。</p><p>将内存分成固定大小的块，命名为<strong>页框</strong>，将程序分成固定大小的块，命名为<strong>页</strong>。</p><ul><li><strong>逻辑地址</strong>：指令的地址；</li><li><strong>物理地址</strong>：内存的地址；</li></ul><p>在页内部的偏移量（offset）不变。地址转换：把逻辑页号换为物理页号；</p><h3 id="虚拟内存"><a href="#虚拟内存" class="headerlink" title="虚拟内存"></a>虚拟内存</h3><ul><li>允许逻辑地址空间大于实际内存；</li><li>只有需要的程序和数据会被加载进入内存；</li><li>每个进程都会有一个自己的页表；</li></ul><p><img src="/img/COA/VMM.jpg" alt=""></p><p>有时候会产生缺页。每一个程序都有一个页表，存入其中所有的页。</p><h3 id="TLB"><a href="#TLB" class="headerlink" title="TLB"></a>TLB</h3><p><img src="/img/COA/TLB.jpg" alt=""></p><ul><li>存放页表的Cache；</li><li>需要存放虚拟页号；</li></ul><p><img src="/img/COA/TLBC.jpg" alt=""></p>]]></content>
     
     
     <categories>
@@ -127,33 +152,6 @@
       <tag>Integer</tag>
       
       <tag>COA</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>数据科学基础期中复习</title>
-    <link href="/2020/11/06/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E5%9F%BA%E7%A1%80%E6%9C%9F%E4%B8%AD%E5%A4%8D%E4%B9%A0/"/>
-    <url>/2020/11/06/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E5%9F%BA%E7%A1%80%E6%9C%9F%E4%B8%AD%E5%A4%8D%E4%B9%A0/</url>
-    
-    <content type="html"><![CDATA[<h2 id="Preface"><a href="#Preface" class="headerlink" title="Preface"></a>Preface</h2><p>不情不愿地来复习这门课（怒捶桌子，哥们半个学期作业没留一道，也不知道学了什么，就知道这学期不光有期中期末，还得来个大作业。吐槽吐槽吐槽……，唉，但最近又被留学顾问push了GPA，之前也被ly老师push了排名，不卷还是不行……不过就剩几天的时间了，还是死亡冲刺一下吧。我也是再也不想学和数据科学有关的课了= =头疼。</p><h3 id="这哥们这半学期都讲了点啥？"><a href="#这哥们这半学期都讲了点啥？" class="headerlink" title="这哥们这半学期都讲了点啥？"></a>这哥们这半学期都讲了点啥？</h3><p>让我们来数一数有多少窟窿需要补的🤔，先不进行细节补充，只列举知识点。</p><ol><li>数据类型（这真的会考？</li><li>中位数、四分位数；</li><li>平均数及算术平均数求和稳定性。</li><li>全距（极差）、内距（内四分位距）；</li><li>偏差平方和（方差*总数）；</li><li>古典概型、几何概型；</li><li>条件概率、全概率公式、贝叶斯公式；</li><li>分布函数、分布律、概率密度函数；</li><li>矩、原点矩、中心矩；</li><li>数学期望、方差；</li><li>伯努利分布、二项分布（n重伯努利分布）、泊松分布、柏松逼近、几何分布、超几何分布；</li><li>均匀分布、指数分布、正态分布</li><li>抽样分布定理、切比雪夫不等式、大数定律、中心极限定理；</li><li>卡方分布、t-分布、F-分布【他真的讲了这个？】</li></ol><h2 id="为期2天的光速预习开始了！"><a href="#为期2天的光速预习开始了！" class="headerlink" title="为期2天的光速预习开始了！"></a>为期2天的光速预习开始了！</h2><h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h3><ul><li>定类数据——没有顺序大小之分的低级数据；</li><li>定序数据——有等级之分的数据；</li><li>定距数据——有类别或次序之间的距离的数据；</li><li>定比数据——可作为比率的基数的数据，具有绝对零点；</li></ul><h3 id="中位数、四分位数、众数"><a href="#中位数、四分位数、众数" class="headerlink" title="中位数、四分位数、众数"></a>中位数、四分位数、众数</h3><ul><li><p>众数不受极值的影响。</p></li><li><p>当数据中存在极值时,算术平均数便会歪曲数据反映的信息。此时算术平均数并不是描述这类数据集 中趋势的最佳度量。</p></li><li><p>求和稳定性</p><ul><li><script type="math/tex; mode=display">\sum_{i=1}^n(X_i-\overline X) = 0</script></li></ul></li><li></li></ul><h3 id="全距（极差）、内距（内四分位距）；"><a href="#全距（极差）、内距（内四分位距）；" class="headerlink" title="全距（极差）、内距（内四分位距）；"></a>全距（极差）、内距（内四分位距）；</h3><ul><li>全距——最大值与最小值的差；</li><li>内距——第三四分位数与第一四分位数的差（相比较全距受极值的影响小）。<ul><li>不能提供精确的数据分布信息。 </li><li>不能用来进行精确的统计推断。</li></ul></li></ul><h3 id="条件概率"><a href="#条件概率" class="headerlink" title="条件概率"></a>条件概率</h3><ul><li><script type="math/tex; mode=display">P(A|B)=\frac{P(AB)}{P(B)}</script></li><li><script type="math/tex; mode=display">P(AB)={P(B)}{P(A|B)}</script></li><li><script type="math/tex; mode=display">P(A)=\sum_{i=1}^nP(B_i)P(A|B_i)</script></li></ul><p>  例题1：考卷中一道选择题有4个答案，仅有一个是正确的，设一个学生知道 正确答案或不知道而乱猜是等可能的。 如果这个学生答对了，求他确实知道正确答案的概率？</p><p>  样本空间可以划分为事件A：知道正确答案，以B表示学生答对事件。</p><script type="math/tex; mode=display">  P(B)=P(A)P(B|A)+P(\overline A)P(B|\overline A)</script><script type="math/tex; mode=display">  P(A|B)=\frac{P(AB)}{P(B)}=\frac{4}{5}</script><h3 id="贝叶斯公式"><a href="#贝叶斯公式" class="headerlink" title="贝叶斯公式"></a>贝叶斯公式</h3><script type="math/tex; mode=display">p(A|B)=\frac{P(B|A)*P(A)}{P(B)}</script><h3 id="分布函数"><a href="#分布函数" class="headerlink" title="分布函数"></a>分布函数</h3><ul><li><p>归一性：</p><ul><li><script type="math/tex; mode=display">lim_{x\rightarrow-\infty}F(x)=0</script></li><li><script type="math/tex; mode=display">lim_{x\rightarrow+\infty}F(x)=1</script></li></ul></li><li><p>单调不减性；</p></li><li><p>连续性；</p></li></ul><h3 id="概率密度函数"><a href="#概率密度函数" class="headerlink" title="概率密度函数"></a>概率密度函数</h3><ul><li><script type="math/tex; mode=display">f(x) \ge 0</script></li><li><script type="math/tex; mode=display">\int_{-\infty}^{+\infty}f(x)=1</script></li><li><script type="math/tex; mode=display">P(a<X<b)=\int_a^bf(x)dx=F(b)-F(a)</script></li></ul><h3 id="数学期望"><a href="#数学期望" class="headerlink" title="数学期望"></a>数学期望</h3><ul><li><p>连续随机变量数学期望</p></li><li><script type="math/tex; mode=display">E(X)=\int_{-\infty}^{+\infty}xf(x)dx</script></li><li><p>数学期望的性质</p></li><li><script type="math/tex; mode=display">E(CX)=CE(X)</script></li><li><script type="math/tex; mode=display">E(X+Y)=E(X)+E(Y)</script></li><li><p>当X和Y独立，</p></li><li><script type="math/tex; mode=display">E(XY)=E(X)E(Y)</script></li></ul><h3 id="方差"><a href="#方差" class="headerlink" title="方差"></a>方差</h3><ul><li><script type="math/tex; mode=display">D(X)=E(X^2)-(EX)^2</script></li><li><script type="math/tex; mode=display">D(X+C)=D(X)</script></li><li><script type="math/tex; mode=display">D(CX)=C^2D(X)</script></li><li><p>当X和Y相互独立</p></li><li><script type="math/tex; mode=display">D(X\pm Y)=D(X)\pm D(Y)</script></li></ul><h3 id="伯努利分布"><a href="#伯努利分布" class="headerlink" title="伯努利分布"></a>伯努利分布</h3><p>0-1分布</p><script type="math/tex; mode=display">E(X)=p</script><script type="math/tex; mode=display">D(X)=p(1-p)</script><h3 id="二项分布"><a href="#二项分布" class="headerlink" title="二项分布"></a>二项分布</h3><script type="math/tex; mode=display">E(X)=np</script><script type="math/tex; mode=display">D(X)=np(1-p)</script><h3 id="泊松分布"><a href="#泊松分布" class="headerlink" title="泊松分布"></a>泊松分布</h3><script type="math/tex; mode=display">P(X=k)=\frac{\lambda^k}{k!}e^{-\lambda}</script><ul><li><p>柏松逼近</p></li><li><script type="math/tex; mode=display">lim_{n\rightarrow\infty}B(n, p_n)=\pi(\lambda)</script></li><li><script type="math/tex; mode=display">\lambda = np</script></li></ul><h3 id="几何分布"><a href="#几何分布" class="headerlink" title="几何分布"></a>几何分布</h3><script type="math/tex; mode=display">E(X)=\sum_{i=1}^{\infty}ipq^{i-1}=\frac{1}{1-q}=\frac{1}{p}</script><script type="math/tex; mode=display">D(X)=E(X^2)-(EX)^2=\frac{1-p}{p^2}</script><p><strong>几何分布无记忆性。</strong></p><h3 id="超几何分布"><a href="#超几何分布" class="headerlink" title="超几何分布"></a>超几何分布</h3><script type="math/tex; mode=display">p = \frac{M}{N}</script><h3 id="均匀分布"><a href="#均匀分布" class="headerlink" title="均匀分布"></a>均匀分布</h3><script type="math/tex; mode=display">f(x)=\frac{1}{b-a}</script><script type="math/tex; mode=display">EX=\frac{a+b}{2}</script><script type="math/tex; mode=display">D(X)=\frac{(b-a)^2}{12}</script><h3 id="指数分布"><a href="#指数分布" class="headerlink" title="指数分布"></a>指数分布</h3><script type="math/tex; mode=display">f(x)=\frac{1}{\theta}e^{-\frac{x}{\theta}}</script><p>分布函数为：</p><script type="math/tex; mode=display">F(x)=1-e^{-\frac{x}{\theta}}</script><p>指数分布无记忆性</p><script type="math/tex; mode=display">E(X)=\theta</script><script type="math/tex; mode=display">D(X)={\theta}^2</script><h3 id="正态分布"><a href="#正态分布" class="headerlink" title="正态分布"></a>正态分布</h3><script type="math/tex; mode=display">\phi</script>]]></content>
-    
-    
-    <categories>
-      
-      <category>大二上期中复习</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>数据科学</tag>
-      
-      <tag>期中复习</tag>
       
     </tags>
     
@@ -256,86 +254,11 @@
   
   
   <entry>
-    <title>听不懂的短语汇总</title>
-    <link href="/2020/10/21/%E5%90%AC%E4%B8%8D%E6%87%82%E7%9A%84%E7%9F%AD%E8%AF%AD%E6%B1%87%E6%80%BB/"/>
-    <url>/2020/10/21/%E5%90%AC%E4%B8%8D%E6%87%82%E7%9A%84%E7%9F%AD%E8%AF%AD%E6%B1%87%E6%80%BB/</url>
-    
-    <content type="html"><![CDATA[<ol><li>that’s only useful up to a point, … 在一定程度上有用，……</li><li>has been around for quite a while, … 问世已有一段时间，……</li></ol>]]></content>
-    
-    
-    <categories>
-      
-      <category>TOEFL</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>TOEFL</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>词根词缀</title>
-    <link href="/2020/10/21/%E8%AF%8D%E6%A0%B9%E8%AF%8D%E7%BC%80/"/>
-    <url>/2020/10/21/%E8%AF%8D%E6%A0%B9%E8%AF%8D%E7%BC%80/</url>
-    
-    <content type="html"><![CDATA[<h4 id="sid-坐-（sit）"><a href="#sid-坐-（sit）" class="headerlink" title="sid 坐 （sit）"></a>sid 坐 （sit）</h4><ul><li>residue 剩余，残留；</li><li>dissident 意见不同的（分开坐）；</li><li>subside 平息（坐下来了➡️息怒）；</li><li>assiduous 勤奋的，勤勉的；(as加强，加强坐下来了)</li></ul><h4 id="pend-花钱出去"><a href="#pend-花钱出去" class="headerlink" title="pend 花钱出去"></a>pend 花钱出去</h4><ul><li>dispense 分配；</li><li>expend （ex出+pend）花费；</li><li>dispensable 可分配的；indispensable 不可或缺的；</li></ul><h4 id="gest-带来；产生"><a href="#gest-带来；产生" class="headerlink" title="gest 带来；产生"></a>gest 带来；产生</h4><ul><li>ingest 摄入；（= take in）</li><li>digest 消化，吸收；（di分开；把营养分开带到不同的地方➡️消化）</li><li>indigestion 消化不良；</li></ul><h4 id="cept-拿"><a href="#cept-拿" class="headerlink" title="cept 拿"></a>cept 拿</h4><ul><li>susceptible 易受影响的（sus + cept + ible 能被拿下➡️易受影响)</li></ul><h4 id="indi-内部"><a href="#indi-内部" class="headerlink" title="indi 内部"></a>indi 内部</h4><ul><li>Indigenous 本土的；土著的；（indi + gen产生 + ous 内部产生➡️本土的）</li></ul><h4 id="rupt-break"><a href="#rupt-break" class="headerlink" title="rupt = break"></a>rupt = break</h4><ul><li>rupture v.破裂；</li><li>erupt v.爆发；</li><li>abrupt 突然；</li><li>bankrupt 破产；</li></ul><h4 id="ced-ceed-cede-cess-go-walk"><a href="#ced-ceed-cede-cess-go-walk" class="headerlink" title="ced ceed cede cess = go, walk"></a>ced ceed cede cess = go, walk</h4><ul><li>concede (都走了) =&gt; 割让，退让；</li><li>recede 往回走 =&gt; 撤退；</li><li>recessive 隐性的；</li><li>antecedent n.祖先；先驱（ante 在…之前，在之前走的=&gt;先驱）</li></ul><h4 id="dorm"><a href="#dorm" class="headerlink" title="dorm"></a>dorm</h4><ul><li>dormant 静止的</li><li>dormancy 冬眠，休眠，睡眠 （hibernation)</li></ul><h4 id="rod-bite"><a href="#rod-bite" class="headerlink" title="rod (= bite)"></a>rod (= bite)</h4><ul><li>erode 腐蚀，侵蚀；erosive</li><li>corrode</li><li>rodent 啮齿动物；</li></ul><h4 id="leg-lect-选择"><a href="#leg-lect-选择" class="headerlink" title="leg (=lect) 选择"></a>leg (=lect) 选择</h4><ul><li>select 选择；</li><li>elect （选出来 =&gt;） 选举</li><li>neglect （不选）=&gt; 忽视</li><li>elegant （被挑选出来的）=&gt; 很好的，优雅的；</li><li>legible 容易辨认的；</li></ul><h4 id="grav-重力"><a href="#grav-重力" class="headerlink" title="grav 重力"></a>grav 重力</h4><ul><li>gravity 重力；</li><li>aggravate 加重；（病情）恶化；</li><li>engrave 雕刻；</li></ul>]]></content>
-    
-    
-    <categories>
-      
-      <category>TOEFL</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>TOEFL</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>专业词汇</title>
     <link href="/2020/10/21/%E4%B8%93%E4%B8%9A%E8%AF%8D%E6%B1%87/"/>
     <url>/2020/10/21/%E4%B8%93%E4%B8%9A%E8%AF%8D%E6%B1%87/</url>
     
     <content type="html"><![CDATA[<h3 id="生物"><a href="#生物" class="headerlink" title="生物"></a>生物</h3><ul><li>invertebrate 无脊椎的； vertebrate 有脊椎的；</li><li>primates 灵长类；</li><li>mollusk 软体动物；</li><li>coelenterate 腔肠动物；</li><li>spineless 无脊椎的；没骨气的；Sipne 脊椎；</li><li>reproduce 繁殖；</li><li>recessive gene 隐性基因；</li></ul><h3 id="地质"><a href="#地质" class="headerlink" title="地质"></a>地质</h3><ul><li>sedimentation 沉淀（过程）；sediment 沉淀物；<ul><li>同义替换：deposit 沉淀；accumulation；</li></ul></li><li>grains 颗粒；纹理；</li><li>molten 熔化的；铸造的；</li><li>magma 岩浆；</li><li>lava 火山岩浆；</li><li>grantie 花岗岩；</li><li>lead 铅；</li><li>dating 确定年代；</li></ul><h4 id="商科"><a href="#商科" class="headerlink" title="商科"></a>商科</h4><ul><li>commodity/products/goods/merchandise 商品；<ul><li>commoditize 商品化；</li></ul></li><li>merchant 商业的；</li></ul>]]></content>
-    
-    
-    <categories>
-      
-      <category>TOEFL</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>TOEFL</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>独立写作题型分类</title>
-    <link href="/2020/10/21/%E7%8B%AC%E7%AB%8B%E5%86%99%E4%BD%9C%E9%A2%98%E5%9E%8B%E5%88%86%E7%B1%BB/"/>
-    <url>/2020/10/21/%E7%8B%AC%E7%AB%8B%E5%86%99%E4%BD%9C%E9%A2%98%E5%9E%8B%E5%88%86%E7%B1%BB/</url>
-    
-    <content type="html"><![CDATA[<h3 id="1-A-should-题目"><a href="#1-A-should-题目" class="headerlink" title="1. A should 题目"></a>1. A should 题目</h3><ul><li>a. 标志词：should</li><li>b. 解题策略：分析<strong>利弊</strong></li></ul><h4 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h4><p>（A/D：agree or disagree）</p><ul><li><p>A/D: Students <strong>should</strong> not take part-time jobs while they are studying in universities.</p><p>Disagree: </p><ol><li>Earn some money : become more economically independent.</li><li>Enlarge social circle.</li><li>Foster abilities and gain more social experience.</li></ol></li><li><p>A/D: University and colleges <strong>should</strong> provide students with work preparation before they graduate.</p><ol><li>To students: gain an <strong>edge(优势)</strong> over other competitors in <strong>job market</strong>.</li><li>To college: high employment rate is beneficial to the university’s <strong>reputation(fame)</strong></li><li>To company: <strong>get to(有机会；有能力做……)</strong> enjoy higher productivity.</li></ol></li><li><p>A/D: Parents should allow their children to make mistakes and let them learn from their own mistakes.</p><ol><li>To children: learn not to repeat the same mistake again.</li><li>To parent-child relationship: strengthen family bond/create family rapport.</li></ol></li></ul><h4 id="让步段🌟"><a href="#让步段🌟" class="headerlink" title="让步段🌟"></a>让步段🌟</h4><ul><li>Admittedly,…..  In that respect,……however,…    </li><li>to prevent this from happening. </li></ul><h4 id="或者：case-by-case"><a href="#或者：case-by-case" class="headerlink" title="或者：case-by-case"></a>或者：case-by-case</h4><ol><li>When children make some fatal errors such as doing drugs or gambling, it is imperative for parents to make a timely intervention.</li><li>When children make mistakes that won’t lead to serious consequences, letting them make mistakes is the best way to learn.</li></ol><h3 id="2-二选一题目"><a href="#2-二选一题目" class="headerlink" title="2. 二选一题目"></a>2. 二选一题目</h3><ul><li>a. 标志词：prefer/better/rather than</li><li>b. 解题策略：带着比较招利弊。做A比做B更好。</li><li>c. 比较对比原则：不可只提一方</li><li>d. 比较对比方法：<ul><li>段内比；</li><li>段简比；</li></ul></li></ul><h4 id="例题-1"><a href="#例题-1" class="headerlink" title="例题"></a>例题</h4><ul><li><p>(段内比)Some students prefer to study alone while others prefer to study with a group of students. What is your opinion?</p><ol><li>Get to exchange ideas - a better performance.(good academic performance)</li><li>Peer pressure - get over the habit of procrastination - boost learning efficiency </li><li>Cultivate teamwork spirit.</li></ol></li><li><p>A/D: University should spend more money <strong>supporting social activities</strong> rather than <strong>improving the food students eat.</strong></p><ul><li>观点：food quality</li></ul><ol><li>Physical health</li><li>Academic success</li><li>Social activities are also important, but …</li></ol></li></ul><h4 id="投资类二选一题目："><a href="#投资类二选一题目：" class="headerlink" title="投资类二选一题目："></a>投资类二选一题目：</h4><ul><li>1⃣️写2段A的好处/重要性</li><li><p>2⃣️让步段：Admittedly, B➡️重要。However, investments on B does <strong>not necessarily(不一定)</strong> rely only on government/school authority. We can also seek out for fund from somewhere else (commercial sponsorships/Non-Government Organizations)</p></li><li><p>A/D: For success in a future job, the ability to relate well to people is more important than studying hard in school.（不同工作偏向的能力不一样）</p><ol><li>Jobs that put much emphasis on interpersonal communication: the ability to relate well to people is more important.</li><li>Technology-oriented jobs: studying professional knowledge is more important.</li></ol></li></ul><h3 id="3-三选一"><a href="#3-三选一" class="headerlink" title="3. 三选一"></a>3. 三选一</h3><ul><li><p>a. 标志词：which is the best</p></li><li><p>b. 三选一对比原则：<strong><em>三者都要提及，缺一不可</em></strong></p></li><li><p>c. 解题策略</p><ul><li>段间比</li></ul><p>1⃣️</p><p>| Introduction |<br>| :—————: |<br>|      A+      |<br>|      B-      |<br>|      C-      |<br>|  Conclusion  |</p><p>2⃣️</p><p>| Introduction |<br>| :—————: |<br>|      A+      |<br>|      A+      |<br>|     BC-      |<br>|  Conclusion  |</p><p><em>Tips: 我可以写成让步段，也可以直接吐槽其不好</em></p></li></ul><h3 id="4-绝对词题目"><a href="#4-绝对词题目" class="headerlink" title="4. 绝对词题目"></a>4. 绝对词题目</h3><ul><li><p>a. 标志词：best/most/only/all/always/never</p></li><li><p>b. 观点取<strong><em>驳论</em></strong></p></li><li><p>c. 解题策略：</p><ul><li>辩证解法两步走：</li></ul><ol><li><p>承认合理性——把绝对词去掉；</p></li><li><p>反驳绝对性：</p><p>1⃣️找弊端、找局限</p><p>2⃣️针对绝对词来反驳</p><p>​        best - better</p><p>​        Only - other</p><p>​        all/never/always - exception</p></li></ol></li></ul><ul><li><p>A/D: The best way to learn a foreign country is from reading newspapers and magazines.</p><ol><li>承合: It is indeed a good way to learn a foreign country by reading newspapers and magazines. E.g. Broad coverage: political events, society, business, sports, entertainment, lifestyle… </li><li>驳绝-找弊端：It has some limitations. E.g. lack of sound and visual events; Possible delays: complicated publishing process➡️drafting, collecting, proofreading, printing, disturbing, etc.</li><li>驳绝-更好的方案: There are better ways to learn a country. E.g. visiting museums, traveling, reading books, watching movies.</li></ol></li><li><p>A/D: The best way to improve the quality of education is to increase teachers’ salaries.</p><ol><li>承合：Raising teachers’ salaries is a good way to boost better education performance. Motivate teachers to do a better jobs/Attract talents.</li><li>驳绝-找弊端：Make education unaffordable</li><li>驳绝-更好的方案：Provide teachers with trainings; improve facilities</li></ol></li></ul>]]></content>
     
     
     <categories>
