@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
-  <title>COA-VirtualMemory - Hexo</title>
+  <title>BalanceSegmentPainting - Hexo</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -177,8 +177,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2020-11-26 16:10" pubdate>
-        2020年11月26日 下午
+      <time datetime="2020-12-05 13:57" pubdate>
+        2020年12月5日 下午
       </time>
     </span>
   
@@ -189,7 +189,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      310 字
+      232 字
     </span>
   
 
@@ -199,7 +199,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      3
+      4
        分钟
     </span>
   
@@ -229,69 +229,59 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto" id="post">
             <!-- SEO header -->
-            <h1 style="display: none">COA-VirtualMemory</h1>
+            <h1 style="display: none">BalanceSegmentPainting</h1>
             
             <div class="markdown-body" id="post-body">
-              <h2 id="COA-VirtualMemory"><a href="#COA-VirtualMemory" class="headerlink" title="COA-VirtualMemory"></a>COA-VirtualMemory</h2><h3 id="分区"><a href="#分区" class="headerlink" title="分区"></a>分区</h3><h4 id="固定大小分区"><a href="#固定大小分区" class="headerlink" title="固定大小分区"></a>固定大小分区</h4><ul>
-<li>操作系统：固定的大小；</li>
-<li>当加载程序的时候，有限放入：目前空的，能放下它的，且最小的。</li>
-<li>缺点：浪费内存</li>
-</ul>
-<h4 id="变化大小分区"><a href="#变化大小分区" class="headerlink" title="变化大小分区"></a>变化大小分区</h4><ul>
-<li>操作系统：固定的大小；</li>
-<li>用户系统——按照需求；</li>
-<li>不停的会产生许多小的空白区域——内存<strong>碎片</strong>。</li>
-</ul>
-<h3 id="分页"><a href="#分页" class="headerlink" title="分页"></a>分页</h3><p>程序和内存“不连续”。</p>
-<p>将内存分成固定大小的块，命名为<strong>页框</strong>，将程序分成固定大小的块，命名为<strong>页</strong>。</p>
-<ul>
-<li><strong>逻辑地址</strong>：指令的地址；</li>
-<li><strong>物理地址</strong>：内存的地址；</li>
-</ul>
-<p>在页内部的偏移量（offset）不变。地址转换：把逻辑页号换为物理页号；</p>
-<h3 id="虚拟内存"><a href="#虚拟内存" class="headerlink" title="虚拟内存"></a>虚拟内存</h3><ul>
-<li>存放在硬盘中；</li>
-<li>允许逻辑地址空间大于实际内存；</li>
-<li><strong>只有需要的程序和数据会被加载进入内存；</strong>而不是载入整个程序；</li>
-<li>每个进程都会有一个自己的页表；</li>
-</ul>
-<h3 id="页表"><a href="#页表" class="headerlink" title="页表"></a>页表</h3><p><img src="/img/COA/Page.jpg" srcset="/img/loading.gif" alt=""></p>
-<ul>
-<li>页表中不需要存放虚页号；</li>
-</ul>
-<p><img src="/img/COA/VMM.jpg" srcset="/img/loading.gif" alt=""></p>
-<p>有时候会产生缺页。每一个程序都有一个页表，存入其中所有的页。</p>
-<h3 id="TLB"><a href="#TLB" class="headerlink" title="TLB"></a>TLB</h3><p><img src="/img/COA/TLB.jpg" srcset="/img/loading.gif" alt=""></p>
-<ul>
-<li>存放页表的Cache；</li>
-<li>采用的是关联映射</li>
-<li>需要存放虚拟页号；tag就是虚页号；</li>
-</ul>
-<p><img src="/img/COA/TLBC.jpg" srcset="/img/loading.gif" alt=""></p>
+              <div class="hljs"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;vector&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&quot;iostream&quot;</span></span>
+
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;
+
+<span class="hljs-keyword">int</span> n;
+<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; f;
+<span class="hljs-keyword">int</span> res=<span class="hljs-number">0</span>;
+<span class="hljs-keyword">int</span> r;
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">Find</span><span class="hljs-params">(<span class="hljs-keyword">int</span> k)</span></span>&#123;
+    <span class="hljs-keyword">if</span>(f[k]==<span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>; <span class="hljs-comment">//没被染黑</span>
+    <span class="hljs-keyword">if</span>(f[k]&lt;<span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> k;   <span class="hljs-comment">//根节点是负数</span>
+    <span class="hljs-keyword">return</span> f[k]=Find(f[k]); <span class="hljs-comment">//集团染黑</span>
+&#125;
+
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Union</span><span class="hljs-params">(<span class="hljs-keyword">int</span> a, <span class="hljs-keyword">int</span> b)</span></span>&#123;
+    <span class="hljs-keyword">int</span> fa = Find(a);    <span class="hljs-comment">//两个都是正数</span>
+    <span class="hljs-keyword">int</span> fb = Find(b);    <span class="hljs-comment">//fa和fb是a和b的根的位置</span>
+    <span class="hljs-keyword">if</span>(fa != fb)&#123;
+        <span class="hljs-keyword">int</span> numA = f[fa];  <span class="hljs-comment">//这个数是负的；</span>
+        <span class="hljs-keyword">int</span> numB = f[fb];  <span class="hljs-comment">//也是负的；</span>
+        <span class="hljs-keyword">int</span> numAll = numA + numB;
+        f[fa] = fb;      <span class="hljs-comment">//fa的根换成了fb</span>
+        f[fb] = numAll;
+    &#125;
+&#125;
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;
+    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>, &amp;n);
+    f= <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;(n+<span class="hljs-number">1</span>, <span class="hljs-number">0</span>);
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>; i&lt;n; i++)&#123;
+        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>, &amp;r);
+        f[r] = <span class="hljs-number">-1</span>;  <span class="hljs-comment">//新染色，自己是自己的根；</span>
+        <span class="hljs-keyword">int</span> left = Find(r<span class="hljs-number">-1</span>);  <span class="hljs-comment">//返回的是位置</span>
+        <span class="hljs-keyword">int</span> right = Find(r+<span class="hljs-number">1</span>);
+        <span class="hljs-keyword">if</span>(left&gt;<span class="hljs-number">0</span>) Union(r, left);    <span class="hljs-comment">//两个位置Union</span>
+        <span class="hljs-keyword">if</span>(right&gt;<span class="hljs-number">0</span>) Union(r, right);
+        <span class="hljs-keyword">int</span> t = -f[Find(r)];
+        <span class="hljs-keyword">if</span>(t &gt; res) res = t;
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d &quot;</span>, res);
+    &#125;
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;</code></pre></div>
 
             </div>
             <hr>
             <div>
               <div class="post-metas mb-3">
                 
-                  <div class="post-meta mr-3">
-                    <i class="iconfont icon-category"></i>
-                    
-                      <a class="hover-with-bg" href="/categories/WeeklyReview/">WeeklyReview</a>
-                    
-                  </div>
-                
-                
-                  <div class="post-meta">
-                    <i class="iconfont icon-tags"></i>
-                    
-                      <a class="hover-with-bg" href="/tags/WeeklyReview/">WeeklyReview</a>
-                    
-                      <a class="hover-with-bg" href="/tags/COA/">COA</a>
-                    
-                      <a class="hover-with-bg" href="/tags/VirtualMemory/">VirtualMemory</a>
-                    
-                  </div>
                 
               </div>
               
@@ -302,9 +292,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2020/11/28/COA-Disk/">
+                      <a href="/2020/12/07/MultiSet/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">COA-Disk</span>
+                        <span class="hidden-mobile">MultiSet</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -312,8 +302,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2020/11/24/Cache-Lab-COA/">
-                        <span class="hidden-mobile">Cache-Lab-COA</span>
+                      <a href="/2020/12/04/GodMiner/">
+                        <span class="hidden-mobile">GodMiner</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -449,7 +439,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "COA-VirtualMemory&nbsp;",
+        "BalanceSegmentPainting&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,

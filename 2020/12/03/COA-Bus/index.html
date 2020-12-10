@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
-  <title>COA-VirtualMemory - Hexo</title>
+  <title>COA-Bus - Hexo</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -177,8 +177,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2020-11-26 16:10" pubdate>
-        2020年11月26日 下午
+      <time datetime="2020-12-03 13:43" pubdate>
+        2020年12月3日 下午
       </time>
     </span>
   
@@ -189,7 +189,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      310 字
+      770 字
     </span>
   
 
@@ -199,7 +199,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      3
+      7
        分钟
     </span>
   
@@ -229,46 +229,67 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto" id="post">
             <!-- SEO header -->
-            <h1 style="display: none">COA-VirtualMemory</h1>
+            <h1 style="display: none">COA-Bus</h1>
             
             <div class="markdown-body" id="post-body">
-              <h2 id="COA-VirtualMemory"><a href="#COA-VirtualMemory" class="headerlink" title="COA-VirtualMemory"></a>COA-VirtualMemory</h2><h3 id="分区"><a href="#分区" class="headerlink" title="分区"></a>分区</h3><h4 id="固定大小分区"><a href="#固定大小分区" class="headerlink" title="固定大小分区"></a>固定大小分区</h4><ul>
-<li>操作系统：固定的大小；</li>
-<li>当加载程序的时候，有限放入：目前空的，能放下它的，且最小的。</li>
-<li>缺点：浪费内存</li>
+              <h3 id="仲裁"><a href="#仲裁" class="headerlink" title="仲裁"></a>仲裁</h3><ul>
+<li>虽然在同一时刻连接总线的设备可以接受信息，但是只有一个设备可以发送信息；</li>
 </ul>
-<h4 id="变化大小分区"><a href="#变化大小分区" class="headerlink" title="变化大小分区"></a>变化大小分区</h4><ul>
-<li>操作系统：固定的大小；</li>
-<li>用户系统——按照需求；</li>
-<li>不停的会产生许多小的空白区域——内存<strong>碎片</strong>。</li>
+<h3 id="集中式"><a href="#集中式" class="headerlink" title="集中式"></a>集中式</h3><h4 id="硬件——总线控制器-仲裁器"><a href="#硬件——总线控制器-仲裁器" class="headerlink" title="硬件——总线控制器/仲裁器"></a>硬件——总线控制器/仲裁器</h4><h5 id="链式"><a href="#链式" class="headerlink" title="链式"></a>链式</h5><ul>
+<li><p>用许可线将设备全部存起来；往前发送许可信号，接受到之后根据自己需不需要总线来处理事件，如果需要则将总线设为忙，不往下传；</p>
+</li>
+<li><p>反之向下继续传；</p>
+</li>
+<li>线最少，效率比较低，公平性差；</li>
 </ul>
-<h3 id="分页"><a href="#分页" class="headerlink" title="分页"></a>分页</h3><p>程序和内存“不连续”。</p>
-<p>将内存分成固定大小的块，命名为<strong>页框</strong>，将程序分成固定大小的块，命名为<strong>页</strong>。</p>
+<h5 id="询问式"><a href="#询问式" class="headerlink" title="询问式"></a>询问式</h5><ul>
+<li>一组线；报号；</li>
+<li>好处：避免了原来的链式结构中，一旦有设备坏了，后面的设备再也拿不到信号；报数的顺序可以很灵活——优先级or公平性；</li>
+<li>坏处：多了一些线，让设备需要<strong>识数</strong>，时间也不算很短；</li>
+</ul>
+<h5 id="独立请求式"><a href="#独立请求式" class="headerlink" title="独立请求式"></a>独立请求式</h5><ul>
+<li>每一个都会向仲裁起发出申请；同一时间仲裁器会收到多个申请；</li>
+<li>优先级or公平性；</li>
+<li>好处：每一个设备都可以在第一时间发出申请，不存在等待时间，响应时间就会比较快；可以自己决定优先级；</li>
+<li>坏处：比较复杂；比较多的线；</li>
+</ul>
+<h3 id="自举式"><a href="#自举式" class="headerlink" title="自举式"></a>自举式</h3><p><img src="/img/COA/BUSSS.jpg" srcset="/img/loading.gif" alt="箭头表示信息流动——查看信息是否忙"></p>
+<p><code>Device3</code>的优先级最高。<code>Device0</code>只有在别人都不需要用总线的时候才能发出请求；</p>
+<h3 id="冲突检测式"><a href="#冲突检测式" class="headerlink" title="冲突检测式"></a>冲突检测式</h3><p>总线不忙就直接“用”——发送信息，然后检测信息是不是自己发送，如果不是自己发的（有其他设备同时发送信息），就随机暂停一段时间，再重新发送。</p>
+<h3 id="时序"><a href="#时序" class="headerlink" title="时序"></a>时序</h3><h4 id="同步：有时钟"><a href="#同步：有时钟" class="headerlink" title="同步：有时钟"></a>同步：有时钟</h4><ul>
+<li>总线事物：地址+数据+……+数据</li>
+<li><img src="/img/COA/同步.jpg" srcset="/img/loading.gif" alt=""></li>
+<li>好处：简单去实现和测试；</li>
+<li>坏处：所有设备共用同一个时钟——所有设备都要等待最慢的；总线长度受限于时钟漂移（时钟信号传播过长时准确性会变差，产生偏差）</li>
+</ul>
+<h4 id="异步：没有时钟，通过协商机制相互配合；"><a href="#异步：没有时钟，通过协商机制相互配合；" class="headerlink" title="异步：没有时钟，通过协商机制相互配合；"></a>异步：没有时钟，通过协商机制相互配合；</h4><ul>
+<li>约束；</li>
+<li><img src="/img/COA/异步.jpg" srcset="/img/loading.gif" alt="约束是蓝色的线——”三次握手“"></li>
+<li>坏处：对噪声比较敏感——根据对方状态改变自己的状态；</li>
+<li><img src="/img/COA/握手.jpg" srcset="/img/loading.gif" alt="准备-撤"></li>
+<li>保证对方接收了再撤退；</li>
+<li>例如3-对方说撤了，对方：我知道你撤了——知道对方撤了自己再撤；</li>
+<li>4-表示“地址”这件事情彻底传输完了。表示地址和数据传递之间有一个先后关系；</li>
+<li>如果有很多数据则重复4567；</li>
+</ul>
+<h4 id="总线事务分割"><a href="#总线事务分割" class="headerlink" title="总线事务分割"></a>总线事务分割</h4><p><img src="/img/COA/总线事务分割.jpg" srcset="/img/loading.gif" alt=""></p>
 <ul>
-<li><strong>逻辑地址</strong>：指令的地址；</li>
-<li><strong>物理地址</strong>：内存的地址；</li>
+<li>总线在传输过程中是完全占用的，准备数据需要时间，传地址和数据传输之间会有空闲的时间；</li>
+<li>把传地址和传数据分成两步；</li>
+<li>优点：利用率提高了；</li>
+<li>缺点：完成一件事情的时间本身会变长——每一个总线事务的平均时长；</li>
 </ul>
-<p>在页内部的偏移量（offset）不变。地址转换：把逻辑页号换为物理页号；</p>
-<h3 id="虚拟内存"><a href="#虚拟内存" class="headerlink" title="虚拟内存"></a>虚拟内存</h3><ul>
-<li>存放在硬盘中；</li>
-<li>允许逻辑地址空间大于实际内存；</li>
-<li><strong>只有需要的程序和数据会被加载进入内存；</strong>而不是载入整个程序；</li>
-<li>每个进程都会有一个自己的页表；</li>
-</ul>
-<h3 id="页表"><a href="#页表" class="headerlink" title="页表"></a>页表</h3><p><img src="/img/COA/Page.jpg" srcset="/img/loading.gif" alt=""></p>
+<h4 id="总线带宽和数据传输率"><a href="#总线带宽和数据传输率" class="headerlink" title="总线带宽和数据传输率"></a>总线带宽和数据传输率</h4><h4 id="总线带宽"><a href="#总线带宽" class="headerlink" title="总线带宽"></a>总线带宽</h4><p><strong>理想情况下，总线最大数据传输率；</strong>（不考虑额外开销）</p>
 <ul>
-<li>页表中不需要存放虚页号；</li>
+<li>一次能传多少数据，多长时间传一次；</li>
 </ul>
-<p><img src="/img/COA/VMM.jpg" srcset="/img/loading.gif" alt=""></p>
-<p>有时候会产生缺页。每一个程序都有一个页表，存入其中所有的页。</p>
-<h3 id="TLB"><a href="#TLB" class="headerlink" title="TLB"></a>TLB</h3><p><img src="/img/COA/TLB.jpg" srcset="/img/loading.gif" alt=""></p>
-<ul>
-<li>存放页表的Cache；</li>
-<li>采用的是关联映射</li>
-<li>需要存放虚拟页号；tag就是虚页号；</li>
+<h4 id="数据传输率"><a href="#数据传输率" class="headerlink" title="数据传输率"></a>数据传输率</h4><ul>
+<li>非理想情况下……</li>
 </ul>
-<p><img src="/img/COA/TLBC.jpg" srcset="/img/loading.gif" alt=""></p>
-
+<h4 id="总线宽度"><a href="#总线宽度" class="headerlink" title="总线宽度"></a>总线宽度</h4><ul>
+<li>总线中有多少根弦；同一时刻能传多少位；</li>
+</ul>
+<h4 id="计算"><a href="#计算" class="headerlink" title="计算"></a>计算</h4>
             </div>
             <hr>
             <div>
@@ -289,7 +310,7 @@
                     
                       <a class="hover-with-bg" href="/tags/COA/">COA</a>
                     
-                      <a class="hover-with-bg" href="/tags/VirtualMemory/">VirtualMemory</a>
+                      <a class="hover-with-bg" href="/tags/Bus/">Bus</a>
                     
                   </div>
                 
@@ -302,9 +323,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2020/11/28/COA-Disk/">
+                      <a href="/2020/12/04/LargeSumSubarray/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">COA-Disk</span>
+                        <span class="hidden-mobile">LargeSumSubarray</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -312,8 +333,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2020/11/24/Cache-Lab-COA/">
-                        <span class="hidden-mobile">Cache-Lab-COA</span>
+                      <a href="/2020/12/01/Diary/">
+                        <span class="hidden-mobile">Diary-1</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -449,7 +470,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "COA-VirtualMemory&nbsp;",
+        "COA-Bus&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,
