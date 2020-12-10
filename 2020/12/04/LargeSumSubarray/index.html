@@ -189,7 +189,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      226 字
+      276 字
     </span>
   
 
@@ -199,7 +199,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      4
+      5
        分钟
     </span>
   
@@ -232,8 +232,10 @@
             <h1 style="display: none">LargeSumSubarray</h1>
             
             <div class="markdown-body" id="post-body">
-              <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Nezzar has recently learnt how to find maximum subarray in the algorithm class. However, he finds out that in many cases, subarray with large sum is sufficient. Thus, he would like to know the number of subarrays with sum <strong>greater than</strong> $(t)$ for a sequence $a$.</p>
-<p>Formally, you are given a sequence $(a<em>1,a_2,\ldots,a_n)$, and you are required to calculate the number of pairs $((i,j))$ such that $(1 \le i \le j \le n) $ and $(\sum</em>{k=i}^j a_k &gt; t)$.</p>
+              <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Nezzar has recently learnt how to find maximum subarray in the algorithm class. However, he finds out that in many cases, subarray with large sum is sufficient. Thus, he would like to know the number of subarrays with sum <strong>greater than</strong> $t$ for a sequence $a$.</p>
+<p>Formally, you are given a sequence $a_1,a_2, … ,a_n$. </p>
+<p>you are required to calculate the number of pairs $(i,j)$ such that $1 \le i \le j \le n$ and $\sum_{k=i}^j a_k &gt; t$.</p>
+<h3 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h3><p>The first line contains integers $(n,t) ((1 \le n \le 10^6, -10^{15} \le t \le 10^{15}))$; that is, the length of the given sequence and the threshold. The next line contains (n) integers $a_1,a_2, … ,a_n$ where $(-10^9 \le a_i \le 10^9)$, describing the given sequence.</p>
 <div class="hljs"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstdio&gt;</span></span>
 <span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&quot;algorithm&quot;</span></span>
 <span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> ll long long</span>
