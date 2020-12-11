@@ -189,7 +189,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      684 字
+      841 字
     </span>
   
 
@@ -199,7 +199,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      10
+      12
        分钟
     </span>
   
@@ -278,6 +278,8 @@ ll ans=<span class="hljs-number">0</span>;
     <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%lld\n&quot;</span>, ans);
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre></div>
+<p>如何保证不找到重复的字序列？因为二分的两个部分都是已经搜索结束的，他们内部已经搜索完毕，而不会在后续被重复搜索，因此不会出现多数一次的情况。</p>
+<p>当我们拿到了已经排好序且统计过的两部分，对左边的部分中每一个元素遍历右边部分。因为两个部分已经是升序的，因此遍历的过程中只要找到$sum[q] \gt t + sum[p]$，就可以终止循环，并且将剩余的前缀和数量加入<code>ans</code>就可以了。</p>
 
             </div>
             <hr>
