@@ -189,7 +189,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.2k 字
+      1.4k 字
     </span>
   
 
@@ -199,7 +199,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      22
+      26
        分钟
     </span>
   
@@ -242,10 +242,33 @@
 <p>To disallow some shortcut solutions (offline solutions), Nezzar will fix a positive integer 𝑚𝑜𝑑mod, and provide input in the following way (𝑙𝑎𝑛𝑠lans is 00 initially).</p>
 <ul>
 <li>0 $y$ where $0≤y&lt;mod$, let $x=(y+lans)$ mod $mod$ and insert $x$ to $S$;</li>
-<li>1 𝑦y where 0≤𝑦&lt;𝑚𝑜𝑑0≤y&lt;mod, let 𝑥=(𝑦+𝑙𝑎𝑛𝑠)mod𝑚𝑜𝑑x=(y+lans)modmod and output the number of copies of 𝑥x in 𝑆S, then remove exactly <strong>one copy</strong> of 𝑥x from 𝑆S if 𝑆S contains at least one copy of 𝑥x;</li>
-<li>2 𝑢,𝑣u,v where 0≤𝑢,𝑣&lt;𝑚𝑜𝑑0≤u,v<mod, let 𝑙=(𝑢+𝑙𝑎𝑛𝑠)mod𝑚𝑜𝑑l=(u+lans)modmod and 𝑟=(𝑣+𝑙𝑎𝑛𝑠)mod𝑚𝑜𝑑r=(v+lans)modmod, swap 𝑙l and 𝑟r if 𝑙>𝑟l&gt;r, output ∑𝑥∈𝑆,𝑙&lt;𝑥≤𝑟𝑥∑x∈S,l&lt;x≤rx and finally update 𝑙𝑎𝑛𝑠lans with output.</li>
+<li>1 $y$ where $0≤y&lt;mod$, let $x=(y+lans)$ mod $mod$ and output the number of copies of $x$ in $S$, then remove exactly <strong>one copy</strong> of $x$ from $S$ if $S$ contains at least one copy of $x$;</li>
+<li>2 $u,v$ where $0≤u,v&lt;mod$, let <ul>
+<li>$l=(u+lans)$ mod $mod$ and $r=(v+lans)$ mod $mod$, swap $l$ and $r$ if $l&gt;r$, output $∑x∈S,l&lt;x≤r$ and finally update $lans$ with output.</li>
 </ul>
-<div class="hljs"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&quot;cstdio&quot;</span></span>
+</li>
+</ul>
+<h3 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h3><p>The first line of input contains two integers $Q$ and $mod$, where $1≤Q≤5⋅10^5$ and $1≤mod≤10^13$.</p>
+<p>Each of the following $Q$ lines contains an operation described above.</p>
+<h3 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h3><p>For each type 1 and type 2 query, output one line with the required value.</p>
+<h3 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h3><div class="hljs"><pre><code class="hljs python"><span class="hljs-number">7</span> <span class="hljs-number">15</span>
+<span class="hljs-number">1</span> <span class="hljs-number">2</span>
+<span class="hljs-number">0</span> <span class="hljs-number">3</span>
+<span class="hljs-number">0</span> <span class="hljs-number">6</span>
+<span class="hljs-number">2</span> <span class="hljs-number">0</span> <span class="hljs-number">7</span>
+<span class="hljs-number">0</span> <span class="hljs-number">5</span>
+<span class="hljs-number">2</span> <span class="hljs-number">4</span> <span class="hljs-number">5</span>
+<span class="hljs-number">2</span> <span class="hljs-number">5</span> <span class="hljs-number">4</span></code></pre></div>
+<h3 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h3><div class="hljs"><pre><code class="hljs python"><span class="hljs-number">0</span>
+<span class="hljs-number">9</span>
+<span class="hljs-number">14</span>
+<span class="hljs-number">0</span></code></pre></div>
+<h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>Initially, $S={}$.</p>
+<p>Parameter for the first query is $x=(y+lans)$ mod $mod=2$. Hence, output for this query should be 0, and $S={}$ after first query.</p>
+<p>Parameter for the second query is $x=(y+lans)$ mod $mod=3$. Hence, $S={3}$ after the second query.</p>
+<h3 id="Hint"><a href="#Hint" class="headerlink" title="Hint"></a>Hint</h3><p>Your algorithm should answer each query in $O(log⁡n)$ time to get accepted. If you have no idea how to debug, first write a naive algorithm (i.e., a straightforward but slow algorithm), then generate some small random test cases, finally compare the naive algorithm’s output with your final fast algorithm’s output.</p>
+<h3 id="大致题意"><a href="#大致题意" class="headerlink" title="大致题意"></a>大致题意</h3><p>维护一个数据结构，使得它可以进行以下的三个操作：</p>
+<h3 id="Naive-Solution"><a href="#Naive-Solution" class="headerlink" title="Naive Solution"></a>Naive Solution</h3><div class="hljs"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&quot;cstdio&quot;</span></span>
 <span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&quot;set&quot;</span></span>
 <span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&quot;iterator&quot;</span></span>
 <span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&quot;map&quot;</span></span>
@@ -319,7 +342,7 @@
     S.insert(MAX);
     multiS();
 &#125;</code></pre></div>
-<div class="hljs"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;algorithm&gt;</span></span>
+<h3 id="维护Treap解法"><a href="#维护Treap解法" class="headerlink" title="维护Treap解法"></a>维护Treap解法</h3><div class="hljs"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;algorithm&gt;</span></span>
 <span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstdio&gt;</span></span>
 <span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span>
 <span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&quot;set&quot;</span></span>
