@@ -189,7 +189,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.5k 字
+      2.4k 字
     </span>
   
 
@@ -199,7 +199,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      28
+      38
        分钟
     </span>
   
@@ -268,7 +268,20 @@
 <p>Parameter for the second query is $x=(y+lans)$ mod $mod=3$. Hence, $S={3}$ after the second query.</p>
 <h3 id="Hint"><a href="#Hint" class="headerlink" title="Hint"></a>Hint</h3><p>Your algorithm should answer each query in $O(log⁡n)$ time to get accepted. If you have no idea how to debug, first write a naive algorithm (i.e., a straightforward but slow algorithm), then generate some small random test cases, finally compare the naive algorithm’s output with your final fast algorithm’s output.</p>
 <h3 id="大致题意"><a href="#大致题意" class="headerlink" title="大致题意"></a>大致题意</h3><p>维护一个数据结构，使得它可以进行以下的三个操作：</p>
-<h3 id="Naive-Solution"><a href="#Naive-Solution" class="headerlink" title="Naive Solution"></a>Naive Solution</h3><div class="hljs"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&quot;cstdio&quot;</span></span>
+<ul>
+<li>向一个集合内插入元素；</li>
+<li>查询一个多重集中某元素的多少个，若存在，则在查询之后删除一个；</li>
+<li>查询区间和；</li>
+</ul>
+<p>要求：每个操作都在$O(logn)$的时间内进行——【意味着我们要使用高效数据结构】。</p>
+<h3 id="Naive-Solution"><a href="#Naive-Solution" class="headerlink" title="Naive Solution"></a>Naive Solution</h3><p>提示中说，我们可以先获得一个Naive的做法。在C++中，<code>Set</code>这个常用的容器是用红黑树来维护的，因此考虑到增和删的高效，一开始使用了这个数据结构。基本上是简单模拟了题意中的要求，并且同时维护了一个<code>map</code>用来存储对应<code>value</code>的次数。</p>
+<ul>
+<li>增：<code>map</code>中次数为0则在<code>set</code>中添加，否则在对于的<code>numMap</code>中+1；</li>
+<li>删：<code>map</code>中次数为1则在<code>set</code>中删除，为0则不操作，否则在对于的<code>numMap</code>中-1；</li>
+<li>查区间：用到了<code>upper_bound</code>因此要在<code>set</code>中添加一个最大的元素MAX防止上界的位置跑偏；</li>
+</ul>
+<p>很遗憾，这样的操作的“查区间”的最大时间复杂度是$O(n)$，不满足需求，在2操作较多且数据比较分散的情况下很显然会TLE；</p>
+<div class="hljs"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&quot;cstdio&quot;</span></span>
 <span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&quot;set&quot;</span></span>
 <span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&quot;iterator&quot;</span></span>
 <span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&quot;map&quot;</span></span>
@@ -342,7 +355,20 @@
     S.insert(MAX);
     multiS();
 &#125;</code></pre></div>
-<h3 id="维护Treap解法"><a href="#维护Treap解法" class="headerlink" title="维护Treap解法"></a>维护Treap解法</h3><div class="hljs"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;algorithm&gt;</span></span>
+<h3 id="维护Treap解法"><a href="#维护Treap解法" class="headerlink" title="维护Treap解法"></a>维护Treap解法</h3><blockquote>
+<p>treap 是一种弱平衡的二叉搜索树。treap 这个单词是 tree 和 heap 的组合，表明 treap 是一种由树和堆组合形成的数据结构。treap 的每个结点上要额外储存一个值$priority$。treap 除了要满足二叉搜索树的性质之外，还需满足父节点的</p>
+<p>$priority$大于等于两个儿子的$priority$。而$priority$是每个结点建立时随机生成的，因此 treap 是期望平衡的。</p>
+</blockquote>
+<p>treap 分为旋转式和无旋式两种。两种 treap 都易于编写，但无旋式 treap 的操作方式使得它天生支持维护序列、可持久化等特性。这里以重新实现 <code>set&lt;int&gt;</code> （不可重集合）为例，介绍无旋式 treap。</p>
+<p>在众多高效数据结构中，我选择了Treap。（因为不想写红黑树，也不会用跳表）这道题使用了一个<a target="_blank" rel="noopener" href="https://oi-wiki.org/ds/treap/">模板</a>——来自于课程助教。使用数组存了几个关于Treap的关键信息——<code>w[maxn]</code>存入每个结点出现的次数、<code>size</code>是以当前结点为根的树的结点之和、<code>val</code>等都是结点信息；</p>
+<p>这个问题的关键是利用了平衡树求得了前缀和，因此可以<code>ll sum = T.querySum(T.rt, r) - T.querySum(T.rt, l);</code> 对于二叉搜索树来说，其中一种情况，左子结点全部比根节点小，右节点全部比根节点大，因此左子树+根节点就是前缀和。还有一种情况，如果根节点是父母节点的右子节点，那么父母节点也在前缀和中。因此前缀和需要我们逐层递归查找，时间复杂度为$O(n)$。所以，为了满足这个条件，我们需要将<strong>树的和</strong>记录下来。因此在增和删的操作中，我们需要维护子树和。</p>
+<ul>
+<li>增：在查找位置的过程中，每到一层即为当前根结点的根数和加上当前<code>x</code>的<code>value</code>。</li>
+<li>删：我额外维护了一个set，便于判断是否向下查找。如果set中没有该数，那么不进行删除操作，如果有则在沿途减去当前<code>value</code>。并且当这个结点需要删除的同时，<code>set.erase(x)</code>。</li>
+</ul>
+<p>等于上面的操作将累加和摊销到了增和删的操作中；</p>
+<p>这样，前缀和就十分好获得了（已经存储过），区间和直接就可以得到。最后不忘记更新<code>lans</code>就结束了。</p>
+<div class="hljs"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;algorithm&gt;</span></span>
 <span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstdio&gt;</span></span>
 <span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span>
 <span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&quot;set&quot;</span></span>
@@ -491,7 +517,8 @@ ll  size[maxn], val[maxn];
     &#125;
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre></div>
-<h3 id="测试生成Python代码"><a href="#测试生成Python代码" class="headerlink" title="测试生成Python代码"></a>测试生成Python代码</h3><div class="hljs"><pre><code class="hljs python"><span class="hljs-keyword">from</span> cyaron <span class="hljs-keyword">import</span> *
+<h3 id="测试生成Python代码"><a href="#测试生成Python代码" class="headerlink" title="测试生成Python代码"></a>测试生成Python代码</h3><p>以下是debug过程中用到的生成测试数据的代码，欢迎取用( ´ ▽ ` )ﾉ！</p>
+<div class="hljs"><pre><code class="hljs python"><span class="hljs-keyword">from</span> cyaron <span class="hljs-keyword">import</span> *
 <span class="hljs-keyword">import</span> random
 
 
