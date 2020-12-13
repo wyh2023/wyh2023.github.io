@@ -189,7 +189,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      232 字
+      603 字
     </span>
   
 
@@ -199,7 +199,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      4
+      9
        分钟
     </span>
   
@@ -232,7 +232,32 @@
             <h1 style="display: none">BalanceSegmentPainting</h1>
             
             <div class="markdown-body" id="post-body">
-              <div class="hljs"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;vector&gt;</span></span>
+              <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>There’s a segment 𝐼=[0,𝑛] initially painted with color white. Nezzar chooses a permutation 𝑝p of [𝑛]={1,2,⋯,𝑛}, and repaint the segment in the following way.</p>
+<ul>
+<li>In the 𝑖-th day, he repaints segment [𝑝𝑖−1,𝑝𝑖] with color black.</li>
+</ul>
+<p>Define the balance of segment 𝐼 as the length of the largest continuous subsegment 𝐼′ painted <strong>in black</strong>. Nezzar challenges you to calculate the balance of segment 𝐼 right after the 𝑖-th day for <em>1</em>≤𝑖≤𝑛.</p>
+<h3 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h3><p>The first line of the input contains a single integer 𝑛 (1≤𝑛≤10<sup>6</sup>).</p>
+<p>The following line contains 𝑛 integers 𝑝<sub>1</sub>,𝑝<sub>2</sub>,…,𝑝<sub>𝑛</sub> (1≤𝑝<sub>𝑖</sub>≤𝑛).</p>
+<p>It is gauranteed that 𝑝<sub>1</sub>,𝑝<sub>2</sub>,…,𝑝<sub>𝑛</sub> forms a permutation of [𝑛].</p>
+<h3 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h3><p>Output 𝑛 balance values in one line.</p>
+<h3 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h3><div class="hljs"><pre><code class="hljs python"><span class="hljs-number">5</span>
+<span class="hljs-number">1</span> <span class="hljs-number">2</span> <span class="hljs-number">5</span> <span class="hljs-number">4</span> <span class="hljs-number">3</span></code></pre></div>
+<h3 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h3><div class="hljs"><pre><code class="hljs python"><span class="hljs-number">1</span> <span class="hljs-number">2</span> <span class="hljs-number">2</span> <span class="hljs-number">2</span> <span class="hljs-number">5</span></code></pre></div>
+<h3 id="Hint"><a href="#Hint" class="headerlink" title="Hint"></a>Hint</h3><p>You might want to use the disjoint sets data structure.</p>
+<h3 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h3><p>给定一个数组表示一段白色的布，它有$n$个格子，每天染黑一个格子，问每天最长的连续黑色段有多长？</p>
+<ul>
+<li>⬜️ ⬜️ ⬜️ ⬜️ ⬜️         0-day            0-balance</li>
+<li>⬛️ ⬜️ ⬜️ ⬜️ ⬜️         1-day            1-balance            1</li>
+<li>⬛️ ⬛️ ⬜️ ⬜️ ⬜️         2-day            2-balance            2</li>
+<li>⬛️ ⬛️ ⬜️ ⬜️ ⬛️         3-day            2-balance            5</li>
+<li>⬛️ ⬛️ ⬜️ ⬛️ ⬛️         4-day            2-balance            4</li>
+<li>⬛️ ⬛️ ⬛️ ⬛️ ⬛️         5-day            5-balance            3</li>
+</ul>
+<p>提示中说，让我们使用并查集。这是一道很标准的并查集的模板题。只需要稍加修改就可以通过了。每个染黑的段是一个集合，每次染之和只需要查找能不能和左右两边的格子并成一个集合即可！</p>
+<p>注意，为了减少内存的使用和时间消耗，我把每个并查集的结点数放在了根节点中，并以负数表示根节点。为了更加高效，我们还应该在查找的同时进行压缩。</p>
+<p>应该是本次oj最容易解决的一道题了orz</p>
+<div class="hljs"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;vector&gt;</span></span>
 <span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&quot;iostream&quot;</span></span>
 
 <span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;
@@ -245,7 +270,7 @@
 <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">Find</span><span class="hljs-params">(<span class="hljs-keyword">int</span> k)</span></span>&#123;
     <span class="hljs-keyword">if</span>(f[k]==<span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>; <span class="hljs-comment">//没被染黑</span>
     <span class="hljs-keyword">if</span>(f[k]&lt;<span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> k;   <span class="hljs-comment">//根节点是负数</span>
-    <span class="hljs-keyword">return</span> f[k]=Find(f[k]); <span class="hljs-comment">//集团染黑</span>
+    <span class="hljs-keyword">return</span> f[k]=Find(f[k]); <span class="hljs-comment">//集团染黑，同时压缩节点；</span>
 &#125;
 
 <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Union</span><span class="hljs-params">(<span class="hljs-keyword">int</span> a, <span class="hljs-keyword">int</span> b)</span></span>&#123;
@@ -282,6 +307,26 @@
             <div>
               <div class="post-metas mb-3">
                 
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/OJ/">OJ</a>
+                    
+                      <a class="hover-with-bg" href="/categories/OJ/%E7%AE%97%E6%B3%95/">算法</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%B9%B6%E6%9F%A5%E9%9B%86/">并查集</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法</a>
+                    
+                      <a class="hover-with-bg" href="/tags/OJ/">OJ</a>
+                    
+                  </div>
                 
               </div>
               
