@@ -1,0 +1,735 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;light&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.png">
+  <link rel="icon" type="image/png" href="/img/avatar.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  <title>19级大一上计基上机 - Hexo</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/darcula.min.css" />
+    
+  
+
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>wyh0110JX</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('/img/%E8%83%8C%E6%99%AF3.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container page-header text-center fade-in-up">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-12-14 13:41" pubdate>
+        2020年12月14日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.4k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      20
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto" id="post">
+            <!-- SEO header -->
+            <h1 style="display: none">19级大一上计基上机</h1>
+            
+            <div class="markdown-body" id="post-body">
+              <h2 id="19级大一上计算系统基础上机回顾"><a href="#19级大一上计算系统基础上机回顾" class="headerlink" title="19级大一上计算系统基础上机回顾"></a>19级大一上计算系统基础上机回顾</h2><p>事先声明：个人所写版本不代表答案！仅提供思路！</p>
+<h3 id="字典序排序"><a href="#字典序排序" class="headerlink" title="字典序排序"></a>字典序排序</h3><p><img src="/img/字典序.jpg" srcset="/img/loading.gif" alt=""></p>
+<p>这道题乍一看都能想到在考排序，然而字符串的排序和一般意义上的数字排序不同。如果是大一上没有经常练习C语言并且还有些Naive的小白同学，如何进行字典序可能就需要一些时间思考。当你解决了字典序——【逐个比较字母表顺序，若都相等比较长度】，还会遇到一个事情：字符串数组好像不能进行常规意义上的交换和赋值TAT</p>
+<div class="hljs"><pre><code class="hljs c"><span class="hljs-keyword">char</span> s[<span class="hljs-number">100</span>][<span class="hljs-number">100</span>];
+
+<span class="hljs-comment">//wrong!!!!</span>
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">swap</span><span class="hljs-params">(<span class="hljs-keyword">char</span> *s1, <span class="hljs-keyword">char</span> *s2, <span class="hljs-keyword">int</span> j)</span></span>&#123;
+    <span class="hljs-keyword">char</span> *tmp = s[j];
+    s[j] = s[j+<span class="hljs-number">1</span>];
+    s[j+<span class="hljs-number">1</span>] = s[j];
+&#125;</code></pre></div>
+<p>那怎么办呢，我们应该学过<strong>交换指针</strong>。我们可以额外再开一个数组<code>char *strArr[100];</code>保存的是指向相应字符串的指针。一旦需要交换两个字符串，交换<code>strArr</code>中的指针即可。</p>
+<p>最后在进行输出的时候也是取相应的指针（原字符串数组的字符串之间的相对位置没有改变）</p>
+<p>简单解释一下代码——基本模拟了题意；在进行字典序比较的时候，首先一一对应比较字母表序，若相等则比较长度，一旦出现逆序（前大于后）则交换；因为没有复杂度的要求，我再次使用了最简单的冒泡排序。</p>
+<div class="hljs"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdio.h&gt;</span></span>
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">strlen</span><span class="hljs-params">(<span class="hljs-keyword">char</span> *s)</span> </span>&#123;
+    <span class="hljs-keyword">int</span> len = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">while</span> (*(s + len) != <span class="hljs-string">&#x27;\0&#x27;</span>) &#123;
+        len++;
+    &#125;
+    <span class="hljs-keyword">return</span> len;
+&#125;
+
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;
+    <span class="hljs-keyword">int</span> T, N;
+    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>, &amp;T);
+
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> t=<span class="hljs-number">0</span>; t&lt;T; t++)&#123;
+        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>, &amp;N);
+        <span class="hljs-keyword">char</span> *strArr[<span class="hljs-number">100</span>];
+        <span class="hljs-keyword">char</span> str[<span class="hljs-number">100</span>][<span class="hljs-number">50</span>];
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>; i&lt;N; i++)&#123;
+            <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%s&quot;</span>, str[i]);
+            strArr[i] = str[i];
+        &#125;
+        <span class="hljs-keyword">int</span> flg;
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>; i&lt;N<span class="hljs-number">-1</span>; i++)&#123;
+            <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=<span class="hljs-number">0</span>; j&lt;N-i<span class="hljs-number">-1</span>; j++, flg = <span class="hljs-number">0</span>)&#123;
+                <span class="hljs-keyword">int</span> len1 = <span class="hljs-built_in">strlen</span>(strArr[j]);
+                <span class="hljs-keyword">int</span> len2 = <span class="hljs-built_in">strlen</span>(strArr[j+<span class="hljs-number">1</span>]);
+                <span class="hljs-keyword">int</span> test = (len1 &lt; len2)? len1 : len2;
+                <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> k=<span class="hljs-number">0</span>; k&lt;test; k++)&#123;
+                    <span class="hljs-keyword">char</span> s1 = strArr[j][k];
+                    <span class="hljs-keyword">char</span> s2 = strArr[j+<span class="hljs-number">1</span>][k];
+                    <span class="hljs-keyword">if</span>(s2 &lt; s1)&#123;
+                        flg = <span class="hljs-number">1</span>;
+                        <span class="hljs-keyword">break</span>;
+                    &#125;
+                &#125;
+                <span class="hljs-keyword">if</span>(len2 &gt; len1 &amp;&amp; flg == <span class="hljs-number">0</span>)&#123;
+                    flg = <span class="hljs-number">1</span>;
+                &#125;
+                <span class="hljs-comment">//交换字符串的指针；</span>
+                <span class="hljs-keyword">if</span>(flg == <span class="hljs-number">1</span>)&#123;
+                    <span class="hljs-keyword">char</span> *tmp = strArr[j];
+                    strArr[j] = strArr[j+<span class="hljs-number">1</span>];
+                    strArr[j+<span class="hljs-number">1</span>] = tmp;
+                &#125;
+            &#125;
+        &#125;
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%s\n%s&quot;</span>, strArr[<span class="hljs-number">0</span>], strArr[N<span class="hljs-number">-1</span>]);
+    &#125;
+&#125;</code></pre></div>
+<h3 id="模拟Split函数"><a href="#模拟Split函数" class="headerlink" title="模拟Split函数"></a>模拟Split函数</h3><p><img src="/img/split.jpg" srcset="/img/loading.gif" alt=""></p>
+<p>字符串切割，也是split函数的模拟；考察的是字符串的模式匹配。同样，这里并没有考察算法，因此我们不需要过分考虑复杂度的问题。</p>
+<p>这样以来，问题就没有那么复杂了。这里提到两种解法：Brute-Force解法（暴力解法）和KMP解法（不做过多解释，仅提供解法(._.)）</p>
+<h4 id="Brute-Force"><a href="#Brute-Force" class="headerlink" title="Brute-Force"></a>Brute-Force</h4><p>这里主要复杂在得到结果之后的处理（x</p>
+<p>我们首先得到模式串Target和待查找串Str以及他们的长度。对Str的每一个元素进行遍历，如下：</p>
+<p><img src="https://pic2.zhimg.com/80/v2-4fe5612ff13a6286e1a8e50a0b06cd96_1440w.jpg?source=1940ef5c" srcset="/img/loading.gif" alt=""></p>
+<p>如果有匹配的，则记下它此时在数组中的index，然后再进行遍历输出。记得在两个模式串之间为空时，要输出”EmptyString”。</p>
+<div class="hljs"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdio.h&gt;</span></span>
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">strlen</span><span class="hljs-params">(<span class="hljs-keyword">char</span> *s)</span> </span>&#123;
+    <span class="hljs-keyword">int</span> len = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">while</span> (*(s + len) != <span class="hljs-string">&#x27;\0&#x27;</span>) &#123;
+        len++;
+    &#125;
+    <span class="hljs-keyword">return</span> len;
+&#125;
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;
+    <span class="hljs-keyword">char</span> str[<span class="hljs-number">100</span>], target[<span class="hljs-number">100</span>];
+
+    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%s&quot;</span>, str);
+    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%s&quot;</span>, target);
+
+    <span class="hljs-keyword">int</span> lenStr = <span class="hljs-built_in">strlen</span>(str);
+    <span class="hljs-keyword">int</span> lenTarget = <span class="hljs-built_in">strlen</span>(target);
+    <span class="hljs-keyword">int</span> last[<span class="hljs-number">100</span>];
+
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>; i&lt;<span class="hljs-number">100</span>; i++)&#123;
+        last[i] = <span class="hljs-number">-1</span>;
+    &#125;
+
+    <span class="hljs-keyword">if</span> (lenTarget &gt; lenStr) &#123;
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%s\n&quot;</span>, str);
+    &#125; <span class="hljs-keyword">else</span> &#123;
+        <span class="hljs-keyword">int</span> gap = lenStr - lenTarget;
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt;= gap; i++) &#123;
+            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt; lenTarget; j++) &#123;
+                <span class="hljs-keyword">if</span> (str[i + j] != target[j]) &#123;
+                    <span class="hljs-keyword">break</span>;
+                &#125;
+                <span class="hljs-keyword">if</span> (j == lenTarget - <span class="hljs-number">1</span>) &#123;
+                    last[i] = i+j;
+                &#125;
+            &#125;
+        &#125;
+    &#125;
+
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>; i&lt;lenStr; i++)&#123;
+        <span class="hljs-keyword">if</span>(last[i]==<span class="hljs-number">-1</span>)&#123;
+            <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%c&quot;</span>, *(str+i));
+        &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (last[i]+lenTarget == last[lenTarget+i])&#123;
+            i = last[i];
+            <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;\n&quot;</span>);
+            <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;EmptyString&quot;</span>);
+        &#125; <span class="hljs-keyword">else</span> &#123;
+            <span class="hljs-keyword">if</span>(i != <span class="hljs-number">0</span>)&#123;
+                i = last[i];
+                <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;\n&quot;</span>);
+            &#125;
+        &#125;
+    &#125;
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;</code></pre></div>
+<h4 id="KMP"><a href="#KMP" class="headerlink" title="KMP"></a>KMP</h4><p>仅供参考！( ´▽` )ﾉ</p>
+<div class="hljs"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdio.h&gt;</span></span>
+
+next[<span class="hljs-number">100</span>];
+start[<span class="hljs-number">100</span>];
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">strlen</span><span class="hljs-params">(<span class="hljs-keyword">char</span> *s)</span> </span>&#123;
+    <span class="hljs-keyword">int</span> len = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">while</span> (*(s + len) != <span class="hljs-string">&#x27;\0&#x27;</span>) &#123;
+        len++;
+    &#125;
+    <span class="hljs-keyword">return</span> len;
+&#125;
+
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">buildNext</span><span class="hljs-params">(<span class="hljs-keyword">int</span> lenPattern, <span class="hljs-keyword">char</span> *pattern)</span></span>&#123;
+    next[<span class="hljs-number">0</span>] = <span class="hljs-number">0</span>;
+
+    <span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">int</span> x = <span class="hljs-number">1</span>;
+    <span class="hljs-keyword">int</span> now = <span class="hljs-number">0</span>;
+
+    <span class="hljs-keyword">while</span> (x &lt; lenPattern)&#123;
+        <span class="hljs-keyword">if</span>(pattern[now] == pattern[x])&#123;
+            now++;
+            x++;
+            next[++i] = now;
+        &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (now != <span class="hljs-number">0</span>)&#123;
+            now = next[now - <span class="hljs-number">1</span>];
+        &#125; <span class="hljs-keyword">else</span> &#123;
+            next[++i] = <span class="hljs-number">0</span>;
+            x++;
+        &#125;
+    &#125;
+&#125;
+
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">search</span><span class="hljs-params">(<span class="hljs-keyword">char</span> *str, <span class="hljs-keyword">char</span>  *pattern)</span></span>&#123;
+    <span class="hljs-keyword">int</span> tar = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">int</span> position = <span class="hljs-number">0</span>;
+
+    <span class="hljs-keyword">while</span> (tar &lt; <span class="hljs-built_in">strlen</span>(str))&#123;
+        <span class="hljs-keyword">if</span>(str[tar] == pattern[position])&#123;
+            tar++;
+            position++;
+        &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (position != <span class="hljs-number">0</span>)&#123;
+            position = next[position - <span class="hljs-number">1</span>];
+        &#125; <span class="hljs-keyword">else</span> &#123;
+            tar++;
+        &#125;
+
+        <span class="hljs-keyword">if</span>(position == <span class="hljs-built_in">strlen</span>(pattern))&#123;
+            <span class="hljs-comment">//printf(&quot;%d\n&quot;, tar-position+1);</span>
+            start[tar-position] = <span class="hljs-built_in">strlen</span>(pattern);
+            position = next[position<span class="hljs-number">-1</span>];
+        &#125;
+    &#125;
+&#125;
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;
+    <span class="hljs-keyword">char</span> str[<span class="hljs-number">100</span>];
+    <span class="hljs-keyword">char</span> target[<span class="hljs-number">100</span>];
+
+    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%s%s&quot;</span>, str, target);
+
+    <span class="hljs-keyword">int</span> lenStr = <span class="hljs-built_in">strlen</span>(str);
+    <span class="hljs-keyword">int</span> lenTarget = <span class="hljs-built_in">strlen</span>(target);
+
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>; i&lt;<span class="hljs-number">100</span>; i++)&#123;
+        start[i] = <span class="hljs-number">0</span>;  <span class="hljs-comment">//初始化</span>
+    &#125;
+
+    buildNext(lenTarget, target);
+    search(str, target);
+
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>; i&lt;lenStr; i++)&#123;
+        <span class="hljs-keyword">if</span>(start[i]!=<span class="hljs-number">0</span>)&#123;
+            <span class="hljs-keyword">if</span>(i != <span class="hljs-number">0</span>) <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;\n&quot;</span>);
+            i += start[i]<span class="hljs-number">-1</span>;
+            <span class="hljs-keyword">if</span>(start[i+<span class="hljs-number">1</span>]!=<span class="hljs-number">0</span>)&#123;
+                <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;EmptyString&quot;</span>);
+            &#125;
+            <span class="hljs-keyword">continue</span>;
+        &#125;
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%c&quot;</span>, str[i]);
+    &#125;
+&#125;</code></pre></div>
+<h2 id="希望大家注意到事情！"><a href="#希望大家注意到事情！" class="headerlink" title="希望大家注意到事情！"></a>希望大家注意到事情！</h2><ol>
+<li><strong>首先，多多做题，别让自己的手生下来，机考非常吃熟练度！此后的各科机考也是一样</strong></li>
+<li>多多练习和注意指针的使用！</li>
+<li>操作字符串数组可以使用一个指针数组；</li>
+<li>在此提供一些可以练习的题目：<ul>
+<li>洛谷：到P2394是基础题，1165和1540是栈和队列，1015-1279是字符串，1032到1135是搜索，1102-1678是动态规划，后面是二分查找；(感谢李淳同学提供信息！)</li>
+</ul>
+</li>
+</ol>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E8%AE%A1%E7%AE%97%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80/">计算系统基础</a>
+                    
+                      <a class="hover-with-bg" href="/tags/KMP/">KMP</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/12/10/COA-%E6%8C%87%E4%BB%A4%E9%9B%86/">
+                        <span class="hidden-mobile">COA-指令集</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '#post-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "19级大一上计基上机&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.staticfile.org/mathjax/3.0.5/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
