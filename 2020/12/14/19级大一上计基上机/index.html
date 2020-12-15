@@ -307,11 +307,14 @@
 <div class="hljs"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdio.h&gt;</span></span>
 
 <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">strlen</span><span class="hljs-params">(<span class="hljs-keyword">char</span> *s)</span> </span>&#123;
+
     <span class="hljs-keyword">int</span> len = <span class="hljs-number">0</span>;
+
     <span class="hljs-keyword">while</span> (*(s + len) != <span class="hljs-string">&#x27;\0&#x27;</span>) &#123;
         len++;
     &#125;
     <span class="hljs-keyword">return</span> len;
+
 &#125;
 
 <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;
@@ -324,41 +327,47 @@
     <span class="hljs-keyword">int</span> lenTarget = <span class="hljs-built_in">strlen</span>(target);
     <span class="hljs-keyword">int</span> last[<span class="hljs-number">100</span>];
 
-    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>; i&lt;<span class="hljs-number">100</span>; i++)&#123;
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">100</span>; i++) &#123;
+
         last[i] = <span class="hljs-number">-1</span>;
+
     &#125;
 
-    <span class="hljs-keyword">if</span> (lenTarget &gt; lenStr) &#123;
-        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%s\n&quot;</span>, str);
-    &#125; <span class="hljs-keyword">else</span> &#123;
+    <span class="hljs-keyword">if</span> (lenTarget &gt; lenStr) &#123; <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%s\n&quot;</span>, str); &#125;
+    <span class="hljs-keyword">else</span> &#123;
         <span class="hljs-keyword">int</span> gap = lenStr - lenTarget;
         <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt;= gap; i++) &#123;
             <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt; lenTarget; j++) &#123;
-                <span class="hljs-keyword">if</span> (str[i + j] != target[j]) &#123;
-                    <span class="hljs-keyword">break</span>;
-                &#125;
+                <span class="hljs-keyword">if</span> (str[i + j] != target[j]) &#123; <span class="hljs-keyword">break</span>; &#125;
                 <span class="hljs-keyword">if</span> (j == lenTarget - <span class="hljs-number">1</span>) &#123;
-                    last[i] = i+j;
+                    last[i] = i + j + <span class="hljs-number">1</span>;
                 &#125;
             &#125;
         &#125;
     &#125;
 
-    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>; i&lt;lenStr; i++)&#123;
-        <span class="hljs-keyword">if</span>(last[i]==<span class="hljs-number">-1</span>)&#123;
-            <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%c&quot;</span>, *(str+i));
-        &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (last[i]+lenTarget == last[lenTarget+i])&#123;
-            i = last[i];
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; lenStr; i++) &#123;
+
+        <span class="hljs-keyword">if</span> (last[i] == <span class="hljs-number">-1</span>) &#123;
+            <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%c&quot;</span>, *(str + i));
+
+        &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (last[i] != <span class="hljs-number">-1</span> &amp;&amp; last[last[i]] != <span class="hljs-number">-1</span>) &#123;
+
+            i = last[i]<span class="hljs-number">-1</span>;
+
             <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;\n&quot;</span>);
             <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;EmptyString&quot;</span>);
         &#125; <span class="hljs-keyword">else</span> &#123;
-            <span class="hljs-keyword">if</span>(i != <span class="hljs-number">0</span>)&#123;
-                i = last[i];
+            <span class="hljs-keyword">if</span> (i != <span class="hljs-number">0</span>) &#123;
                 <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;\n&quot;</span>);
             &#125;
+            i = last[i]<span class="hljs-number">-1</span>;
+
         &#125;
+
     &#125;
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+
 &#125;</code></pre></div>
 <h4 id="KMP"><a href="#KMP" class="headerlink" title="KMP"></a>KMP</h4><p>仅供参考！( ´▽` )ﾉ</p>
 <div class="hljs"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdio.h&gt;</span></span>
@@ -484,7 +493,7 @@ start[<span class="hljs-number">100</span>];
                     
                     
                       <a href="/2020/12/10/COA-%E6%8C%87%E4%BB%A4%E9%9B%86/">
-                        <span class="hidden-mobile">COA-指令集</span>
+                        <span class="hidden-mobile">COA-CPU & Instructions</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
