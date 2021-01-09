@@ -239,7 +239,7 @@
 <h4 id="CRC校验步骤："><a href="#CRC校验步骤：" class="headerlink" title="CRC校验步骤："></a>CRC校验步骤：</h4><p>CRC校验中有两个关键点，一是<strong>预先确定一个发送送端和接收端都用来作为除数的二进制比特串（或多项式）</strong>，可以随机选择，也可以使用国际标准，<strong>但是最高位和最低位必须为1</strong>；二是<strong>把原始帧与上面计算出的除数进行模2除法运算，计算出CRC码。</strong></p>
 <h4 id="具体步骤："><a href="#具体步骤：" class="headerlink" title="具体步骤："></a>具体步骤：</h4><ol>
 <li>选择合适的除数</li>
-<li>看选定除数的二进制位数，然后再要发送的数据帧上面<strong>加上这个位数-1位的0</strong>，然后用新生成的帧以模2除法的方式除上面的除数，<strong>得到的余数就是该帧的CRC校验码。</strong>注意，<strong>余数的位数一定只比除数位数少一位</strong>，也就是<strong>CRC校验码位数比除数位数少一位</strong>，如果前面位是0也不能省略。</li>
+<li>看选定除数的二进制位数，然后再要发送的数据帧上面<strong>加上除数的位数-1位的0</strong>，然后用新生成的帧以模2除法的方式除上面的除数，<strong>得到的余数就是该帧的CRC校验码。</strong>注意，<strong>余数的位数一定只比除数位数少一位</strong>，也就是<strong>CRC校验码位数比除数位数少一位</strong>，如果前面位是0也不能省略。</li>
 <li>将计算出来的CRC校验码附加在原数据帧后面，构建成一个新的数据帧进行发送；最后接收端在以模2除法方式除以前面选择的除数，如果没有余数，则说明数据帧在传输的过程中没有出错。</li>
 </ol>
 <h4 id="举例——编程作业："><a href="#举例——编程作业：" class="headerlink" title="举例——编程作业："></a>举例——编程作业：</h4><p><img src="/img/COA/CRC.jpg" srcset="/img/loading.gif" alt=""></p>

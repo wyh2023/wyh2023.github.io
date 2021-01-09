@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
-  <title>专业词汇 - Hexo</title>
+  <title>COA-IO - Hexo</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -177,8 +177,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2020-10-21 17:27" pubdate>
-        2020年10月21日 下午
+      <time datetime="2020-12-24 16:51" pubdate>
+        2020年12月24日 下午
       </time>
     </span>
   
@@ -189,7 +189,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      113 字
+      323 字
     </span>
   
 
@@ -199,7 +199,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      1
+      3
        分钟
     </span>
   
@@ -229,56 +229,54 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto" id="post">
             <!-- SEO header -->
-            <h1 style="display: none">专业词汇</h1>
+            <h1 style="display: none">COA-IO</h1>
             
             <div class="markdown-body" id="post-body">
-              <h3 id="生物"><a href="#生物" class="headerlink" title="生物"></a>生物</h3><ul>
-<li>invertebrate 无脊椎的； vertebrate 有脊椎的；</li>
-<li>primates 灵长类；</li>
-<li>mollusk 软体动物；</li>
-<li>coelenterate 腔肠动物；</li>
-<li>spineless 无脊椎的；没骨气的；Sipne 脊椎；</li>
-<li>reproduce 繁殖；</li>
-<li>recessive gene 隐性基因；</li>
-</ul>
-<h3 id="地质"><a href="#地质" class="headerlink" title="地质"></a>地质</h3><ul>
-<li>sedimentation 沉淀（过程）；sediment 沉淀物；<ul>
-<li>同义替换：deposit 沉淀；accumulation；</li>
-</ul>
-</li>
-<li>grains 颗粒；纹理；</li>
-<li>molten 熔化的；铸造的；</li>
-<li>magma 岩浆；</li>
-<li>lava 火山岩浆；</li>
-<li>grantie 花岗岩；</li>
-<li>lead 铅；</li>
-<li>dating 确定年代；</li>
-</ul>
-<h4 id="商科"><a href="#商科" class="headerlink" title="商科"></a>商科</h4><ul>
-<li>commodity/products/goods/merchandise 商品；<ul>
-<li>commoditize 商品化；</li>
+              <h3 id="I-O-模块"><a href="#I-O-模块" class="headerlink" title="I/O 模块"></a>I/O 模块</h3><p>I/O模块是链接内部系统和外部设备的桥梁；</p>
+<p>控制；时序；数据缓冲(Data Buffering)；错误检测；</p>
+<h4 id="编程式I-O："><a href="#编程式I-O：" class="headerlink" title="编程式I/O："></a>编程式I/O：</h4><p>数据经过CPU；</p>
+<h4 id="中断驱动式I-O："><a href="#中断驱动式I-O：" class="headerlink" title="中断驱动式I/O："></a>中断驱动式I/O：</h4><p>数据经过CPU；</p>
+<h4 id="DMA："><a href="#DMA：" class="headerlink" title="DMA："></a>DMA：</h4><p>直接内存访问；</p>
+<p>CPU资源很宝贵——不应该作为搬运工；</p>
+<p>DMA——新的硬件设备，把IO模块和内存之间相互交换数据，CPU不需要参与这个过程；</p>
+<p>数据不经过CPU；</p>
+<p><img src="/img/COA/DMA.png" srcset="/img/loading.gif" alt=""></p>
+<p>CPU和DMA都可以访问内存；</p>
+<ul>
+<li>停止；<ul>
+<li>DMA的优先级高于CPU，DMA主要链接高速设备，如果不及时写入，数据可能会被丢掉；</li>
+<li>它比较适合链接到非常快的IO设备的场景；</li>
 </ul>
 </li>
-<li>merchant 商业的；</li>
+<li>窃取周期；<ul>
+<li>DMA优先级高于CPU；</li>
+<li>适用于数据来的周期比较长（一波一波的）；</li>
 </ul>
+</li>
+<li>交换式（或分享）<ul>
+<li>一个内存周期内前一半给CPU后一半给DMA；</li>
+<li>适用于CPU周期比内存周期大的情况；</li>
+</ul>
+</li>
+</ul>
+<h5 id="链接方式"><a href="#链接方式" class="headerlink" title="链接方式"></a>链接方式</h5><ul>
+<li>一条总线链接，效率不是很高；</li>
+<li>一条总线，整合式的DMA-I/O；</li>
+<li>系统总线+I/O总线；</li>
+</ul>
+<h3 id="优先级"><a href="#优先级" class="headerlink" title="优先级"></a>优先级</h3><h4 id="响应优先级"><a href="#响应优先级" class="headerlink" title="响应优先级"></a>响应优先级</h4><h4 id="处理优先级"><a href="#处理优先级" class="headerlink" title="处理优先级"></a>处理优先级</h4><p>I/O通道：有自己的处理器</p>
+<p>I/O处理器：没有自己的处理器，但是有本地的存储器；</p>
 
             </div>
             <hr>
             <div>
               <div class="post-metas mb-3">
                 
-                  <div class="post-meta mr-3">
-                    <i class="iconfont icon-category"></i>
-                    
-                      <a class="hover-with-bg" href="/categories/TOEFL/">TOEFL</a>
-                    
-                  </div>
-                
                 
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/TOEFL/">TOEFL</a>
+                      <a class="hover-with-bg" href="/tags/COA/">COA</a>
                     
                   </div>
                 
@@ -291,9 +289,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2020/10/23/NBCD-Review/">
+                      <a href="/2021/01/09/2020%E8%BF%99%E4%B8%80%E5%B9%B4/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">NBCD-Review</span>
+                        <span class="hidden-mobile">2020这一年</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -301,8 +299,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2020/10/20/TOEFL-writing-notes/">
-                        <span class="hidden-mobile">TOEFL-writing-notes</span>
+                      <a href="/2020/12/17/COA-Pipeline/">
+                        <span class="hidden-mobile">COA-Pipeline</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -438,7 +436,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "专业词汇&nbsp;",
+        "COA-IO&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,
